@@ -1,0 +1,12 @@
+01/04 Orig CO Name:Central Payment Orig ID:9470259043x Desc Date:210103 CO Entry
+Descr:Pmt Proc Sec:CCD Trace#:091000014570836 Eed:210104 Ind
+ID:843822050494 Ind Name:XMart Trn: 0044576Tc
+$732.37
+01/04 Orig CO Name:Central Payment Orig ID:94259043 Desc Date:210101 CO Entry
+Descr:Pmt Proc Sec:CCD Trace#:0910018416445 Eed:210104 Ind
+ID:84872050494 Ind Name:XMart Trn: 00484145Tc
+692.58
+01/04 Orig CO Name:Central Payment Orig ID:94705943 Desc Date:201231 CO Entry
+Descr:Pmt Proc Sec:CCD Trace#:091018064990 Eed:210104 Ind
+ID:848722050494 Ind Name:Golden Mart Trn: 00480990Tc
+535.42

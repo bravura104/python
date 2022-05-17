@@ -1,0 +1,3 @@
+01/04 Orig CO Name:Central Payment Orig ID:9470259043x Desc Date:210103 CO EntryDescr:Pmt Proc Sec:CCD Trace#:091000014570836 Eed:210104 Ind	$732.37
+01/04 Orig CO Name:Central Payment Orig ID:94259043 Desc Date:210101 CO EntryDescr:Pmt Proc Sec:CCD Trace#:0910018416445 Eed:210104 Ind	692.58
+01/04 Orig CO Name:Central Payment Orig ID:94705943 Desc Date:201231 CO EntryDescr:Pmt Proc Sec:CCD Trace#:091018064990 Eed:210104 Ind	535.42
