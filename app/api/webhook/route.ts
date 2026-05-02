@@ -4,9 +4,6 @@ import stripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 
-// Required: raw body for Stripe signature verification
-export const config = { api: { bodyParser: false } };
-
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
