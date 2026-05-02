@@ -20,12 +20,13 @@ function OrderStatusContent() {
 
   useEffect(() => {
     const clientSecret = searchParams.get("payment_intent_client_secret");
-    if (!clientSecret) {
-      setStatus("failed");
-      return;
-    }
 
-    stripePromise.then(async (stripe) => {
+    async function checkStatus() {
+      if (!clientSecret) {
+        setStatus("failed");
+        return;
+      }
+      const stripe = await stripePromise;
       if (!stripe) {
         setStatus("failed");
         return;
@@ -42,7 +43,9 @@ function OrderStatusContent() {
       } else {
         setStatus("failed");
       }
-    });
+    }
+
+    checkStatus();
   }, [searchParams, clearCart]);
 
   if (status === "loading") {
