@@ -3,6 +3,8 @@ import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 
+export const dynamic = "force-dynamic";
+
 interface CartItemPayload {
   productId: string;
   size: string;
@@ -46,7 +48,7 @@ export async function POST(req: NextRequest) {
       amount += Math.round(product.price * 100) * item.quantity;
     }
 
-    const paymentIntent = await getStripe().paymentIntents.create({
+    const paymentIntent = await (await getStripe()).paymentIntents.create({
       amount,
       currency: "usd",
       automatic_payment_methods: { enabled: true },

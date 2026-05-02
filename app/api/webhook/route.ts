@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature");
@@ -15,7 +17,7 @@ export async function POST(req: NextRequest) {
   let event: Stripe.Event;
   try {
     const rawBody = await req.text();
-    event = getStripe().webhooks.constructEvent(rawBody, sig, webhookSecret);
+    event = (await getStripe()).webhooks.constructEvent(rawBody, sig, webhookSecret);
   } catch (err) {
     console.error("Webhook signature verification failed:", err);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
@@ -52,7 +54,7 @@ export async function POST(req: NextRequest) {
   let customerEmail = "";
   try {
     if (paymentIntent.latest_charge) {
-      const charge = await getStripe().charges.retrieve(paymentIntent.latest_charge as string);
+      const charge = await (await getStripe()).charges.retrieve(paymentIntent.latest_charge as string);
       customerName  = charge.billing_details?.name  ?? "";
       customerEmail = charge.billing_details?.email ?? "";
     }
