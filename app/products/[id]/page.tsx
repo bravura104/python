@@ -3,14 +3,14 @@ import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import AddToCartSection from "./AddToCartSection";
 
-type Props = { params: { id: string } };
+type Props = { params: Promise<{ id: string }> };
 
 export function generateStaticParams() {
   return (products as Product[]).map((p) => ({ id: p.id }));
 }
 
-export default function ProductPage({ params }: Props) {
-  const { id } = params;
+export default async function ProductPage({ params }: Props) {
+  const { id } = await params;
   const product = (products as Product[]).find((p) => p.id === id);
 
   if (!product) notFound();
