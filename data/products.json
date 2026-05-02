@@ -1,0 +1,51 @@
+[
+  {
+    "id": "classic-white-tee",
+    "name": "Classic White Tee",
+    "description": "A timeless 100% cotton white t-shirt. Soft, breathable, and perfect for any occasion. Pre-shrunk and easy to care for.",
+    "price": 24.99,
+    "badge": null,
+    "sizes": ["S", "M", "L", "XL", "2XL"],
+    "colors": [
+      { "name": "White", "hex": "#f9fafb" },
+      { "name": "Off-White", "hex": "#fef9c3" }
+    ]
+  },
+  {
+    "id": "vintage-black-tee",
+    "name": "Vintage Black Tee",
+    "description": "Premium heavyweight black tee with a vintage washed finish. Made from 100% ringspun cotton for an authentic retro look and feel.",
+    "price": 29.99,
+    "badge": "Best Seller",
+    "sizes": ["S", "M", "L", "XL", "2XL"],
+    "colors": [
+      { "name": "Black", "hex": "#111827" },
+      { "name": "Charcoal", "hex": "#4b5563" }
+    ]
+  },
+  {
+    "id": "sunset-graphic-tee",
+    "name": "Sunset Graphic Tee",
+    "description": "Bold sunset graphic screen-printed on a comfortable cotton-polyester blend. Great for casual outings and weekend adventures.",
+    "price": 34.99,
+    "badge": "New",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      { "name": "Navy", "hex": "#1e3a5f" },
+      { "name": "Heather Gray", "hex": "#9ca3af" }
+    ]
+  },
+  {
+    "id": "mountain-logo-tee",
+    "name": "Mountain Logo Tee",
+    "description": "Minimalist mountain logo embroidered on a slim-fit ringspun cotton tee. Clean design that pairs with everything.",
+    "price": 32.99,
+    "badge": null,
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": [
+      { "name": "Forest Green", "hex": "#166534" },
+      { "name": "Rust", "hex": "#b45309" },
+      { "name": "Cream", "hex": "#fef3c7" }
+    ]
+  }
+]

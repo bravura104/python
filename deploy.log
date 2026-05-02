@@ -1,0 +1,1035 @@
+. 2026-04-30 22:37:42.840 --------------------------------------------------------------------------
+. 2026-04-30 22:37:42.842 WinSCP Version 6.5.5 (Build 16453 2025-11-19) (OS 10.0.26200 – Windows 11 Home)
+. 2026-04-30 22:37:42.842 Configuration: nul
+. 2026-04-30 22:37:42.844 Log level: Normal
+. 2026-04-30 22:37:42.844 Local account: LAPTOP-IO2TSI07\buutr
+. 2026-04-30 22:37:42.844 Working directory: C:\projects\tshirt-shop
+. 2026-04-30 22:37:42.844 Process ID: 5492
+. 2026-04-30 22:37:42.876 Ancestor processes: WinSCP, powershell, powershell, Code, Code, explorer, ...
+. 2026-04-30 22:37:42.879 Command-line: "C:\Users\buutr\AppData\Local\Programs\WinSCP\WinSCP.exe" /console=6.5.5 /consoleinstance=_22484_118 "/log=deploy.log" "/ini=nul" "/command" "open ftp://dovara_prod@dovara.biz:***@ftp.dovara.biz:21 -passive=on" "synchronize remote -criteria=either C:\projects\tshirt-shop /ding-tee.dovara.biz -filemask=|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/""" "exit"
+. 2026-04-30 22:37:42.879 Time zone: Current: GMT-7, Standard: GMT-8 (Pacific Standard Time), DST: GMT-7 (Pacific Daylight Time), DST Start: 3/8/2026, DST End: 11/1/2026
+. 2026-04-30 22:37:42.879 Login time: Thursday, April 30, 2026 10:37:42 PM
+. 2026-04-30 22:37:42.879 --------------------------------------------------------------------------
+. 2026-04-30 22:37:42.879 Script: Retrospectively logging previous script records:
+> 2026-04-30 22:37:42.879 Script: open ftp://dovara_prod@dovara.biz:***@ftp.dovara.biz:21 -passive=on
+. 2026-04-30 22:37:42.879 --------------------------------------------------------------------------
+. 2026-04-30 22:37:42.879 Session name: dovara_prod@dovara.biz@ftp.dovara.biz (Ad-Hoc site)
+. 2026-04-30 22:37:42.879 Host name: ftp.dovara.biz (Port: 21)
+. 2026-04-30 22:37:42.879 User name: dovara_prod@dovara.biz (Password: Yes, Key file: No, Passphrase: No)
+. 2026-04-30 22:37:42.879 Transfer Protocol: FTP
+. 2026-04-30 22:37:42.879 Ping type: Dummy, Ping interval: 30 sec; Timeout: 15 sec
+. 2026-04-30 22:37:42.879 Disable Nagle: No
+. 2026-04-30 22:37:42.879 Proxy: None
+. 2026-04-30 22:37:42.879 Send buffer: 262144
+. 2026-04-30 22:37:42.879 UTF: Auto
+. 2026-04-30 22:37:42.879 FTPS: None [Client certificate: No]
+. 2026-04-30 22:37:42.879 FTP: Passive: Yes [Force IP: Auto]; MLSD: Auto [List all: Auto]; HOST: Auto
+. 2026-04-30 22:37:42.879 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2026-04-30 22:37:42.879 Cache directory changes: Yes, Permanent: Yes
+. 2026-04-30 22:37:42.879 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2026-04-30 22:37:42.879 Timezone offset: 0h 0m
+. 2026-04-30 22:37:42.879 --------------------------------------------------------------------------
+< 2026-04-30 22:37:42.901 Script: Connecting to ftp.dovara.biz ...
+. 2026-04-30 22:37:42.901 Connecting to ftp.dovara.biz ...
+. 2026-04-30 22:37:43.023 Connected with ftp.dovara.biz. Waiting for welcome message...
+< 2026-04-30 22:37:43.065 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+< 2026-04-30 22:37:43.065 220-You are user number 1 of 45 allowed.
+< 2026-04-30 22:37:43.065 220-Local time is now 01:37. Server port: 21.
+< 2026-04-30 22:37:43.065 220-This is a private system - No anonymous login
+< 2026-04-30 22:37:43.065 220-IPv6 connections are also welcome on this server.
+< 2026-04-30 22:37:43.065 220 You will be disconnected after 15 minutes of inactivity.
+> 2026-04-30 22:37:43.065 USER dovara_prod@dovara.biz
+< 2026-04-30 22:37:43.092 331 User dovara_prod@dovara.biz OK. Password required
+> 2026-04-30 22:37:43.092 PASS ***************
+< 2026-04-30 22:37:43.174 230 OK. Current restricted directory is /
+> 2026-04-30 22:37:43.174 SYST
+< 2026-04-30 22:37:43.196 215 UNIX Type: L8
+> 2026-04-30 22:37:43.196 FEAT
+< 2026-04-30 22:37:43.253 211-Extensions supported:
+< 2026-04-30 22:37:43.253  UTF8
+< 2026-04-30 22:37:43.253  EPRT
+< 2026-04-30 22:37:43.253  IDLE
+< 2026-04-30 22:37:43.253  MDTM
+< 2026-04-30 22:37:43.253  SIZE
+< 2026-04-30 22:37:43.253  MFMT
+< 2026-04-30 22:37:43.253  REST STREAM
+< 2026-04-30 22:37:43.253  MLST type*;size*;sizd*;modify*;UNIX.mode*;UNIX.uid*;UNIX.gid*;unique*;
+< 2026-04-30 22:37:43.253  MLSD
+< 2026-04-30 22:37:43.253  PRET
+< 2026-04-30 22:37:43.253  AUTH TLS
+< 2026-04-30 22:37:43.253  PBSZ
+< 2026-04-30 22:37:43.253  PROT
+< 2026-04-30 22:37:43.253  TVFS
+< 2026-04-30 22:37:43.253  ESTA
+< 2026-04-30 22:37:43.253  PASV
+< 2026-04-30 22:37:43.253  EPSV
+< 2026-04-30 22:37:43.253  ESTP
+< 2026-04-30 22:37:43.253 211 End.
+> 2026-04-30 22:37:43.253 OPTS UTF8 ON
+< 2026-04-30 22:37:43.253 504 Unknown command
+< 2026-04-30 22:37:43.253 Script: Connected
+. 2026-04-30 22:37:43.253 Connected
+. 2026-04-30 22:37:43.253 --------------------------------------------------------------------------
+. 2026-04-30 22:37:43.253 Using FTP protocol.
+. 2026-04-30 22:37:43.253 Doing startup conversation with host.
+< 2026-04-30 22:37:43.253 Script: Starting the session...
+> 2026-04-30 22:37:43.253 PWD
+< 2026-04-30 22:37:43.277 257 "/" is your current location
+. 2026-04-30 22:37:43.277 Getting current directory name.
+. 2026-04-30 22:37:43.277 Startup conversation with host finished.
+< 2026-04-30 22:37:43.277 Script: Session started.
+< 2026-04-30 22:37:43.277 Script: Active session: [1] dovara_prod@dovara.biz@ftp.dovara.biz
+> 2026-04-30 22:37:43.284 Script: synchronize remote -criteria=either C:\projects\tshirt-shop /ding-tee.dovara.biz -filemask=|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/"
+< 2026-04-30 22:37:43.284 Script: Comparing...
+. 2026-04-30 22:37:43.286 Collecting synchronization list for local directory 'C:\projects\tshirt-shop' and remote directory '/ding-tee.dovara.biz', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/'
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\.' [2026-05-01T05:37:42.839Z] [0] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\..' [2026-05-01T03:08:42.577Z] [0] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\.env.local' [2026-05-01T03:17:01.662Z] [729] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\.gitignore' [2026-05-01T03:08:40.545Z] [480] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\.next' [2026-05-01T03:42:24.369Z] [0] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\.vscode' [2026-05-01T05:33:38.275Z] [0] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\AGENTS.md' [2026-05-01T03:09:31.615Z] [327] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\app' [2026-05-01T03:16:55.188Z] [0] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\CLAUDE.md' [2026-05-01T03:09:31.615Z] [11] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\components' [2026-05-01T03:41:29.966Z] [0] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\data' [2026-05-01T03:13:48.109Z] [0] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\deploy.log' [2026-05-01T05:37:43.092Z] [3673] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\deploy.ps1' [2026-05-01T05:33:06.826Z] [677] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-01T03:08:41.186Z] [465] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\lib' [2026-05-01T03:14:10.264Z] [0] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\next-env.d.ts' [2026-05-01T03:24:56.464Z] [201] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-01T03:23:01.401Z] [121] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\node_modules' [2026-05-01T03:41:08.930Z] [0] excluded from synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\package-lock.json' [2026-05-01T03:41:09.000Z] [397153] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\package.json' [2026-05-01T03:41:09.000Z] [695] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\postcss.config.mjs' [2026-05-01T03:22:00.298Z] [105] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\public' [2026-05-01T03:08:42.785Z] [0] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\README.md' [2026-05-01T03:08:41.110Z] [1450] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\tailwind.config.js' [2026-05-01T03:41:21.266Z] [349] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\tsconfig.json' [2026-05-01T03:24:56.456Z] [714] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\tsconfig.tsbuildinfo' [2026-05-01T03:17:27.104Z] [154812] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\tshirt-shop.code-workspace' [2026-05-01T05:30:02.099Z] [104] included to synchronization
+. 2026-04-30 22:37:43.286 Local file 'C:\projects\tshirt-shop\watch-deploy.ps1' [2026-05-01T05:33:25.883Z] [3014] excluded from synchronization
+. 2026-04-30 22:37:43.288 Retrieving directory listing...
+> 2026-04-30 22:37:43.288 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:43.320 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:43.320 PWD
+< 2026-04-30 22:37:43.343 257 "/ding-tee.dovara.biz" is your current location
+> 2026-04-30 22:37:43.343 TYPE A
+< 2026-04-30 22:37:43.368 200 TYPE is now ASCII
+> 2026-04-30 22:37:43.374 PASV
+< 2026-04-30 22:37:43.409 227 Entering Passive Mode (198,54,115,130,47,88)
+> 2026-04-30 22:37:43.409 MLSD
+. 2026-04-30 22:37:43.409 Connecting to 198.54.115.130:12120 ...
+< 2026-04-30 22:37:43.472 150 Accepted data connection
+< 2026-04-30 22:37:43.472 226 4 matches total
+. 2026-04-30 22:37:43.472 type=pdir;sizd=4096;modify=20260501052023;UNIX.mode=0711;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ac0001; ..
+. 2026-04-30 22:37:43.472 type=cdir;sizd=4096;modify=20260501052048;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; .
+. 2026-04-30 22:37:43.472 type=dir;sizd=4096;modify=20260501052024;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba32b1; cgi-bin
+. 2026-04-30 22:37:43.472 type=dir;sizd=4096;modify=20260501052048;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba32b5; .well-known
+. 2026-04-30 22:37:43.474 Data connection closed
+. 2026-04-30 22:37:43.474 Directory listing successful
+. 2026-04-30 22:37:43.474 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-04-30 22:37:43.474 cgi-bin;D;0;2026-05-01T05:20:24.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-04-30 22:37:43.474 .well-known;D;0;2026-05-01T05:20:48.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;2
+. 2026-04-30 22:37:43.496 Remote file '/ding-tee.dovara.biz/cgi-bin' [2026-05-01T05:20:24.000Z] [0] is new
+. 2026-04-30 22:37:43.496 Remote file '/ding-tee.dovara.biz/.well-known' [2026-05-01T05:20:48.000Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\.env.local' [2026-05-01T03:17:01.662Z] [729] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\.gitignore' [2026-05-01T03:08:40.545Z] [480] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\AGENTS.md' [2026-05-01T03:09:31.615Z] [327] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\app' [2026-05-01T03:16:55.188Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\CLAUDE.md' [2026-05-01T03:09:31.615Z] [11] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\components' [2026-05-01T03:41:29.966Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\data' [2026-05-01T03:13:48.109Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-01T03:08:41.186Z] [465] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\lib' [2026-05-01T03:14:10.264Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-01T03:23:01.401Z] [121] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\next-env.d.ts' [2026-05-01T03:24:56.464Z] [201] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\package.json' [2026-05-01T03:41:09.000Z] [695] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\package-lock.json' [2026-05-01T03:41:09.000Z] [397153] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\postcss.config.mjs' [2026-05-01T03:22:00.298Z] [105] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\public' [2026-05-01T03:08:42.785Z] [0] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\README.md' [2026-05-01T03:08:41.110Z] [1450] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\tailwind.config.js' [2026-05-01T03:41:21.266Z] [349] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\tsconfig.json' [2026-05-01T03:24:56.456Z] [714] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\tsconfig.tsbuildinfo' [2026-05-01T03:17:27.104Z] [154812] is new
+. 2026-04-30 22:37:43.496 Local file 'C:\projects\tshirt-shop\tshirt-shop.code-workspace' [2026-05-01T05:30:02.099Z] [104] is new
+< 2026-04-30 22:37:43.496 Script: Synchronizing...
+. 2026-04-30 22:37:43.496 Synchronizing local directory 'C:\projects\tshirt-shop\' with remote directory '/ding-tee.dovara.biz/', params = 0x402 (NoConfirmation, BySize)
+. 2026-04-30 22:37:43.502 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 729
+. 2026-04-30 22:37:43.502   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:43.502   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:43.502   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:43.502 File: 'C:\projects\tshirt-shop\.env.local' [2026-05-01T03:17:01.662Z] [729]
+< 2026-04-30 22:37:43.527 Script: Local 'C:\projects\tshirt-shop' => Remote '/ding-tee.dovara.biz'
+. 2026-04-30 22:37:43.530 Copying "C:\projects\tshirt-shop\.env.local" to remote directory started.
+. 2026-04-30 22:37:43.530 Binary transfer mode selected.
+. 2026-04-30 22:37:43.530 Starting upload of C:\projects\tshirt-shop\.env.local
+> 2026-04-30 22:37:43.532 TYPE I
+< 2026-04-30 22:37:43.560 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:43.560 PASV
+< 2026-04-30 22:37:43.576 227 Entering Passive Mode (198,54,115,130,47,63)
+> 2026-04-30 22:37:43.584 STOR .env.local
+. 2026-04-30 22:37:43.584 Connecting to 198.54.115.130:12095 ...
+< 2026-04-30 22:37:43.634 150 Accepted data connection
+< 2026-04-30 22:37:43.667 226-File successfully transferred
+< 2026-04-30 22:37:43.669 226 0.033 seconds (measured here), 21.73 Kbytes per second
+> 2026-04-30 22:37:43.669 MFMT 20260501031701 .env.local
+< 2026-04-30 22:37:43.698 213 UTIME OK
+. 2026-04-30 22:37:43.698 Upload successful
+. 2026-04-30 22:37:43.698 Transfer done: 'C:\projects\tshirt-shop\.env.local' => '/ding-tee.dovara.biz/.env.local' [729]
+. 2026-04-30 22:37:43.698 Copying finished: Transferred: 729, Elapsed: 0:00:00, CPS: 3,608/s
+. 2026-04-30 22:37:43.700 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 480
+. 2026-04-30 22:37:43.700   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:43.700   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:43.700   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:43.700 File: 'C:\projects\tshirt-shop\.gitignore' [2026-05-01T03:08:40.545Z] [480]
+. 2026-04-30 22:37:43.702 Copying "C:\projects\tshirt-shop\.gitignore" to remote directory started.
+. 2026-04-30 22:37:43.702 Binary transfer mode selected.
+. 2026-04-30 22:37:43.702 Starting upload of C:\projects\tshirt-shop\.gitignore
+> 2026-04-30 22:37:43.702 TYPE I
+< 2026-04-30 22:37:43.725 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:43.725 PASV
+< 2026-04-30 22:37:43.741 227 Entering Passive Mode (198,54,115,130,47,83)
+> 2026-04-30 22:37:43.741 STOR .gitignore
+. 2026-04-30 22:37:43.741 Connecting to 198.54.115.130:12115 ...
+< 2026-04-30 22:37:43.808 150 Accepted data connection
+< 2026-04-30 22:37:43.841 226-File successfully transferred
+< 2026-04-30 22:37:43.841 226 0.032 seconds (measured here), 14.45 Kbytes per second
+> 2026-04-30 22:37:43.841 MFMT 20260501030840 .gitignore
+< 2026-04-30 22:37:43.874 213 UTIME OK
+. 2026-04-30 22:37:43.874 Upload successful
+. 2026-04-30 22:37:43.874 Transfer done: 'C:\projects\tshirt-shop\.gitignore' => '/ding-tee.dovara.biz/.gitignore' [480]
+. 2026-04-30 22:37:43.874 Copying finished: Transferred: 1,209, Elapsed: 0:00:00, CPS: 3,198/s
+. 2026-04-30 22:37:43.874 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 327
+. 2026-04-30 22:37:43.874   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:43.874   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:43.874   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:43.874 File: 'C:\projects\tshirt-shop\AGENTS.md' [2026-05-01T03:09:31.615Z] [327]
+. 2026-04-30 22:37:43.874 Copying "C:\projects\tshirt-shop\AGENTS.md" to remote directory started.
+. 2026-04-30 22:37:43.874 Binary transfer mode selected.
+. 2026-04-30 22:37:43.874 Starting upload of C:\projects\tshirt-shop\AGENTS.md
+> 2026-04-30 22:37:43.874 TYPE I
+< 2026-04-30 22:37:43.891 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:43.891 PASV
+< 2026-04-30 22:37:43.924 227 Entering Passive Mode (198,54,115,130,47,48)
+> 2026-04-30 22:37:43.924 STOR AGENTS.md
+. 2026-04-30 22:37:43.924 Connecting to 198.54.115.130:12080 ...
+< 2026-04-30 22:37:43.991 150 Accepted data connection
+< 2026-04-30 22:37:44.016 226-File successfully transferred
+< 2026-04-30 22:37:44.016 226 0.025 seconds (measured here), 12.73 Kbytes per second
+> 2026-04-30 22:37:44.016 MFMT 20260501030931 AGENTS.md
+< 2026-04-30 22:37:44.041 213 UTIME OK
+. 2026-04-30 22:37:44.049 Upload successful
+. 2026-04-30 22:37:44.049 Transfer done: 'C:\projects\tshirt-shop\AGENTS.md' => '/ding-tee.dovara.biz/AGENTS.md' [327]
+. 2026-04-30 22:37:44.049 Copying finished: Transferred: 1,536, Elapsed: 0:00:00, CPS: 2,777/s
+. 2026-04-30 22:37:44.049 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-04-30 22:37:44.049   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:44.049   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:44.049   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:44.049 File: 'C:\projects\tshirt-shop\app' [2026-05-01T03:16:55.188Z] [0]
+. 2026-04-30 22:37:44.049 File: 'C:\projects\tshirt-shop\app\api' [2026-05-01T03:16:12.961Z] [0]
+. 2026-04-30 22:37:44.049 File: 'C:\projects\tshirt-shop\app\api\checkout' [2026-05-01T03:16:12.963Z] [0]
+. 2026-04-30 22:37:44.060 File: 'C:\projects\tshirt-shop\app\api\checkout\route.ts' [2026-05-01T03:16:13.085Z] [2086]
+. 2026-04-30 22:37:44.060 Copying "C:\projects\tshirt-shop\app\api\checkout\route.ts" to remote directory started.
+. 2026-04-30 22:37:44.060 Binary transfer mode selected.
+. 2026-04-30 22:37:44.060 Starting upload of C:\projects\tshirt-shop\app\api\checkout\route.ts
+> 2026-04-30 22:37:44.063 CWD /ding-tee.dovara.biz/app/api/checkout
+< 2026-04-30 22:37:44.095 550 Can't change directory to /ding-tee.dovara.biz/app/api/checkout: No such file or directory
+> 2026-04-30 22:37:44.099 CWD /ding-tee.dovara.biz/app/api
+< 2026-04-30 22:37:44.223 550 Can't change directory to /ding-tee.dovara.biz/app/api: No such file or directory
+> 2026-04-30 22:37:44.223 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:44.439 550 Can't change directory to /ding-tee.dovara.biz/app: No such file or directory
+> 2026-04-30 22:37:44.439 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:44.473 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:44.473 MKD app
+< 2026-04-30 22:37:44.498 257 "app" : The directory was successfully created
+> 2026-04-30 22:37:44.498 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:44.523 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:44.523 MKD api
+< 2026-04-30 22:37:44.548 257 "api" : The directory was successfully created
+> 2026-04-30 22:37:44.548 CWD /ding-tee.dovara.biz/app/api
+< 2026-04-30 22:37:44.565 250 OK. Current directory is /ding-tee.dovara.biz/app/api
+> 2026-04-30 22:37:44.565 MKD checkout
+< 2026-04-30 22:37:44.596 257 "checkout" : The directory was successfully created
+> 2026-04-30 22:37:44.596 CWD /ding-tee.dovara.biz/app/api/checkout
+< 2026-04-30 22:37:44.623 250 OK. Current directory is /ding-tee.dovara.biz/app/api/checkout
+> 2026-04-30 22:37:44.623 PWD
+< 2026-04-30 22:37:44.650 257 "/ding-tee.dovara.biz/app/api/checkout" is your current location
+> 2026-04-30 22:37:44.650 TYPE I
+< 2026-04-30 22:37:44.673 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:44.675 PASV
+< 2026-04-30 22:37:44.703 227 Entering Passive Mode (198,54,115,130,47,66)
+> 2026-04-30 22:37:44.703 STOR route.ts
+. 2026-04-30 22:37:44.703 Connecting to 198.54.115.130:12098 ...
+< 2026-04-30 22:37:44.756 150 Accepted data connection
+< 2026-04-30 22:37:44.789 226-File successfully transferred
+< 2026-04-30 22:37:44.789 226 0.033 seconds (measured here), 61.08 Kbytes per second
+> 2026-04-30 22:37:44.791 MFMT 20260501031613 route.ts
+< 2026-04-30 22:37:44.814 213 UTIME OK
+. 2026-04-30 22:37:44.814 Upload successful
+. 2026-04-30 22:37:44.814 Transfer done: 'C:\projects\tshirt-shop\app\api\checkout\route.ts' => '/ding-tee.dovara.biz/app/api/checkout/route.ts' [2086]
+. 2026-04-30 22:37:44.814 File: 'C:\projects\tshirt-shop\app\cart' [2026-05-01T03:15:57.953Z] [0]
+. 2026-04-30 22:37:44.814 File: 'C:\projects\tshirt-shop\app\cart\page.tsx' [2026-05-01T03:15:58.067Z] [5848]
+. 2026-04-30 22:37:44.823 Copying "C:\projects\tshirt-shop\app\cart\page.tsx" to remote directory started.
+. 2026-04-30 22:37:44.823 Binary transfer mode selected.
+. 2026-04-30 22:37:44.823 Starting upload of C:\projects\tshirt-shop\app\cart\page.tsx
+> 2026-04-30 22:37:44.823 CWD /ding-tee.dovara.biz/app/cart
+< 2026-04-30 22:37:44.840 550 Can't change directory to /ding-tee.dovara.biz/app/cart: No such file or directory
+> 2026-04-30 22:37:44.840 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:44.889 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:44.890 MKD cart
+< 2026-04-30 22:37:44.913 257 "cart" : The directory was successfully created
+> 2026-04-30 22:37:44.913 CWD /ding-tee.dovara.biz/app/cart
+< 2026-04-30 22:37:44.941 250 OK. Current directory is /ding-tee.dovara.biz/app/cart
+> 2026-04-30 22:37:44.941 PWD
+< 2026-04-30 22:37:44.963 257 "/ding-tee.dovara.biz/app/cart" is your current location
+> 2026-04-30 22:37:44.963 TYPE I
+< 2026-04-30 22:37:44.987 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:44.987 PASV
+< 2026-04-30 22:37:45.020 227 Entering Passive Mode (198,54,115,130,47,75)
+> 2026-04-30 22:37:45.020 STOR page.tsx
+. 2026-04-30 22:37:45.020 Connecting to 198.54.115.130:12107 ...
+< 2026-04-30 22:37:45.074 150 Accepted data connection
+< 2026-04-30 22:37:45.104 226-File successfully transferred
+< 2026-04-30 22:37:45.104 226 0.029 seconds (measured here), 197.05 Kbytes per second
+> 2026-04-30 22:37:45.104 MFMT 20260501031558 page.tsx
+< 2026-04-30 22:37:45.130 213 UTIME OK
+. 2026-04-30 22:37:45.130 Upload successful
+. 2026-04-30 22:37:45.130 Transfer done: 'C:\projects\tshirt-shop\app\cart\page.tsx' => '/ding-tee.dovara.biz/app/cart/page.tsx' [5848]
+. 2026-04-30 22:37:45.130 File: 'C:\projects\tshirt-shop\app\checkout' [2026-05-01T03:16:39.513Z] [0]
+. 2026-04-30 22:37:45.137 File: 'C:\projects\tshirt-shop\app\checkout\page.tsx' [2026-05-01T03:16:39.640Z] [8142]
+. 2026-04-30 22:37:45.139 Copying "C:\projects\tshirt-shop\app\checkout\page.tsx" to remote directory started.
+. 2026-04-30 22:37:45.140 Binary transfer mode selected.
+. 2026-04-30 22:37:45.140 Starting upload of C:\projects\tshirt-shop\app\checkout\page.tsx
+> 2026-04-30 22:37:45.140 CWD /ding-tee.dovara.biz/app/checkout
+< 2026-04-30 22:37:45.162 550 Can't change directory to /ding-tee.dovara.biz/app/checkout: No such file or directory
+> 2026-04-30 22:37:45.162 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:45.187 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:45.187 MKD checkout
+< 2026-04-30 22:37:45.221 257 "checkout" : The directory was successfully created
+> 2026-04-30 22:37:45.221 CWD /ding-tee.dovara.biz/app/checkout
+< 2026-04-30 22:37:45.245 250 OK. Current directory is /ding-tee.dovara.biz/app/checkout
+> 2026-04-30 22:37:45.245 PWD
+< 2026-04-30 22:37:45.272 257 "/ding-tee.dovara.biz/app/checkout" is your current location
+> 2026-04-30 22:37:45.272 TYPE I
+< 2026-04-30 22:37:45.295 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:45.295 PASV
+< 2026-04-30 22:37:45.332 227 Entering Passive Mode (198,54,115,130,46,255)
+> 2026-04-30 22:37:45.332 STOR page.tsx
+. 2026-04-30 22:37:45.332 Connecting to 198.54.115.130:12031 ...
+< 2026-04-30 22:37:45.379 150 Accepted data connection
+< 2026-04-30 22:37:45.405 226-File successfully transferred
+< 2026-04-30 22:37:45.405 226 0.028 seconds (measured here), 288.65 Kbytes per second
+> 2026-04-30 22:37:45.405 MFMT 20260501031639 page.tsx
+< 2026-04-30 22:37:45.440 213 UTIME OK
+. 2026-04-30 22:37:45.440 Upload successful
+. 2026-04-30 22:37:45.445 Transfer done: 'C:\projects\tshirt-shop\app\checkout\page.tsx' => '/ding-tee.dovara.biz/app/checkout/page.tsx' [8142]
+. 2026-04-30 22:37:45.445 File: 'C:\projects\tshirt-shop\app\favicon.ico' [2026-05-01T03:08:40.680Z] [25931]
+. 2026-04-30 22:37:45.445 Copying "C:\projects\tshirt-shop\app\favicon.ico" to remote directory started.
+. 2026-04-30 22:37:45.445 Binary transfer mode selected.
+. 2026-04-30 22:37:45.445 Starting upload of C:\projects\tshirt-shop\app\favicon.ico
+> 2026-04-30 22:37:45.445 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:45.473 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:45.478 PWD
+< 2026-04-30 22:37:45.503 257 "/ding-tee.dovara.biz/app" is your current location
+> 2026-04-30 22:37:45.503 TYPE I
+< 2026-04-30 22:37:45.536 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:45.536 PASV
+< 2026-04-30 22:37:45.570 227 Entering Passive Mode (198,54,115,130,47,45)
+> 2026-04-30 22:37:45.570 STOR favicon.ico
+. 2026-04-30 22:37:45.570 Connecting to 198.54.115.130:12077 ...
+< 2026-04-30 22:37:45.645 150 Accepted data connection
+< 2026-04-30 22:37:45.704 226-File successfully transferred
+< 2026-04-30 22:37:45.704 226 0.060 seconds (measured here), 424.01 Kbytes per second
+> 2026-04-30 22:37:45.707 MFMT 20260501030840 favicon.ico
+< 2026-04-30 22:37:45.740 213 UTIME OK
+. 2026-04-30 22:37:45.740 Upload successful
+. 2026-04-30 22:37:45.745 Transfer done: 'C:\projects\tshirt-shop\app\favicon.ico' => '/ding-tee.dovara.biz/app/favicon.ico' [25931]
+. 2026-04-30 22:37:45.745 File: 'C:\projects\tshirt-shop\app\globals.css' [2026-05-01T03:41:21.266Z] [209]
+. 2026-04-30 22:37:45.745 Copying "C:\projects\tshirt-shop\app\globals.css" to remote directory started.
+. 2026-04-30 22:37:45.745 Binary transfer mode selected.
+. 2026-04-30 22:37:45.745 Starting upload of C:\projects\tshirt-shop\app\globals.css
+> 2026-04-30 22:37:45.745 TYPE I
+< 2026-04-30 22:37:45.778 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:45.778 PASV
+< 2026-04-30 22:37:45.794 227 Entering Passive Mode (198,54,115,130,47,18)
+> 2026-04-30 22:37:45.803 STOR globals.css
+. 2026-04-30 22:37:45.803 Connecting to 198.54.115.130:12050 ...
+< 2026-04-30 22:37:45.853 150 Accepted data connection
+< 2026-04-30 22:37:45.885 226-File successfully transferred
+< 2026-04-30 22:37:45.885 226 0.029 seconds (measured here), 6.95 Kbytes per second
+> 2026-04-30 22:37:45.885 MFMT 20260501034121 globals.css
+< 2026-04-30 22:37:45.963 213 UTIME OK
+. 2026-04-30 22:37:45.964 Upload successful
+. 2026-04-30 22:37:45.965 Transfer done: 'C:\projects\tshirt-shop\app\globals.css' => '/ding-tee.dovara.biz/app/globals.css' [209]
+. 2026-04-30 22:37:45.965 File: 'C:\projects\tshirt-shop\app\layout.tsx' [2026-05-01T03:41:43.859Z] [1089]
+. 2026-04-30 22:37:45.965 Copying "C:\projects\tshirt-shop\app\layout.tsx" to remote directory started.
+. 2026-04-30 22:37:45.965 Binary transfer mode selected.
+. 2026-04-30 22:37:45.965 Starting upload of C:\projects\tshirt-shop\app\layout.tsx
+> 2026-04-30 22:37:45.965 TYPE I
+< 2026-04-30 22:37:46.001 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:46.001 PASV
+< 2026-04-30 22:37:46.026 227 Entering Passive Mode (198,54,115,130,47,24)
+> 2026-04-30 22:37:46.026 STOR layout.tsx
+. 2026-04-30 22:37:46.026 Connecting to 198.54.115.130:12056 ...
+< 2026-04-30 22:37:46.076 150 Accepted data connection
+< 2026-04-30 22:37:46.101 226-File successfully transferred
+< 2026-04-30 22:37:46.109 226 0.032 seconds (measured here), 33.13 Kbytes per second
+> 2026-04-30 22:37:46.109 MFMT 20260501034143 layout.tsx
+< 2026-04-30 22:37:46.137 213 UTIME OK
+. 2026-04-30 22:37:46.137 Upload successful
+. 2026-04-30 22:37:46.140 Transfer done: 'C:\projects\tshirt-shop\app\layout.tsx' => '/ding-tee.dovara.biz/app/layout.tsx' [1089]
+. 2026-04-30 22:37:46.141 File: 'C:\projects\tshirt-shop\app\order-success' [2026-05-01T03:16:55.197Z] [0]
+. 2026-04-30 22:37:46.141 File: 'C:\projects\tshirt-shop\app\order-success\page.tsx' [2026-05-01T03:16:55.295Z] [4133]
+. 2026-04-30 22:37:46.141 Copying "C:\projects\tshirt-shop\app\order-success\page.tsx" to remote directory started.
+. 2026-04-30 22:37:46.141 Binary transfer mode selected.
+. 2026-04-30 22:37:46.141 Starting upload of C:\projects\tshirt-shop\app\order-success\page.tsx
+> 2026-04-30 22:37:46.141 CWD /ding-tee.dovara.biz/app/order-success
+< 2026-04-30 22:37:46.176 550 Can't change directory to /ding-tee.dovara.biz/app/order-success: No such file or directory
+> 2026-04-30 22:37:46.176 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:46.206 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:46.207 MKD order-success
+< 2026-04-30 22:37:46.224 257 "order-success" : The directory was successfully created
+> 2026-04-30 22:37:46.233 CWD /ding-tee.dovara.biz/app/order-success
+< 2026-04-30 22:37:46.249 250 OK. Current directory is /ding-tee.dovara.biz/app/order-success
+> 2026-04-30 22:37:46.249 PWD
+< 2026-04-30 22:37:46.282 257 "/ding-tee.dovara.biz/app/order-success" is your current location
+> 2026-04-30 22:37:46.282 TYPE I
+< 2026-04-30 22:37:46.306 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:46.306 PASV
+< 2026-04-30 22:37:46.336 227 Entering Passive Mode (198,54,115,130,46,254)
+> 2026-04-30 22:37:46.341 STOR page.tsx
+. 2026-04-30 22:37:46.341 Connecting to 198.54.115.130:12030 ...
+< 2026-04-30 22:37:46.396 150 Accepted data connection
+< 2026-04-30 22:37:46.424 226-File successfully transferred
+< 2026-04-30 22:37:46.424 226 0.033 seconds (measured here), 121.16 Kbytes per second
+> 2026-04-30 22:37:46.424 MFMT 20260501031655 page.tsx
+< 2026-04-30 22:37:46.458 213 UTIME OK
+. 2026-04-30 22:37:46.458 Upload successful
+. 2026-04-30 22:37:46.458 Transfer done: 'C:\projects\tshirt-shop\app\order-success\page.tsx' => '/ding-tee.dovara.biz/app/order-success/page.tsx' [4133]
+. 2026-04-30 22:37:46.458 File: 'C:\projects\tshirt-shop\app\page.tsx' [2026-05-01T03:14:56.456Z] [964]
+. 2026-04-30 22:37:46.458 Copying "C:\projects\tshirt-shop\app\page.tsx" to remote directory started.
+. 2026-04-30 22:37:46.458 Binary transfer mode selected.
+. 2026-04-30 22:37:46.458 Starting upload of C:\projects\tshirt-shop\app\page.tsx
+> 2026-04-30 22:37:46.458 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:46.484 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:46.484 PWD
+< 2026-04-30 22:37:46.509 257 "/ding-tee.dovara.biz/app" is your current location
+> 2026-04-30 22:37:46.509 TYPE I
+< 2026-04-30 22:37:46.541 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:46.541 PASV
+< 2026-04-30 22:37:46.565 227 Entering Passive Mode (198,54,115,130,47,63)
+> 2026-04-30 22:37:46.565 STOR page.tsx
+. 2026-04-30 22:37:46.565 Connecting to 198.54.115.130:12095 ...
+< 2026-04-30 22:37:46.607 150 Accepted data connection
+< 2026-04-30 22:37:46.649 226-File successfully transferred
+< 2026-04-30 22:37:46.649 226 0.034 seconds (measured here), 27.75 Kbytes per second
+> 2026-04-30 22:37:46.649 MFMT 20260501031456 page.tsx
+< 2026-04-30 22:37:46.673 213 UTIME OK
+. 2026-04-30 22:37:46.673 Upload successful
+. 2026-04-30 22:37:46.673 Transfer done: 'C:\projects\tshirt-shop\app\page.tsx' => '/ding-tee.dovara.biz/app/page.tsx' [964]
+. 2026-04-30 22:37:46.673 File: 'C:\projects\tshirt-shop\app\products' [2026-05-01T03:15:13.702Z] [0]
+. 2026-04-30 22:37:46.673 File: 'C:\projects\tshirt-shop\app\products\[id]' [2026-05-01T03:15:31.569Z] [0]
+. 2026-04-30 22:37:46.682 File: 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' [2026-05-01T03:15:31.695Z] [4872]
+. 2026-04-30 22:37:46.682 Copying "C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx" to remote directory started.
+. 2026-04-30 22:37:46.682 Binary transfer mode selected.
+. 2026-04-30 22:37:46.682 Starting upload of C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx
+> 2026-04-30 22:37:46.682 CWD /ding-tee.dovara.biz/app/products/[id]
+< 2026-04-30 22:37:46.711 550 Can't change directory to /ding-tee.dovara.biz/app/products/[id]: No such file or directory
+> 2026-04-30 22:37:46.711 CWD /ding-tee.dovara.biz/app/products
+< 2026-04-30 22:37:46.841 550 Can't change directory to /ding-tee.dovara.biz/app/products: No such file or directory
+> 2026-04-30 22:37:46.841 CWD /ding-tee.dovara.biz/app
+< 2026-04-30 22:37:46.865 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-04-30 22:37:46.865 MKD products
+< 2026-04-30 22:37:46.890 257 "products" : The directory was successfully created
+> 2026-04-30 22:37:46.890 CWD /ding-tee.dovara.biz/app/products
+< 2026-04-30 22:37:46.915 250 OK. Current directory is /ding-tee.dovara.biz/app/products
+> 2026-04-30 22:37:46.915 MKD [id]
+< 2026-04-30 22:37:46.942 257 "[id]" : The directory was successfully created
+> 2026-04-30 22:37:46.942 CWD /ding-tee.dovara.biz/app/products/[id]
+< 2026-04-30 22:37:46.973 250 OK. Current directory is /ding-tee.dovara.biz/app/products/[id]
+> 2026-04-30 22:37:46.973 PWD
+< 2026-04-30 22:37:46.999 257 "/ding-tee.dovara.biz/app/products/[id]" is your current location
+> 2026-04-30 22:37:46.999 TYPE I
+< 2026-04-30 22:37:47.015 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:47.023 PASV
+< 2026-04-30 22:37:47.048 227 Entering Passive Mode (198,54,115,130,47,25)
+> 2026-04-30 22:37:47.048 STOR AddToCartSection.tsx
+. 2026-04-30 22:37:47.048 Connecting to 198.54.115.130:12057 ...
+< 2026-04-30 22:37:47.107 150 Accepted data connection
+< 2026-04-30 22:37:47.139 226-File successfully transferred
+< 2026-04-30 22:37:47.139 226 0.027 seconds (measured here), 175.34 Kbytes per second
+> 2026-04-30 22:37:47.139 MFMT 20260501031531 AddToCartSection.tsx
+< 2026-04-30 22:37:47.164 213 UTIME OK
+. 2026-04-30 22:37:47.172 Upload successful
+. 2026-04-30 22:37:47.173 Transfer done: 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' => '/ding-tee.dovara.biz/app/products/[id]/AddToCartSection.tsx' [4872]
+. 2026-04-30 22:37:47.173 File: 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' [2026-05-01T03:21:48.634Z] [1870]
+. 2026-04-30 22:37:47.173 Copying "C:\projects\tshirt-shop\app\products\[id]\page.tsx" to remote directory started.
+. 2026-04-30 22:37:47.173 Binary transfer mode selected.
+. 2026-04-30 22:37:47.173 Starting upload of C:\projects\tshirt-shop\app\products\[id]\page.tsx
+> 2026-04-30 22:37:47.173 TYPE I
+< 2026-04-30 22:37:47.203 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:47.207 PASV
+< 2026-04-30 22:37:47.233 227 Entering Passive Mode (198,54,115,130,47,10)
+> 2026-04-30 22:37:47.233 STOR page.tsx
+. 2026-04-30 22:37:47.233 Connecting to 198.54.115.130:12042 ...
+< 2026-04-30 22:37:47.288 150 Accepted data connection
+< 2026-04-30 22:37:47.322 226-File successfully transferred
+< 2026-04-30 22:37:47.322 226 0.033 seconds (measured here), 56.02 Kbytes per second
+> 2026-04-30 22:37:47.322 MFMT 20260501032148 page.tsx
+< 2026-04-30 22:37:47.355 213 UTIME OK
+. 2026-04-30 22:37:47.355 Upload successful
+. 2026-04-30 22:37:47.355 Transfer done: 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' => '/ding-tee.dovara.biz/app/products/[id]/page.tsx' [1870]
+. 2026-04-30 22:37:47.357 Copying finished: Transferred: 56,680, Elapsed: 0:00:03, CPS: 14,680/s
+. 2026-04-30 22:37:47.357 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 11
+. 2026-04-30 22:37:47.357   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:47.357   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:47.357   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:47.357 File: 'C:\projects\tshirt-shop\CLAUDE.md' [2026-05-01T03:09:31.615Z] [11]
+. 2026-04-30 22:37:47.357 Copying "C:\projects\tshirt-shop\CLAUDE.md" to remote directory started.
+. 2026-04-30 22:37:47.357 Binary transfer mode selected.
+. 2026-04-30 22:37:47.357 Starting upload of C:\projects\tshirt-shop\CLAUDE.md
+> 2026-04-30 22:37:47.357 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:47.385 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:47.385 PWD
+< 2026-04-30 22:37:47.413 257 "/ding-tee.dovara.biz" is your current location
+> 2026-04-30 22:37:47.413 TYPE I
+< 2026-04-30 22:37:47.442 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:47.442 PASV
+< 2026-04-30 22:37:47.464 227 Entering Passive Mode (198,54,115,130,47,29)
+> 2026-04-30 22:37:47.464 STOR CLAUDE.md
+. 2026-04-30 22:37:47.464 Connecting to 198.54.115.130:12061 ...
+< 2026-04-30 22:37:47.522 150 Accepted data connection
+< 2026-04-30 22:37:47.547 226-File successfully transferred
+< 2026-04-30 22:37:47.547 226 0.028 seconds (measured here), 397.24 bytes per second
+> 2026-04-30 22:37:47.555 MFMT 20260501030931 CLAUDE.md
+< 2026-04-30 22:37:47.588 213 UTIME OK
+. 2026-04-30 22:37:47.588 Upload successful
+. 2026-04-30 22:37:47.588 Transfer done: 'C:\projects\tshirt-shop\CLAUDE.md' => '/ding-tee.dovara.biz/CLAUDE.md' [11]
+. 2026-04-30 22:37:47.588 Copying finished: Transferred: 56,691, Elapsed: 0:00:04, CPS: 13,854/s
+. 2026-04-30 22:37:47.588 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-04-30 22:37:47.588   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:47.588   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:47.588   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:47.588 File: 'C:\projects\tshirt-shop\components' [2026-05-01T03:41:29.966Z] [0]
+. 2026-04-30 22:37:47.596 File: 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' [2026-05-01T03:41:30.015Z] [322]
+. 2026-04-30 22:37:47.596 Copying "C:\projects\tshirt-shop\components\BootstrapInit.tsx" to remote directory started.
+. 2026-04-30 22:37:47.596 Binary transfer mode selected.
+. 2026-04-30 22:37:47.596 Starting upload of C:\projects\tshirt-shop\components\BootstrapInit.tsx
+> 2026-04-30 22:37:47.596 CWD /ding-tee.dovara.biz/components
+< 2026-04-30 22:37:47.622 550 Can't change directory to /ding-tee.dovara.biz/components: No such file or directory
+> 2026-04-30 22:37:47.622 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:47.645 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:47.645 MKD components
+< 2026-04-30 22:37:47.672 257 "components" : The directory was successfully created
+> 2026-04-30 22:37:47.672 CWD /ding-tee.dovara.biz/components
+< 2026-04-30 22:37:47.695 250 OK. Current directory is /ding-tee.dovara.biz/components
+> 2026-04-30 22:37:47.695 PWD
+< 2026-04-30 22:37:47.730 257 "/ding-tee.dovara.biz/components" is your current location
+> 2026-04-30 22:37:47.730 TYPE I
+< 2026-04-30 22:37:47.754 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:47.754 PASV
+< 2026-04-30 22:37:47.779 227 Entering Passive Mode (198,54,115,130,47,67)
+> 2026-04-30 22:37:47.779 STOR BootstrapInit.tsx
+. 2026-04-30 22:37:47.779 Connecting to 198.54.115.130:12099 ...
+< 2026-04-30 22:37:47.838 150 Accepted data connection
+< 2026-04-30 22:37:47.866 226-File successfully transferred
+< 2026-04-30 22:37:47.866 226 0.030 seconds (measured here), 10.55 Kbytes per second
+> 2026-04-30 22:37:47.866 MFMT 20260501034130 BootstrapInit.tsx
+< 2026-04-30 22:37:47.886 213 UTIME OK
+. 2026-04-30 22:37:47.886 Upload successful
+. 2026-04-30 22:37:47.886 Transfer done: 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' => '/ding-tee.dovara.biz/components/BootstrapInit.tsx' [322]
+. 2026-04-30 22:37:47.886 File: 'C:\projects\tshirt-shop\components\Header.tsx' [2026-05-01T03:42:05.227Z] [2485]
+. 2026-04-30 22:37:47.894 Copying "C:\projects\tshirt-shop\components\Header.tsx" to remote directory started.
+. 2026-04-30 22:37:47.894 Binary transfer mode selected.
+. 2026-04-30 22:37:47.894 Starting upload of C:\projects\tshirt-shop\components\Header.tsx
+> 2026-04-30 22:37:47.894 TYPE I
+< 2026-04-30 22:37:47.919 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:47.919 PASV
+< 2026-04-30 22:37:47.952 227 Entering Passive Mode (198,54,115,130,47,75)
+> 2026-04-30 22:37:47.952 STOR Header.tsx
+. 2026-04-30 22:37:47.952 Connecting to 198.54.115.130:12107 ...
+< 2026-04-30 22:37:48.010 150 Accepted data connection
+< 2026-04-30 22:37:48.044 226-File successfully transferred
+< 2026-04-30 22:37:48.044 226 0.032 seconds (measured here), 74.74 Kbytes per second
+> 2026-04-30 22:37:48.044 MFMT 20260501034205 Header.tsx
+< 2026-04-30 22:37:48.069 213 UTIME OK
+. 2026-04-30 22:37:48.069 Upload successful
+. 2026-04-30 22:37:48.069 Transfer done: 'C:\projects\tshirt-shop\components\Header.tsx' => '/ding-tee.dovara.biz/components/Header.tsx' [2485]
+. 2026-04-30 22:37:48.077 File: 'C:\projects\tshirt-shop\components\ProductCard.tsx' [2026-05-01T03:14:30.096Z] [2189]
+. 2026-04-30 22:37:48.077 Copying "C:\projects\tshirt-shop\components\ProductCard.tsx" to remote directory started.
+. 2026-04-30 22:37:48.077 Binary transfer mode selected.
+. 2026-04-30 22:37:48.077 Starting upload of C:\projects\tshirt-shop\components\ProductCard.tsx
+> 2026-04-30 22:37:48.077 TYPE I
+< 2026-04-30 22:37:48.105 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:48.105 PASV
+< 2026-04-30 22:37:48.136 227 Entering Passive Mode (198,54,115,130,46,254)
+> 2026-04-30 22:37:48.136 STOR ProductCard.tsx
+. 2026-04-30 22:37:48.136 Connecting to 198.54.115.130:12030 ...
+< 2026-04-30 22:37:48.194 150 Accepted data connection
+< 2026-04-30 22:37:48.228 226-File successfully transferred
+< 2026-04-30 22:37:48.229 226 0.030 seconds (measured here), 70.83 Kbytes per second
+> 2026-04-30 22:37:48.230 MFMT 20260501031430 ProductCard.tsx
+< 2026-04-30 22:37:48.254 213 UTIME OK
+. 2026-04-30 22:37:48.254 Upload successful
+. 2026-04-30 22:37:48.254 Transfer done: 'C:\projects\tshirt-shop\components\ProductCard.tsx' => '/ding-tee.dovara.biz/components/ProductCard.tsx' [2189]
+. 2026-04-30 22:37:48.254 Copying finished: Transferred: 61,687, Elapsed: 0:00:04, CPS: 12,964/s
+. 2026-04-30 22:37:48.254 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-04-30 22:37:48.254   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:48.254   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:48.254   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:48.254 File: 'C:\projects\tshirt-shop\data' [2026-05-01T03:13:48.109Z] [0]
+. 2026-04-30 22:37:48.254 File: 'C:\projects\tshirt-shop\data\products.json' [2026-05-01T03:13:48.292Z] [1760]
+. 2026-04-30 22:37:48.254 Copying "C:\projects\tshirt-shop\data\products.json" to remote directory started.
+. 2026-04-30 22:37:48.254 Binary transfer mode selected.
+. 2026-04-30 22:37:48.262 Starting upload of C:\projects\tshirt-shop\data\products.json
+> 2026-04-30 22:37:48.262 CWD /ding-tee.dovara.biz/data
+< 2026-04-30 22:37:48.287 550 Can't change directory to /ding-tee.dovara.biz/data: No such file or directory
+> 2026-04-30 22:37:48.287 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:48.311 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:48.311 MKD data
+< 2026-04-30 22:37:48.338 257 "data" : The directory was successfully created
+> 2026-04-30 22:37:48.338 CWD /ding-tee.dovara.biz/data
+< 2026-04-30 22:37:48.367 250 OK. Current directory is /ding-tee.dovara.biz/data
+> 2026-04-30 22:37:48.367 PWD
+< 2026-04-30 22:37:48.395 257 "/ding-tee.dovara.biz/data" is your current location
+> 2026-04-30 22:37:48.395 TYPE I
+< 2026-04-30 22:37:48.420 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:48.420 PASV
+< 2026-04-30 22:37:48.446 227 Entering Passive Mode (198,54,115,130,47,45)
+> 2026-04-30 22:37:48.446 STOR products.json
+. 2026-04-30 22:37:48.446 Connecting to 198.54.115.130:12077 ...
+< 2026-04-30 22:37:48.504 150 Accepted data connection
+< 2026-04-30 22:37:48.534 226-File successfully transferred
+< 2026-04-30 22:37:48.534 226 0.028 seconds (measured here), 61.05 Kbytes per second
+> 2026-04-30 22:37:48.538 MFMT 20260501031348 products.json
+< 2026-04-30 22:37:48.564 213 UTIME OK
+. 2026-04-30 22:37:48.564 Upload successful
+. 2026-04-30 22:37:48.564 Transfer done: 'C:\projects\tshirt-shop\data\products.json' => '/ding-tee.dovara.biz/data/products.json' [1760]
+. 2026-04-30 22:37:48.564 Copying finished: Transferred: 63,447, Elapsed: 0:00:05, CPS: 12,519/s
+. 2026-04-30 22:37:48.564 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 465
+. 2026-04-30 22:37:48.564   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:48.564   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:48.564   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:48.564 File: 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-01T03:08:41.186Z] [465]
+. 2026-04-30 22:37:48.570 Copying "C:\projects\tshirt-shop\eslint.config.mjs" to remote directory started.
+. 2026-04-30 22:37:48.570 Binary transfer mode selected.
+. 2026-04-30 22:37:48.571 Starting upload of C:\projects\tshirt-shop\eslint.config.mjs
+> 2026-04-30 22:37:48.571 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:48.596 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:48.596 PWD
+< 2026-04-30 22:37:48.621 257 "/ding-tee.dovara.biz" is your current location
+> 2026-04-30 22:37:48.621 TYPE I
+< 2026-04-30 22:37:48.659 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:48.659 PASV
+< 2026-04-30 22:37:48.687 227 Entering Passive Mode (198,54,115,130,47,38)
+> 2026-04-30 22:37:48.687 STOR eslint.config.mjs
+. 2026-04-30 22:37:48.687 Connecting to 198.54.115.130:12070 ...
+< 2026-04-30 22:37:48.746 150 Accepted data connection
+< 2026-04-30 22:37:48.779 226-File successfully transferred
+< 2026-04-30 22:37:48.779 226 0.036 seconds (measured here), 12.69 Kbytes per second
+> 2026-04-30 22:37:48.779 MFMT 20260501030841 eslint.config.mjs
+< 2026-04-30 22:37:48.804 213 UTIME OK
+. 2026-04-30 22:37:48.804 Upload successful
+. 2026-04-30 22:37:48.812 Transfer done: 'C:\projects\tshirt-shop\eslint.config.mjs' => '/ding-tee.dovara.biz/eslint.config.mjs' [465]
+. 2026-04-30 22:37:48.812 Copying finished: Transferred: 63,912, Elapsed: 0:00:05, CPS: 12,022/s
+. 2026-04-30 22:37:48.813 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-04-30 22:37:48.813   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:48.813   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:48.813   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:48.813 File: 'C:\projects\tshirt-shop\lib' [2026-05-01T03:14:10.264Z] [0]
+. 2026-04-30 22:37:48.816 File: 'C:\projects\tshirt-shop\lib\cart-context.tsx' [2026-05-01T03:14:10.361Z] [4020]
+. 2026-04-30 22:37:48.816 Copying "C:\projects\tshirt-shop\lib\cart-context.tsx" to remote directory started.
+. 2026-04-30 22:37:48.816 Binary transfer mode selected.
+. 2026-04-30 22:37:48.816 Starting upload of C:\projects\tshirt-shop\lib\cart-context.tsx
+> 2026-04-30 22:37:48.816 CWD /ding-tee.dovara.biz/lib
+< 2026-04-30 22:37:48.841 550 Can't change directory to /ding-tee.dovara.biz/lib: No such file or directory
+> 2026-04-30 22:37:48.841 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:48.867 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:48.867 MKD lib
+< 2026-04-30 22:37:48.887 257 "lib" : The directory was successfully created
+> 2026-04-30 22:37:48.895 CWD /ding-tee.dovara.biz/lib
+< 2026-04-30 22:37:48.920 250 OK. Current directory is /ding-tee.dovara.biz/lib
+> 2026-04-30 22:37:48.920 PWD
+< 2026-04-30 22:37:48.945 257 "/ding-tee.dovara.biz/lib" is your current location
+> 2026-04-30 22:37:48.945 TYPE I
+< 2026-04-30 22:37:48.967 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:48.969 PASV
+< 2026-04-30 22:37:48.995 227 Entering Passive Mode (198,54,115,130,47,44)
+> 2026-04-30 22:37:48.995 STOR cart-context.tsx
+. 2026-04-30 22:37:48.995 Connecting to 198.54.115.130:12076 ...
+< 2026-04-30 22:37:49.047 150 Accepted data connection
+< 2026-04-30 22:37:49.079 226-File successfully transferred
+< 2026-04-30 22:37:49.079 226 0.033 seconds (measured here), 118.77 Kbytes per second
+> 2026-04-30 22:37:49.079 MFMT 20260501031410 cart-context.tsx
+< 2026-04-30 22:37:49.111 213 UTIME OK
+. 2026-04-30 22:37:49.111 Upload successful
+. 2026-04-30 22:37:49.111 Transfer done: 'C:\projects\tshirt-shop\lib\cart-context.tsx' => '/ding-tee.dovara.biz/lib/cart-context.tsx' [4020]
+. 2026-04-30 22:37:49.111 File: 'C:\projects\tshirt-shop\lib\stripe.ts' [2026-05-01T03:13:56.566Z] [118]
+. 2026-04-30 22:37:49.119 Copying "C:\projects\tshirt-shop\lib\stripe.ts" to remote directory started.
+. 2026-04-30 22:37:49.119 Binary transfer mode selected.
+. 2026-04-30 22:37:49.119 Starting upload of C:\projects\tshirt-shop\lib\stripe.ts
+> 2026-04-30 22:37:49.119 TYPE I
+< 2026-04-30 22:37:49.144 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:49.144 PASV
+< 2026-04-30 22:37:49.169 227 Entering Passive Mode (198,54,115,130,47,13)
+> 2026-04-30 22:37:49.169 STOR stripe.ts
+. 2026-04-30 22:37:49.169 Connecting to 198.54.115.130:12045 ...
+< 2026-04-30 22:37:49.230 150 Accepted data connection
+< 2026-04-30 22:37:49.252 226-File successfully transferred
+< 2026-04-30 22:37:49.252 226 0.027 seconds (measured here), 4.24 Kbytes per second
+> 2026-04-30 22:37:49.261 MFMT 20260501031356 stripe.ts
+< 2026-04-30 22:37:49.277 213 UTIME OK
+. 2026-04-30 22:37:49.285 Upload successful
+. 2026-04-30 22:37:49.285 Transfer done: 'C:\projects\tshirt-shop\lib\stripe.ts' => '/ding-tee.dovara.biz/lib/stripe.ts' [118]
+. 2026-04-30 22:37:49.285 File: 'C:\projects\tshirt-shop\lib\types.ts' [2026-05-01T03:13:52.512Z] [416]
+. 2026-04-30 22:37:49.285 Copying "C:\projects\tshirt-shop\lib\types.ts" to remote directory started.
+. 2026-04-30 22:37:49.285 Binary transfer mode selected.
+. 2026-04-30 22:37:49.285 Starting upload of C:\projects\tshirt-shop\lib\types.ts
+> 2026-04-30 22:37:49.285 TYPE I
+< 2026-04-30 22:37:49.319 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:49.319 PASV
+< 2026-04-30 22:37:49.347 227 Entering Passive Mode (198,54,115,130,47,19)
+> 2026-04-30 22:37:49.347 STOR types.ts
+. 2026-04-30 22:37:49.347 Connecting to 198.54.115.130:12051 ...
+< 2026-04-30 22:37:49.402 150 Accepted data connection
+< 2026-04-30 22:37:49.433 226-File successfully transferred
+< 2026-04-30 22:37:49.433 226 0.028 seconds (measured here), 14.48 Kbytes per second
+> 2026-04-30 22:37:49.433 MFMT 20260501031352 types.ts
+< 2026-04-30 22:37:49.466 213 UTIME OK
+. 2026-04-30 22:37:49.466 Upload successful
+. 2026-04-30 22:37:49.468 Transfer done: 'C:\projects\tshirt-shop\lib\types.ts' => '/ding-tee.dovara.biz/lib/types.ts' [416]
+. 2026-04-30 22:37:49.469 Copying finished: Transferred: 68,466, Elapsed: 0:00:05, CPS: 11,462/s
+. 2026-04-30 22:37:49.469 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 121
+. 2026-04-30 22:37:49.469   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:49.469   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:49.469   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:49.469 File: 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-01T03:23:01.401Z] [121]
+. 2026-04-30 22:37:49.471 Copying "C:\projects\tshirt-shop\next.config.mjs" to remote directory started.
+. 2026-04-30 22:37:49.471 Binary transfer mode selected.
+. 2026-04-30 22:37:49.471 Starting upload of C:\projects\tshirt-shop\next.config.mjs
+> 2026-04-30 22:37:49.471 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:49.494 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:49.494 PWD
+< 2026-04-30 22:37:49.519 257 "/ding-tee.dovara.biz" is your current location
+> 2026-04-30 22:37:49.519 TYPE I
+< 2026-04-30 22:37:49.548 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:49.552 PASV
+< 2026-04-30 22:37:49.571 227 Entering Passive Mode (198,54,115,130,47,49)
+> 2026-04-30 22:37:49.577 STOR next.config.mjs
+. 2026-04-30 22:37:49.577 Connecting to 198.54.115.130:12081 ...
+< 2026-04-30 22:37:49.631 150 Accepted data connection
+< 2026-04-30 22:37:49.651 226-File successfully transferred
+< 2026-04-30 22:37:49.651 226 0.026 seconds (measured here), 4.48 Kbytes per second
+> 2026-04-30 22:37:49.651 MFMT 20260501032301 next.config.mjs
+< 2026-04-30 22:37:49.676 213 UTIME OK
+. 2026-04-30 22:37:49.676 Upload successful
+. 2026-04-30 22:37:49.676 Transfer done: 'C:\projects\tshirt-shop\next.config.mjs' => '/ding-tee.dovara.biz/next.config.mjs' [121]
+. 2026-04-30 22:37:49.676 Copying finished: Transferred: 68,587, Elapsed: 0:00:06, CPS: 11,098/s
+. 2026-04-30 22:37:49.685 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 201
+. 2026-04-30 22:37:49.685   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:49.685   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:49.685   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:49.685 File: 'C:\projects\tshirt-shop\next-env.d.ts' [2026-05-01T03:24:56.464Z] [201]
+. 2026-04-30 22:37:49.685 Copying "C:\projects\tshirt-shop\next-env.d.ts" to remote directory started.
+. 2026-04-30 22:37:49.685 Binary transfer mode selected.
+. 2026-04-30 22:37:49.685 Starting upload of C:\projects\tshirt-shop\next-env.d.ts
+> 2026-04-30 22:37:49.685 TYPE I
+< 2026-04-30 22:37:49.718 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:49.718 PASV
+< 2026-04-30 22:37:49.743 227 Entering Passive Mode (198,54,115,130,47,74)
+> 2026-04-30 22:37:49.743 STOR next-env.d.ts
+. 2026-04-30 22:37:49.743 Connecting to 198.54.115.130:12106 ...
+< 2026-04-30 22:37:49.810 150 Accepted data connection
+< 2026-04-30 22:37:49.840 226-File successfully transferred
+< 2026-04-30 22:37:49.840 226 0.029 seconds (measured here), 6.74 Kbytes per second
+> 2026-04-30 22:37:49.840 MFMT 20260501032456 next-env.d.ts
+< 2026-04-30 22:37:49.869 213 UTIME OK
+. 2026-04-30 22:37:49.870 Upload successful
+. 2026-04-30 22:37:49.871 Transfer done: 'C:\projects\tshirt-shop\next-env.d.ts' => '/ding-tee.dovara.biz/next-env.d.ts' [201]
+. 2026-04-30 22:37:49.871 Copying finished: Transferred: 68,788, Elapsed: 0:00:06, CPS: 10,790/s
+. 2026-04-30 22:37:49.871 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 695
+. 2026-04-30 22:37:49.871   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:49.871   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:49.871   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:49.873 File: 'C:\projects\tshirt-shop\package.json' [2026-05-01T03:41:09.000Z] [695]
+. 2026-04-30 22:37:49.873 Copying "C:\projects\tshirt-shop\package.json" to remote directory started.
+. 2026-04-30 22:37:49.873 Binary transfer mode selected.
+. 2026-04-30 22:37:49.873 Starting upload of C:\projects\tshirt-shop\package.json
+> 2026-04-30 22:37:49.873 TYPE I
+< 2026-04-30 22:37:49.903 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:49.903 PASV
+< 2026-04-30 22:37:49.932 227 Entering Passive Mode (198,54,115,130,47,54)
+> 2026-04-30 22:37:49.932 STOR package.json
+. 2026-04-30 22:37:49.932 Connecting to 198.54.115.130:12086 ...
+< 2026-04-30 22:37:49.978 150 Accepted data connection
+< 2026-04-30 22:37:50.012 226-File successfully transferred
+< 2026-04-30 22:37:50.012 226 0.033 seconds (measured here), 20.63 Kbytes per second
+> 2026-04-30 22:37:50.012 MFMT 20260501034109 package.json
+< 2026-04-30 22:37:50.036 213 UTIME OK
+. 2026-04-30 22:37:50.036 Upload successful
+. 2026-04-30 22:37:50.036 Transfer done: 'C:\projects\tshirt-shop\package.json' => '/ding-tee.dovara.biz/package.json' [695]
+. 2026-04-30 22:37:50.044 Copying finished: Transferred: 69,483, Elapsed: 0:00:06, CPS: 10,611/s
+. 2026-04-30 22:37:50.044 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 397,153
+. 2026-04-30 22:37:50.044   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:50.044   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:50.044   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:50.044 File: 'C:\projects\tshirt-shop\package-lock.json' [2026-05-01T03:41:09.000Z] [397153]
+. 2026-04-30 22:37:50.085 Copying "C:\projects\tshirt-shop\package-lock.json" to remote directory started.
+. 2026-04-30 22:37:50.085 Binary transfer mode selected.
+. 2026-04-30 22:37:50.085 Starting upload of C:\projects\tshirt-shop\package-lock.json
+> 2026-04-30 22:37:50.085 TYPE I
+< 2026-04-30 22:37:50.118 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:50.118 PASV
+< 2026-04-30 22:37:50.151 227 Entering Passive Mode (198,54,115,130,47,72)
+> 2026-04-30 22:37:50.151 STOR package-lock.json
+. 2026-04-30 22:37:50.151 Connecting to 198.54.115.130:12104 ...
+< 2026-04-30 22:37:50.209 150 Accepted data connection
+< 2026-04-30 22:37:50.459 226-File successfully transferred
+< 2026-04-30 22:37:50.459 226 0.242 seconds (measured here), 1.57 Mbytes per second
+> 2026-04-30 22:37:50.459 MFMT 20260501034109 package-lock.json
+< 2026-04-30 22:37:50.491 213 UTIME OK
+. 2026-04-30 22:37:50.491 Upload successful
+. 2026-04-30 22:37:50.491 Transfer done: 'C:\projects\tshirt-shop\package-lock.json' => '/ding-tee.dovara.biz/package-lock.json' [397153]
+. 2026-04-30 22:37:50.491 Copying finished: Transferred: 466,636, Elapsed: 0:00:06, CPS: 66,709/s
+. 2026-04-30 22:37:50.491 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 105
+. 2026-04-30 22:37:50.491   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:50.491   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:50.491   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:50.499 File: 'C:\projects\tshirt-shop\postcss.config.mjs' [2026-05-01T03:22:00.298Z] [105]
+. 2026-04-30 22:37:50.533 Copying "C:\projects\tshirt-shop\postcss.config.mjs" to remote directory started.
+. 2026-04-30 22:37:50.533 Binary transfer mode selected.
+. 2026-04-30 22:37:50.533 Starting upload of C:\projects\tshirt-shop\postcss.config.mjs
+> 2026-04-30 22:37:50.533 TYPE I
+< 2026-04-30 22:37:50.581 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:50.582 PASV
+< 2026-04-30 22:37:50.609 227 Entering Passive Mode (198,54,115,130,47,75)
+> 2026-04-30 22:37:50.609 STOR postcss.config.mjs
+. 2026-04-30 22:37:50.609 Connecting to 198.54.115.130:12107 ...
+< 2026-04-30 22:37:50.665 150 Accepted data connection
+< 2026-04-30 22:37:50.690 226-File successfully transferred
+< 2026-04-30 22:37:50.690 226 0.026 seconds (measured here), 3.95 Kbytes per second
+> 2026-04-30 22:37:50.698 MFMT 20260501032200 postcss.config.mjs
+< 2026-04-30 22:37:50.724 213 UTIME OK
+. 2026-04-30 22:37:50.724 Upload successful
+. 2026-04-30 22:37:50.724 Transfer done: 'C:\projects\tshirt-shop\postcss.config.mjs' => '/ding-tee.dovara.biz/postcss.config.mjs' [105]
+. 2026-04-30 22:37:50.724 Copying finished: Transferred: 466,741, Elapsed: 0:00:07, CPS: 64,574/s
+. 2026-04-30 22:37:50.724 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-04-30 22:37:50.724   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:50.724   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:50.724   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:50.724 File: 'C:\projects\tshirt-shop\public' [2026-05-01T03:08:42.785Z] [0]
+. 2026-04-30 22:37:50.724 File: 'C:\projects\tshirt-shop\public\file.svg' [2026-05-01T03:08:41.296Z] [391]
+. 2026-04-30 22:37:50.756 Copying "C:\projects\tshirt-shop\public\file.svg" to remote directory started.
+. 2026-04-30 22:37:50.756 Binary transfer mode selected.
+. 2026-04-30 22:37:50.756 Starting upload of C:\projects\tshirt-shop\public\file.svg
+> 2026-04-30 22:37:50.756 CWD /ding-tee.dovara.biz/public
+< 2026-04-30 22:37:50.781 550 Can't change directory to /ding-tee.dovara.biz/public: No such file or directory
+> 2026-04-30 22:37:50.781 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:50.809 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:50.809 MKD public
+< 2026-04-30 22:37:50.840 257 "public" : The directory was successfully created
+> 2026-04-30 22:37:50.840 CWD /ding-tee.dovara.biz/public
+< 2026-04-30 22:37:50.865 250 OK. Current directory is /ding-tee.dovara.biz/public
+> 2026-04-30 22:37:50.865 PWD
+< 2026-04-30 22:37:50.900 257 "/ding-tee.dovara.biz/public" is your current location
+> 2026-04-30 22:37:50.900 TYPE I
+< 2026-04-30 22:37:50.940 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:50.940 PASV
+< 2026-04-30 22:37:50.968 227 Entering Passive Mode (198,54,115,130,47,47)
+> 2026-04-30 22:37:50.969 STOR file.svg
+. 2026-04-30 22:37:50.969 Connecting to 198.54.115.130:12079 ...
+< 2026-04-30 22:37:51.026 150 Accepted data connection
+< 2026-04-30 22:37:51.053 226-File successfully transferred
+< 2026-04-30 22:37:51.053 226 0.028 seconds (measured here), 13.66 Kbytes per second
+> 2026-04-30 22:37:51.053 MFMT 20260501030841 file.svg
+< 2026-04-30 22:37:51.086 213 UTIME OK
+. 2026-04-30 22:37:51.087 Upload successful
+. 2026-04-30 22:37:51.088 Transfer done: 'C:\projects\tshirt-shop\public\file.svg' => '/ding-tee.dovara.biz/public/file.svg' [391]
+. 2026-04-30 22:37:51.088 File: 'C:\projects\tshirt-shop\public\globe.svg' [2026-05-01T03:08:41.321Z] [1035]
+. 2026-04-30 22:37:51.103 Copying "C:\projects\tshirt-shop\public\globe.svg" to remote directory started.
+. 2026-04-30 22:37:51.103 Binary transfer mode selected.
+. 2026-04-30 22:37:51.104 Starting upload of C:\projects\tshirt-shop\public\globe.svg
+> 2026-04-30 22:37:51.104 TYPE I
+< 2026-04-30 22:37:51.126 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:51.126 PASV
+< 2026-04-30 22:37:51.147 227 Entering Passive Mode (198,54,115,130,47,2)
+> 2026-04-30 22:37:51.148 STOR globe.svg
+. 2026-04-30 22:37:51.148 Connecting to 198.54.115.130:12034 ...
+< 2026-04-30 22:37:51.204 150 Accepted data connection
+< 2026-04-30 22:37:51.228 226-File successfully transferred
+< 2026-04-30 22:37:51.228 226 0.026 seconds (measured here), 39.21 Kbytes per second
+> 2026-04-30 22:37:51.232 MFMT 20260501030841 globe.svg
+< 2026-04-30 22:37:51.261 213 UTIME OK
+. 2026-04-30 22:37:51.263 Upload successful
+. 2026-04-30 22:37:51.263 Transfer done: 'C:\projects\tshirt-shop\public\globe.svg' => '/ding-tee.dovara.biz/public/globe.svg' [1035]
+. 2026-04-30 22:37:51.263 File: 'C:\projects\tshirt-shop\public\next.svg' [2026-05-01T03:08:41.349Z] [1375]
+. 2026-04-30 22:37:51.286 Copying "C:\projects\tshirt-shop\public\next.svg" to remote directory started.
+. 2026-04-30 22:37:51.286 Binary transfer mode selected.
+. 2026-04-30 22:37:51.293 Starting upload of C:\projects\tshirt-shop\public\next.svg
+> 2026-04-30 22:37:51.293 TYPE I
+< 2026-04-30 22:37:51.318 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:51.318 PASV
+< 2026-04-30 22:37:51.351 227 Entering Passive Mode (198,54,115,130,47,2)
+> 2026-04-30 22:37:51.351 STOR next.svg
+. 2026-04-30 22:37:51.351 Connecting to 198.54.115.130:12034 ...
+< 2026-04-30 22:37:51.409 150 Accepted data connection
+< 2026-04-30 22:37:51.441 226-File successfully transferred
+< 2026-04-30 22:37:51.441 226 0.028 seconds (measured here), 47.87 Kbytes per second
+> 2026-04-30 22:37:51.441 MFMT 20260501030841 next.svg
+< 2026-04-30 22:37:51.482 213 UTIME OK
+. 2026-04-30 22:37:51.482 Upload successful
+. 2026-04-30 22:37:51.482 Transfer done: 'C:\projects\tshirt-shop\public\next.svg' => '/ding-tee.dovara.biz/public/next.svg' [1375]
+. 2026-04-30 22:37:51.482 File: 'C:\projects\tshirt-shop\public\vercel.svg' [2026-05-01T03:08:41.370Z] [128]
+. 2026-04-30 22:37:51.499 Copying "C:\projects\tshirt-shop\public\vercel.svg" to remote directory started.
+. 2026-04-30 22:37:51.499 Binary transfer mode selected.
+. 2026-04-30 22:37:51.499 Starting upload of C:\projects\tshirt-shop\public\vercel.svg
+> 2026-04-30 22:37:51.499 TYPE I
+< 2026-04-30 22:37:51.525 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:51.525 PASV
+< 2026-04-30 22:37:51.551 227 Entering Passive Mode (198,54,115,130,47,75)
+> 2026-04-30 22:37:51.557 STOR vercel.svg
+. 2026-04-30 22:37:51.557 Connecting to 198.54.115.130:12107 ...
+< 2026-04-30 22:37:51.606 150 Accepted data connection
+< 2026-04-30 22:37:51.640 226-File successfully transferred
+< 2026-04-30 22:37:51.640 226 0.030 seconds (measured here), 4.12 Kbytes per second
+> 2026-04-30 22:37:51.640 MFMT 20260501030841 vercel.svg
+< 2026-04-30 22:37:51.665 213 UTIME OK
+. 2026-04-30 22:37:51.672 Upload successful
+. 2026-04-30 22:37:51.674 Transfer done: 'C:\projects\tshirt-shop\public\vercel.svg' => '/ding-tee.dovara.biz/public/vercel.svg' [128]
+. 2026-04-30 22:37:51.674 File: 'C:\projects\tshirt-shop\public\window.svg' [2026-05-01T03:08:41.392Z] [385]
+. 2026-04-30 22:37:51.706 Copying "C:\projects\tshirt-shop\public\window.svg" to remote directory started.
+. 2026-04-30 22:37:51.706 Binary transfer mode selected.
+. 2026-04-30 22:37:51.706 Starting upload of C:\projects\tshirt-shop\public\window.svg
+> 2026-04-30 22:37:51.706 TYPE I
+< 2026-04-30 22:37:51.756 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:51.756 PASV
+< 2026-04-30 22:37:51.780 227 Entering Passive Mode (198,54,115,130,47,50)
+> 2026-04-30 22:37:51.788 STOR window.svg
+. 2026-04-30 22:37:51.788 Connecting to 198.54.115.130:12082 ...
+< 2026-04-30 22:37:51.845 150 Accepted data connection
+< 2026-04-30 22:37:51.879 226-File successfully transferred
+< 2026-04-30 22:37:51.879 226 0.027 seconds (measured here), 13.71 Kbytes per second
+> 2026-04-30 22:37:51.879 MFMT 20260501030841 window.svg
+< 2026-04-30 22:37:51.905 213 UTIME OK
+. 2026-04-30 22:37:51.905 Upload successful
+. 2026-04-30 22:37:51.905 Transfer done: 'C:\projects\tshirt-shop\public\window.svg' => '/ding-tee.dovara.biz/public/window.svg' [385]
+. 2026-04-30 22:37:51.905 Copying finished: Transferred: 470,055, Elapsed: 0:00:08, CPS: 55,899/s
+. 2026-04-30 22:37:51.905 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 1,450
+. 2026-04-30 22:37:51.905   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:51.905   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:51.912   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:51.912 File: 'C:\projects\tshirt-shop\README.md' [2026-05-01T03:08:41.110Z] [1450]
+. 2026-04-30 22:37:51.954 Copying "C:\projects\tshirt-shop\README.md" to remote directory started.
+. 2026-04-30 22:37:51.954 Binary transfer mode selected.
+. 2026-04-30 22:37:51.954 Starting upload of C:\projects\tshirt-shop\README.md
+> 2026-04-30 22:37:51.957 CWD /ding-tee.dovara.biz
+< 2026-04-30 22:37:51.981 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-04-30 22:37:51.981 PWD
+< 2026-04-30 22:37:52.004 257 "/ding-tee.dovara.biz" is your current location
+> 2026-04-30 22:37:52.004 TYPE I
+< 2026-04-30 22:37:52.031 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:52.031 PASV
+< 2026-04-30 22:37:52.054 227 Entering Passive Mode (198,54,115,130,47,45)
+> 2026-04-30 22:37:52.054 STOR README.md
+. 2026-04-30 22:37:52.054 Connecting to 198.54.115.130:12077 ...
+< 2026-04-30 22:37:52.113 150 Accepted data connection
+< 2026-04-30 22:37:52.138 226-File successfully transferred
+< 2026-04-30 22:37:52.138 226 0.028 seconds (measured here), 50.37 Kbytes per second
+> 2026-04-30 22:37:52.138 MFMT 20260501030841 README.md
+< 2026-04-30 22:37:52.166 213 UTIME OK
+. 2026-04-30 22:37:52.166 Upload successful
+. 2026-04-30 22:37:52.171 Transfer done: 'C:\projects\tshirt-shop\README.md' => '/ding-tee.dovara.biz/README.md' [1450]
+. 2026-04-30 22:37:52.171 Copying finished: Transferred: 471,505, Elapsed: 0:00:08, CPS: 54,352/s
+. 2026-04-30 22:37:52.171 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 349
+. 2026-04-30 22:37:52.171   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:52.171   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:52.171   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:52.171 File: 'C:\projects\tshirt-shop\tailwind.config.js' [2026-05-01T03:41:21.266Z] [349]
+. 2026-04-30 22:37:52.171 Copying "C:\projects\tshirt-shop\tailwind.config.js" to remote directory started.
+. 2026-04-30 22:37:52.171 Binary transfer mode selected.
+. 2026-04-30 22:37:52.171 Starting upload of C:\projects\tshirt-shop\tailwind.config.js
+> 2026-04-30 22:37:52.171 TYPE I
+< 2026-04-30 22:37:52.196 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:52.196 PASV
+< 2026-04-30 22:37:52.229 227 Entering Passive Mode (198,54,115,130,47,17)
+> 2026-04-30 22:37:52.229 STOR tailwind.config.js
+. 2026-04-30 22:37:52.229 Connecting to 198.54.115.130:12049 ...
+< 2026-04-30 22:37:52.287 150 Accepted data connection
+< 2026-04-30 22:37:52.304 226-File successfully transferred
+< 2026-04-30 22:37:52.304 226 0.025 seconds (measured here), 13.72 Kbytes per second
+> 2026-04-30 22:37:52.312 MFMT 20260501034121 tailwind.config.js
+< 2026-04-30 22:37:52.341 213 UTIME OK
+. 2026-04-30 22:37:52.341 Upload successful
+. 2026-04-30 22:37:52.341 Transfer done: 'C:\projects\tshirt-shop\tailwind.config.js' => '/ding-tee.dovara.biz/tailwind.config.js' [349]
+. 2026-04-30 22:37:52.341 Copying finished: Transferred: 471,854, Elapsed: 0:00:08, CPS: 53,346/s
+. 2026-04-30 22:37:52.343 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 714
+. 2026-04-30 22:37:52.343   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:52.343   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:52.343   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:52.343 File: 'C:\projects\tshirt-shop\tsconfig.json' [2026-05-01T03:24:56.456Z] [714]
+. 2026-04-30 22:37:52.345 Copying "C:\projects\tshirt-shop\tsconfig.json" to remote directory started.
+. 2026-04-30 22:37:52.345 Binary transfer mode selected.
+. 2026-04-30 22:37:52.345 Starting upload of C:\projects\tshirt-shop\tsconfig.json
+> 2026-04-30 22:37:52.345 TYPE I
+< 2026-04-30 22:37:52.370 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:52.370 PASV
+< 2026-04-30 22:37:52.402 227 Entering Passive Mode (198,54,115,130,47,33)
+> 2026-04-30 22:37:52.402 STOR tsconfig.json
+. 2026-04-30 22:37:52.402 Connecting to 198.54.115.130:12065 ...
+< 2026-04-30 22:37:52.467 150 Accepted data connection
+< 2026-04-30 22:37:52.494 226-File successfully transferred
+< 2026-04-30 22:37:52.503 226 0.038 seconds (measured here), 18.18 Kbytes per second
+> 2026-04-30 22:37:52.503 MFMT 20260501032456 tsconfig.json
+< 2026-04-30 22:37:52.533 213 UTIME OK
+. 2026-04-30 22:37:52.533 Upload successful
+. 2026-04-30 22:37:52.534 Transfer done: 'C:\projects\tshirt-shop\tsconfig.json' => '/ding-tee.dovara.biz/tsconfig.json' [714]
+. 2026-04-30 22:37:52.534 Copying finished: Transferred: 472,568, Elapsed: 0:00:09, CPS: 52,286/s
+. 2026-04-30 22:37:52.534 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 154,812
+. 2026-04-30 22:37:52.534   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:52.534   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:52.534   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:52.534 File: 'C:\projects\tshirt-shop\tsconfig.tsbuildinfo' [2026-05-01T03:17:27.104Z] [154812]
+. 2026-04-30 22:37:52.561 Copying "C:\projects\tshirt-shop\tsconfig.tsbuildinfo" to remote directory started.
+. 2026-04-30 22:37:52.561 Binary transfer mode selected.
+. 2026-04-30 22:37:52.561 Starting upload of C:\projects\tshirt-shop\tsconfig.tsbuildinfo
+> 2026-04-30 22:37:52.566 TYPE I
+< 2026-04-30 22:37:52.850 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:52.850 PASV
+< 2026-04-30 22:37:52.874 227 Entering Passive Mode (198,54,115,130,47,27)
+> 2026-04-30 22:37:52.874 STOR tsconfig.tsbuildinfo
+. 2026-04-30 22:37:52.874 Connecting to 198.54.115.130:12059 ...
+< 2026-04-30 22:37:52.930 150 Accepted data connection
+< 2026-04-30 22:37:53.055 226-File successfully transferred
+< 2026-04-30 22:37:53.055 226 0.131 seconds (measured here), 1.13 Mbytes per second
+> 2026-04-30 22:37:53.055 MFMT 20260501031727 tsconfig.tsbuildinfo
+< 2026-04-30 22:37:53.088 213 UTIME OK
+. 2026-04-30 22:37:53.088 Upload successful
+. 2026-04-30 22:37:53.090 Transfer done: 'C:\projects\tshirt-shop\tsconfig.tsbuildinfo' => '/ding-tee.dovara.biz/tsconfig.tsbuildinfo' [154812]
+. 2026-04-30 22:37:53.090 Copying finished: Transferred: 627,380, Elapsed: 0:00:09, CPS: 65,392/s
+. 2026-04-30 22:37:53.090 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 104
+. 2026-04-30 22:37:53.090   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-04-30 22:37:53.090   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/; ResumeL: 0
+. 2026-04-30 22:37:53.090   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-04-30 22:37:53.092 File: 'C:\projects\tshirt-shop\tshirt-shop.code-workspace' [2026-05-01T05:30:02.099Z] [104]
+. 2026-04-30 22:37:53.094 Copying "C:\projects\tshirt-shop\tshirt-shop.code-workspace" to remote directory started.
+. 2026-04-30 22:37:53.094 Binary transfer mode selected.
+. 2026-04-30 22:37:53.096 Starting upload of C:\projects\tshirt-shop\tshirt-shop.code-workspace
+> 2026-04-30 22:37:53.096 TYPE I
+< 2026-04-30 22:37:53.124 200 TYPE is now 8-bit binary
+> 2026-04-30 22:37:53.124 PASV
+< 2026-04-30 22:37:53.145 227 Entering Passive Mode (198,54,115,130,47,29)
+> 2026-04-30 22:37:53.145 STOR tshirt-shop.code-workspace
+. 2026-04-30 22:37:53.145 Connecting to 198.54.115.130:12061 ...
+< 2026-04-30 22:37:53.195 150 Accepted data connection
+< 2026-04-30 22:37:53.224 226-File successfully transferred
+< 2026-04-30 22:37:53.224 226 0.027 seconds (measured here), 3.77 Kbytes per second
+> 2026-04-30 22:37:53.224 MFMT 20260501053002 tshirt-shop.code-workspace
+< 2026-04-30 22:37:53.254 213 UTIME OK
+. 2026-04-30 22:37:53.254 Upload successful
+. 2026-04-30 22:37:53.254 Transfer done: 'C:\projects\tshirt-shop\tshirt-shop.code-workspace' => '/ding-tee.dovara.biz/tshirt-shop.code-workspace' [104]
+. 2026-04-30 22:37:53.254 Copying finished: Transferred: 627,484, Elapsed: 0:00:09, CPS: 64,304/s
+> 2026-04-30 22:37:53.262 Script: exit
+. 2026-04-30 22:37:53.262 Script: Exit code: 0
+. 2026-04-30 22:37:53.272 Disconnected from server

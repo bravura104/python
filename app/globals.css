@@ -1,0 +1,9 @@
+/* Bootstrap comes first so Tailwind utilities can override it */
+@import 'bootstrap/dist/css/bootstrap.css';
+
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
