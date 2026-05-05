@@ -1,9 +1,11 @@
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
+import NailSpaBooking from "@/components/NailSpaBooking";
 
 export default function HomePage() {
   return (
+    <>
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero */}
       <section className="text-center mb-14">
@@ -25,5 +27,8 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+
+    <NailSpaBooking />
+    </>
   );
 }
