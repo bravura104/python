@@ -1033,3 +1033,1135 @@
 > 2026-04-30 22:37:53.262 Script: exit
 . 2026-04-30 22:37:53.262 Script: Exit code: 0
 . 2026-04-30 22:37:53.272 Disconnected from server
+. 2026-05-07 09:07:41.130 --------------------------------------------------------------------------
+. 2026-05-07 09:07:41.132 WinSCP Version 6.5.5 (Build 16453 2025-11-19) (OS 10.0.26200 – Windows 11 Home)
+. 2026-05-07 09:07:41.132 Configuration: nul
+. 2026-05-07 09:07:41.132 Log level: Normal
+. 2026-05-07 09:07:41.132 Local account: LAPTOP-IO2TSI07\buutr
+. 2026-05-07 09:07:41.132 Working directory: C:\projects\tshirt-shop
+. 2026-05-07 09:07:41.132 Process ID: 9676
+. 2026-05-07 09:07:41.154 Ancestor processes: WinSCP, powershell, powershell, Code, Code, explorer, ...
+. 2026-05-07 09:07:41.155 Command-line: "C:\Users\buutr\AppData\Local\Programs\WinSCP\WinSCP.exe" /console=6.5.5 /consoleinstance=_12120_30 "/log=deploy.log" "/ini=nul" "/command" "open ftp://dovara_prod@dovara.biz:***@ftp.dovara.biz:21 -passive=on" "synchronize remote -criteria=either C:\projects\tshirt-shop /ding-tee.dovara.biz -filemask=|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example""" "exit"
+. 2026-05-07 09:07:41.155 Time zone: Current: GMT-7, Standard: GMT-8 (Pacific Standard Time), DST: GMT-7 (Pacific Daylight Time), DST Start: 3/8/2026, DST End: 11/1/2026
+. 2026-05-07 09:07:41.155 Login time: Thursday, May 7, 2026 9:07:41 AM
+. 2026-05-07 09:07:41.155 --------------------------------------------------------------------------
+. 2026-05-07 09:07:41.155 Script: Retrospectively logging previous script records:
+> 2026-05-07 09:07:41.155 Script: open ftp://dovara_prod@dovara.biz:***@ftp.dovara.biz:21 -passive=on
+. 2026-05-07 09:07:41.155 --------------------------------------------------------------------------
+. 2026-05-07 09:07:41.155 Session name: dovara_prod@dovara.biz@ftp.dovara.biz (Ad-Hoc site)
+. 2026-05-07 09:07:41.155 Host name: ftp.dovara.biz (Port: 21)
+. 2026-05-07 09:07:41.155 User name: dovara_prod@dovara.biz (Password: Yes, Key file: No, Passphrase: No)
+. 2026-05-07 09:07:41.155 Transfer Protocol: FTP
+. 2026-05-07 09:07:41.155 Ping type: Dummy, Ping interval: 30 sec; Timeout: 15 sec
+. 2026-05-07 09:07:41.155 Disable Nagle: No
+. 2026-05-07 09:07:41.155 Proxy: None
+. 2026-05-07 09:07:41.155 Send buffer: 262144
+. 2026-05-07 09:07:41.155 UTF: Auto
+. 2026-05-07 09:07:41.155 FTPS: None [Client certificate: No]
+. 2026-05-07 09:07:41.155 FTP: Passive: Yes [Force IP: Auto]; MLSD: Auto [List all: Auto]; HOST: Auto
+. 2026-05-07 09:07:41.155 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2026-05-07 09:07:41.155 Cache directory changes: Yes, Permanent: Yes
+. 2026-05-07 09:07:41.155 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2026-05-07 09:07:41.155 Timezone offset: 0h 0m
+. 2026-05-07 09:07:41.155 --------------------------------------------------------------------------
+< 2026-05-07 09:07:41.179 Script: Connecting to ftp.dovara.biz ...
+. 2026-05-07 09:07:41.179 Connecting to ftp.dovara.biz ...
+. 2026-05-07 09:07:41.284 Connected with ftp.dovara.biz. Waiting for welcome message...
+< 2026-05-07 09:07:41.307 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+< 2026-05-07 09:07:41.307 220-You are user number 1 of 45 allowed.
+< 2026-05-07 09:07:41.307 220-Local time is now 12:07. Server port: 21.
+< 2026-05-07 09:07:41.307 220-This is a private system - No anonymous login
+< 2026-05-07 09:07:41.307 220-IPv6 connections are also welcome on this server.
+< 2026-05-07 09:07:41.307 220 You will be disconnected after 15 minutes of inactivity.
+> 2026-05-07 09:07:41.307 USER dovara_prod@dovara.biz
+< 2026-05-07 09:07:41.328 331 User dovara_prod@dovara.biz OK. Password required
+> 2026-05-07 09:07:41.328 PASS ***************
+< 2026-05-07 09:07:41.409 230 OK. Current restricted directory is /
+> 2026-05-07 09:07:41.409 SYST
+< 2026-05-07 09:07:41.438 215 UNIX Type: L8
+> 2026-05-07 09:07:41.438 FEAT
+< 2026-05-07 09:07:41.472 211-Extensions supported:
+< 2026-05-07 09:07:41.472  UTF8
+< 2026-05-07 09:07:41.472  EPRT
+< 2026-05-07 09:07:41.472  IDLE
+< 2026-05-07 09:07:41.472  MDTM
+< 2026-05-07 09:07:41.472  SIZE
+< 2026-05-07 09:07:41.472  MFMT
+< 2026-05-07 09:07:41.472  REST STREAM
+< 2026-05-07 09:07:41.472  MLST type*;size*;sizd*;modify*;UNIX.mode*;UNIX.uid*;UNIX.gid*;unique*;
+< 2026-05-07 09:07:41.472  MLSD
+< 2026-05-07 09:07:41.472  PRET
+< 2026-05-07 09:07:41.472  AUTH TLS
+< 2026-05-07 09:07:41.472  PBSZ
+< 2026-05-07 09:07:41.472  PROT
+< 2026-05-07 09:07:41.472  TVFS
+< 2026-05-07 09:07:41.472  ESTA
+< 2026-05-07 09:07:41.472  PASV
+< 2026-05-07 09:07:41.472  EPSV
+< 2026-05-07 09:07:41.472  ESTP
+< 2026-05-07 09:07:41.472 211 End.
+> 2026-05-07 09:07:41.473 OPTS UTF8 ON
+< 2026-05-07 09:07:41.494 504 Unknown command
+< 2026-05-07 09:07:41.494 Script: Connected
+. 2026-05-07 09:07:41.495 Connected
+. 2026-05-07 09:07:41.495 --------------------------------------------------------------------------
+. 2026-05-07 09:07:41.495 Using FTP protocol.
+. 2026-05-07 09:07:41.495 Doing startup conversation with host.
+< 2026-05-07 09:07:41.495 Script: Starting the session...
+> 2026-05-07 09:07:41.495 PWD
+< 2026-05-07 09:07:41.516 257 "/" is your current location
+. 2026-05-07 09:07:41.518 Getting current directory name.
+. 2026-05-07 09:07:41.518 Startup conversation with host finished.
+< 2026-05-07 09:07:41.518 Script: Session started.
+< 2026-05-07 09:07:41.518 Script: Active session: [1] dovara_prod@dovara.biz@ftp.dovara.biz
+> 2026-05-07 09:07:41.518 Script: synchronize remote -criteria=either C:\projects\tshirt-shop /ding-tee.dovara.biz -filemask=|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example"
+< 2026-05-07 09:07:41.518 Script: Comparing...
+. 2026-05-07 09:07:41.519 Collecting synchronization list for local directory 'C:\projects\tshirt-shop' and remote directory '/ding-tee.dovara.biz', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:41.519 Local file 'C:\projects\tshirt-shop\.' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.519 Local file 'C:\projects\tshirt-shop\..' [2026-05-01T03:08:42.577Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.519 Local file 'C:\projects\tshirt-shop\.env.local' [2026-05-05T16:47:43.192Z] [1329] excluded from synchronization
+. 2026-05-07 09:07:41.519 Local file 'C:\projects\tshirt-shop\.env.local.example' [2026-05-01T06:01:50.396Z] [392] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\.git' [2026-05-05T16:53:15.883Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\.gitignore' [2026-05-02T17:17:55.070Z] [504] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\.next' [2026-05-02T06:39:49.310Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\.vercel' [2026-05-02T17:17:48.651Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\.vscode' [2026-05-01T05:33:38.275Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\AGENTS.md' [2026-05-01T03:09:31.615Z] [327] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\app' [2026-05-07T15:50:38.509Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\CLAUDE.md' [2026-05-01T03:09:31.615Z] [11] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\components' [2026-05-05T16:40:49.247Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\data' [2026-05-01T03:13:48.109Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\deploy.log' [2026-05-01T05:37:53.272Z] [83707] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\deploy.ps1' [2026-05-01T06:01:59.404Z] [707] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-02T17:36:58.170Z] [542] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\lib' [2026-05-01T03:14:10.264Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\next-env.d.ts' [2026-05-01T03:24:56.464Z] [201] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-02T17:36:58.179Z] [140] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\node_modules' [2026-05-02T07:09:10.035Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\package-lock.json' [2026-05-02T07:09:40.828Z] [393163] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\package.json' [2026-05-02T17:36:58.170Z] [725] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\postcss.config.mjs' [2026-05-01T03:22:00.298Z] [105] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\public' [2026-05-01T03:08:42.785Z] [0] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\README.md' [2026-05-01T03:08:41.110Z] [1450] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\server.js' [2026-05-01T05:44:54.473Z] [452] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\tailwind.config.js' [2026-05-01T03:41:21.266Z] [349] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\tsconfig.json' [2026-05-01T03:24:56.456Z] [714] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\tsconfig.tsbuildinfo' [2026-05-01T03:17:27.104Z] [154812] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\tshirt-shop.code-workspace' [2026-05-01T05:30:02.099Z] [104] included to synchronization
+. 2026-05-07 09:07:41.520 Local file 'C:\projects\tshirt-shop\vercel-build.log' [2026-05-02T17:49:58.142Z] [8328] included to synchronization
+. 2026-05-07 09:07:41.521 Local file 'C:\projects\tshirt-shop\vercel.json' [2026-05-02T17:36:58.170Z] [31] included to synchronization
+. 2026-05-07 09:07:41.521 Local file 'C:\projects\tshirt-shop\watch-deploy.ps1' [2026-05-01T05:33:25.883Z] [3014] excluded from synchronization
+. 2026-05-07 09:07:41.521 Retrieving directory listing...
+> 2026-05-07 09:07:41.521 CWD /ding-tee.dovara.biz
+< 2026-05-07 09:07:41.543 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-05-07 09:07:41.543 PWD
+< 2026-05-07 09:07:41.568 257 "/ding-tee.dovara.biz" is your current location
+> 2026-05-07 09:07:41.569 TYPE A
+< 2026-05-07 09:07:41.592 200 TYPE is now ASCII
+> 2026-05-07 09:07:41.592 PASV
+< 2026-05-07 09:07:41.622 227 Entering Passive Mode (198,54,115,130,47,30)
+> 2026-05-07 09:07:41.623 MLSD
+. 2026-05-07 09:07:41.623 Connecting to 198.54.115.130:12062 ...
+< 2026-05-07 09:07:41.682 150 Accepted data connection
+< 2026-05-07 09:07:41.682 226 29 matches total
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; app
+. 2026-05-07 09:07:41.682 type=file;size=121;modify=20260501032301;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368e; next.config.mjs
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501053751;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a8; public
+. 2026-05-07 09:07:41.682 type=pdir;sizd=4096;modify=20260501054948;UNIX.mode=0711;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ac0001; ..
+. 2026-05-07 09:07:41.682 type=cdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; .
+. 2026-05-07 09:07:41.682 type=file;size=154812;modify=20260501031727;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3697; tsconfig.tsbuildinfo
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501053749;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a4; lib
+. 2026-05-07 09:07:41.682 type=file;size=714;modify=20260501032456;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3696; tsconfig.json
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501053748;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5579; components
+. 2026-05-07 09:07:41.682 type=file;size=729;modify=20260501031701;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3681; .env.local
+. 2026-05-07 09:07:41.682 type=file;size=327;modify=20260501030931;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3683; AGENTS.md
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501054901;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5724; tmp
+. 2026-05-07 09:07:41.682 type=file;size=201;modify=20260501032456;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368f; next-env.d.ts
+. 2026-05-07 09:07:41.682 type=file;size=397153;modify=20260501034109;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3691; package-lock.json
+. 2026-05-07 09:07:41.682 type=file;size=349;modify=20260501034121;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3695; tailwind.config.js
+. 2026-05-07 09:07:41.682 type=file;size=105;modify=20260501032200;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3692; postcss.config.mjs
+. 2026-05-07 09:07:41.682 type=file;size=465;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368d; eslint.config.mjs
+. 2026-05-07 09:07:41.682 type=file;size=1450;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3693; README.md
+. 2026-05-07 09:07:41.682 type=dir;sizd=4096;modify=20260501052024;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba32b1; cgi-bin
+. 2026-05-07 09:07:41.682 type=OS.unix=slink:;size=63;modify=20260501054947;UNIX.mode=0777;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba369e; node_modules
+. 2026-05-07 09:07:41.682 type=file;size=104;modify=20260501053002;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3698; tshirt-shop.code-workspace
+. 2026-05-07 09:07:41.682 type=file;size=480;modify=20260501054901;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba369a; .htaccess
+. 2026-05-07 09:07:41.682 type=file;size=11;modify=20260501030931;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368c; CLAUDE.md
+. 2026-05-07 09:07:41.682 type=file;size=323;modify=20260501054901;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba369c; server.js
+. 2026-05-07 09:07:41.683 type=dir;sizd=4096;modify=20260501052048;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba32b5; .well-known
+. 2026-05-07 09:07:41.683 type=dir;sizd=4096;modify=20260501053748;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5581; data
+. 2026-05-07 09:07:41.683 type=file;size=695;modify=20260501034109;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3690; package.json
+. 2026-05-07 09:07:41.683 type=file;size=0;modify=20260501054946;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba369d; stderr.log
+. 2026-05-07 09:07:41.683 type=file;size=480;modify=20260501030840;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3682; .gitignore
+. 2026-05-07 09:07:41.683 Data connection closed
+. 2026-05-07 09:07:41.683 Directory listing successful
+. 2026-05-07 09:07:41.683 Reading symlink "node_modules".
+. 2026-05-07 09:07:41.683 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:41.683 app;D;0;2026-05-01T05:37:46.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.683 next.config.mjs;-;121;2026-05-01T03:23:01.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.683 public;D;0;2026-05-01T05:37:51.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.683 tsconfig.tsbuildinfo;-;154812;2026-05-01T03:17:27.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.683 lib;D;0;2026-05-01T05:37:49.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.683 tsconfig.json;-;714;2026-05-01T03:24:56.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 components;D;0;2026-05-01T05:37:48.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.684 .env.local;-;729;2026-05-01T03:17:01.000Z;4;"1207" [0];"1197" [0];rw-r--r--;2
+. 2026-05-07 09:07:41.684 AGENTS.md;-;327;2026-05-01T03:09:31.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 tmp;D;0;2026-05-01T05:49:01.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.684 next-env.d.ts;-;201;2026-05-01T03:24:56.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 package-lock.json;-;397153;2026-05-01T03:41:09.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 tailwind.config.js;-;349;2026-05-01T03:41:21.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 postcss.config.mjs;-;105;2026-05-01T03:22:00.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 eslint.config.mjs;-;465;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 README.md;-;1450;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 cgi-bin;D;0;2026-05-01T05:20:24.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.684 node_modules;L;0;2026-05-01T05:49:47.000Z;4;"1207" [0];"1197" [0];rwxrwxrwx;1
+. 2026-05-07 09:07:41.684 tshirt-shop.code-workspace;-;104;2026-05-01T05:30:02.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 .htaccess;-;480;2026-05-01T05:49:01.000Z;4;"1207" [0];"1197" [0];rw-r--r--;2
+. 2026-05-07 09:07:41.684 CLAUDE.md;-;11;2026-05-01T03:09:31.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 server.js;-;323;2026-05-01T05:49:01.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 .well-known;D;0;2026-05-01T05:20:48.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;2
+. 2026-05-07 09:07:41.684 data;D;0;2026-05-01T05:37:48.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.684 package.json;-;695;2026-05-01T03:41:09.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 stderr.log;-;0;2026-05-01T05:49:46.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.684 .gitignore;-;480;2026-05-01T03:08:40.000Z;4;"1207" [0];"1197" [0];rw-r--r--;2
+. 2026-05-07 09:07:41.702 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app' and remote directory '/ding-tee.dovara.biz/app', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\.' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\..' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\api' [2026-05-01T06:01:39.025Z] [0] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\cart' [2026-05-01T03:15:57.953Z] [0] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\checkout' [2026-05-01T03:16:39.513Z] [0] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\favicon.ico' [2026-05-01T03:08:40.680Z] [25931] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\globals.css' [2026-05-01T03:41:21.266Z] [209] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\layout.tsx' [2026-05-07T15:51:38.656Z] [1315] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\order-success' [2026-05-01T03:16:55.197Z] [0] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\page.tsx' [2026-05-05T16:53:05.256Z] [1061] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\products' [2026-05-01T03:15:13.702Z] [0] included to synchronization
+. 2026-05-07 09:07:41.704 Local file 'C:\projects\tshirt-shop\app\return-policy' [2026-05-07T15:50:38.511Z] [0] included to synchronization
+. 2026-05-07 09:07:41.705 Retrieving directory listing...
+> 2026-05-07 09:07:41.705 CWD /ding-tee.dovara.biz/app
+< 2026-05-07 09:07:41.734 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-05-07 09:07:41.734 PWD
+< 2026-05-07 09:07:41.755 257 "/ding-tee.dovara.biz/app" is your current location
+> 2026-05-07 09:07:41.756 TYPE A
+< 2026-05-07 09:07:41.782 200 TYPE is now ASCII
+> 2026-05-07 09:07:41.782 PASV
+< 2026-05-07 09:07:41.809 227 Entering Passive Mode (198,54,115,130,47,28)
+> 2026-05-07 09:07:41.809 MLSD
+. 2026-05-07 09:07:41.809 Connecting to 198.54.115.130:12060 ...
+< 2026-05-07 09:07:41.861 150 Accepted data connection
+< 2026-05-07 09:07:41.861 226 11 matches total
+. 2026-05-07 09:07:41.861 type=file;size=25931;modify=20260501030840;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3688; favicon.ico
+. 2026-05-07 09:07:41.861 type=pdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; ..
+. 2026-05-07 09:07:41.861 type=cdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; .
+. 2026-05-07 09:07:41.861 type=file;size=964;modify=20260501031456;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368b; page.tsx
+. 2026-05-07 09:07:41.861 type=dir;sizd=4096;modify=20260501053744;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3685; api
+. 2026-05-07 09:07:41.861 type=dir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5575; products
+. 2026-05-07 09:07:41.861 type=dir;sizd=4096;modify=20260501053745;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc556d; checkout
+. 2026-05-07 09:07:41.861 type=dir;sizd=4096;modify=20260501053745;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5569; cart
+. 2026-05-07 09:07:41.861 type=file;size=1089;modify=20260501034143;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba368a; layout.tsx
+. 2026-05-07 09:07:41.861 type=file;size=209;modify=20260501034121;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3689; globals.css
+. 2026-05-07 09:07:41.861 type=dir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5571; order-success
+. 2026-05-07 09:07:41.861 Data connection closed
+. 2026-05-07 09:07:41.861 Directory listing successful
+. 2026-05-07 09:07:41.861 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:41.861 favicon.ico;-;25931;2026-05-01T03:08:40.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.861 page.tsx;-;964;2026-05-01T03:14:56.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.861 api;D;0;2026-05-01T05:37:44.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.862 products;D;0;2026-05-01T05:37:46.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.862 checkout;D;0;2026-05-01T05:37:45.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.862 cart;D;0;2026-05-01T05:37:45.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.862 layout.tsx;-;1089;2026-05-01T03:41:43.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.862 globals.css;-;209;2026-05-01T03:41:21.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:41.862 order-success;D;0;2026-05-01T05:37:46.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:41.874 Local file 'C:\projects\tshirt-shop\app\page.tsx' [2026-05-05T16:53:05.256Z] [1061] is modified comparing to remote file '/ding-tee.dovara.biz/app/page.tsx' [2026-05-01T03:14:56.000Z] [964]
+. 2026-05-07 09:07:41.874 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\api' and remote directory '/ding-tee.dovara.biz/app/api', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:41.875 Local file 'C:\projects\tshirt-shop\app\api\.' [2026-05-01T06:01:39.025Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.875 Local file 'C:\projects\tshirt-shop\app\api\..' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:41.875 Local file 'C:\projects\tshirt-shop\app\api\checkout' [2026-05-01T03:16:12.963Z] [0] included to synchronization
+. 2026-05-07 09:07:41.875 Local file 'C:\projects\tshirt-shop\app\api\webhook' [2026-05-02T16:44:08.217Z] [0] included to synchronization
+. 2026-05-07 09:07:41.878 Retrieving directory listing...
+> 2026-05-07 09:07:41.878 CWD /ding-tee.dovara.biz/app/api
+< 2026-05-07 09:07:41.901 250 OK. Current directory is /ding-tee.dovara.biz/app/api
+> 2026-05-07 09:07:41.901 PWD
+< 2026-05-07 09:07:41.923 257 "/ding-tee.dovara.biz/app/api" is your current location
+> 2026-05-07 09:07:41.923 TYPE A
+< 2026-05-07 09:07:41.943 200 TYPE is now ASCII
+> 2026-05-07 09:07:41.943 PASV
+< 2026-05-07 09:07:41.971 227 Entering Passive Mode (198,54,115,130,47,87)
+> 2026-05-07 09:07:41.971 MLSD
+. 2026-05-07 09:07:41.971 Connecting to 198.54.115.130:12119 ...
+< 2026-05-07 09:07:42.024 150 Accepted data connection
+< 2026-05-07 09:07:42.024 226 3 matches total
+. 2026-05-07 09:07:42.024 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; ..
+. 2026-05-07 09:07:42.024 type=cdir;sizd=4096;modify=20260501053744;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3685; .
+. 2026-05-07 09:07:42.024 type=dir;sizd=4096;modify=20260501053744;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3686; checkout
+. 2026-05-07 09:07:42.025 Data connection closed
+. 2026-05-07 09:07:42.025 Directory listing successful
+. 2026-05-07 09:07:42.025 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.025 checkout;D;0;2026-05-01T05:37:44.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:42.025 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\api\checkout' and remote directory '/ding-tee.dovara.biz/app/api/checkout', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.026 Local file 'C:\projects\tshirt-shop\app\api\checkout\.' [2026-05-01T03:16:12.963Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.026 Local file 'C:\projects\tshirt-shop\app\api\checkout\..' [2026-05-01T06:01:39.025Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.026 Local file 'C:\projects\tshirt-shop\app\api\checkout\route.ts' [2026-05-02T17:48:12.501Z] [2145] included to synchronization
+. 2026-05-07 09:07:42.026 Retrieving directory listing...
+> 2026-05-07 09:07:42.026 CWD /ding-tee.dovara.biz/app/api/checkout
+< 2026-05-07 09:07:42.061 250 OK. Current directory is /ding-tee.dovara.biz/app/api/checkout
+> 2026-05-07 09:07:42.061 PWD
+< 2026-05-07 09:07:42.088 257 "/ding-tee.dovara.biz/app/api/checkout" is your current location
+> 2026-05-07 09:07:42.088 TYPE A
+< 2026-05-07 09:07:42.111 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.111 PASV
+< 2026-05-07 09:07:42.134 227 Entering Passive Mode (198,54,115,130,47,7)
+> 2026-05-07 09:07:42.134 MLSD
+. 2026-05-07 09:07:42.134 Connecting to 198.54.115.130:12039 ...
+< 2026-05-07 09:07:42.189 150 Accepted data connection
+< 2026-05-07 09:07:42.189 226 3 matches total
+. 2026-05-07 09:07:42.189 type=pdir;sizd=4096;modify=20260501053744;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3685; ..
+. 2026-05-07 09:07:42.189 type=cdir;sizd=4096;modify=20260501053744;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3686; .
+. 2026-05-07 09:07:42.189 type=file;size=2086;modify=20260501031613;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3687; route.ts
+. 2026-05-07 09:07:42.189 Data connection closed
+. 2026-05-07 09:07:42.189 Directory listing successful
+. 2026-05-07 09:07:42.189 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.189 route.ts;-;2086;2026-05-01T03:16:13.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:42.195 Local file 'C:\projects\tshirt-shop\app\api\checkout\route.ts' [2026-05-02T17:48:12.501Z] [2145] is modified comparing to remote file '/ding-tee.dovara.biz/app/api/checkout/route.ts' [2026-05-01T03:16:13.000Z] [2086]
+. 2026-05-07 09:07:42.195 Local file 'C:\projects\tshirt-shop\app\api\webhook' [2026-05-02T16:44:08.217Z] [0] is new
+. 2026-05-07 09:07:42.196 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\products' and remote directory '/ding-tee.dovara.biz/app/products', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.196 Local file 'C:\projects\tshirt-shop\app\products\.' [2026-05-01T03:15:13.702Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.196 Local file 'C:\projects\tshirt-shop\app\products\..' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.196 Local file 'C:\projects\tshirt-shop\app\products\[id]' [2026-05-01T03:15:31.569Z] [0] included to synchronization
+. 2026-05-07 09:07:42.196 Retrieving directory listing...
+> 2026-05-07 09:07:42.196 CWD /ding-tee.dovara.biz/app/products
+< 2026-05-07 09:07:42.224 250 OK. Current directory is /ding-tee.dovara.biz/app/products
+> 2026-05-07 09:07:42.224 PWD
+< 2026-05-07 09:07:42.246 257 "/ding-tee.dovara.biz/app/products" is your current location
+> 2026-05-07 09:07:42.246 TYPE A
+< 2026-05-07 09:07:42.269 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.269 PASV
+< 2026-05-07 09:07:42.297 227 Entering Passive Mode (198,54,115,130,47,29)
+> 2026-05-07 09:07:42.297 MLSD
+. 2026-05-07 09:07:42.297 Connecting to 198.54.115.130:12061 ...
+< 2026-05-07 09:07:42.349 150 Accepted data connection
+< 2026-05-07 09:07:42.349 226 3 matches total
+. 2026-05-07 09:07:42.349 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; ..
+. 2026-05-07 09:07:42.349 type=cdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5575; .
+. 2026-05-07 09:07:42.349 type=dir;sizd=4096;modify=20260501053747;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5576; [id]
+. 2026-05-07 09:07:42.349 Data connection closed
+. 2026-05-07 09:07:42.349 Directory listing successful
+. 2026-05-07 09:07:42.349 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.349 [id];D;0;2026-05-01T05:37:47.000Z;4;"1207" [0];"1197" [0];rwxr-xr-x;0
+. 2026-05-07 09:07:42.349 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\products\[id]' and remote directory '/ding-tee.dovara.biz/app/products/[id]', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.350 Local file 'C:\projects\tshirt-shop\app\products\[id]\.' [2026-05-01T03:15:31.569Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.351 Local file 'C:\projects\tshirt-shop\app\products\[id]\..' [2026-05-01T03:15:13.702Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.351 Local file 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' [2026-05-07T15:51:05.871Z] [6920] included to synchronization
+. 2026-05-07 09:07:42.351 Local file 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' [2026-05-07T15:51:38.648Z] [2626] included to synchronization
+. 2026-05-07 09:07:42.351 Retrieving directory listing...
+> 2026-05-07 09:07:42.351 CWD /ding-tee.dovara.biz/app/products/[id]
+< 2026-05-07 09:07:42.380 250 OK. Current directory is /ding-tee.dovara.biz/app/products/[id]
+> 2026-05-07 09:07:42.380 PWD
+< 2026-05-07 09:07:42.406 257 "/ding-tee.dovara.biz/app/products/[id]" is your current location
+> 2026-05-07 09:07:42.406 TYPE A
+< 2026-05-07 09:07:42.432 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.432 PASV
+< 2026-05-07 09:07:42.454 227 Entering Passive Mode (198,54,115,130,47,63)
+> 2026-05-07 09:07:42.454 MLSD
+. 2026-05-07 09:07:42.454 Connecting to 198.54.115.130:12095 ...
+< 2026-05-07 09:07:42.514 150 Accepted data connection
+< 2026-05-07 09:07:42.514 226 4 matches total
+. 2026-05-07 09:07:42.514 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5575; ..
+. 2026-05-07 09:07:42.514 type=cdir;sizd=4096;modify=20260501053747;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5576; .
+. 2026-05-07 09:07:42.514 type=file;size=1870;modify=20260501032148;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5578; page.tsx
+. 2026-05-07 09:07:42.514 type=file;size=4872;modify=20260501031531;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5577; AddToCartSection.tsx
+. 2026-05-07 09:07:42.514 Data connection closed
+. 2026-05-07 09:07:42.514 Directory listing successful
+. 2026-05-07 09:07:42.514 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.514 page.tsx;-;1870;2026-05-01T03:21:48.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:42.514 AddToCartSection.tsx;-;4872;2026-05-01T03:15:31.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:42.515 Local file 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' [2026-05-07T15:51:38.648Z] [2626] is modified comparing to remote file '/ding-tee.dovara.biz/app/products/[id]/page.tsx' [2026-05-01T03:21:48.000Z] [1870]
+. 2026-05-07 09:07:42.515 Local file 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' [2026-05-07T15:51:05.871Z] [6920] is modified comparing to remote file '/ding-tee.dovara.biz/app/products/[id]/AddToCartSection.tsx' [2026-05-01T03:15:31.000Z] [4872]
+. 2026-05-07 09:07:42.515 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\checkout' and remote directory '/ding-tee.dovara.biz/app/checkout', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.516 Local file 'C:\projects\tshirt-shop\app\checkout\.' [2026-05-01T03:16:39.513Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.516 Local file 'C:\projects\tshirt-shop\app\checkout\..' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.516 Local file 'C:\projects\tshirt-shop\app\checkout\page.tsx' [2026-05-07T15:51:22.312Z] [9733] included to synchronization
+. 2026-05-07 09:07:42.516 Retrieving directory listing...
+> 2026-05-07 09:07:42.516 CWD /ding-tee.dovara.biz/app/checkout
+< 2026-05-07 09:07:42.543 250 OK. Current directory is /ding-tee.dovara.biz/app/checkout
+> 2026-05-07 09:07:42.543 PWD
+< 2026-05-07 09:07:42.574 257 "/ding-tee.dovara.biz/app/checkout" is your current location
+> 2026-05-07 09:07:42.574 TYPE A
+< 2026-05-07 09:07:42.598 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.598 PASV
+< 2026-05-07 09:07:42.627 227 Entering Passive Mode (198,54,115,130,47,39)
+> 2026-05-07 09:07:42.627 MLSD
+. 2026-05-07 09:07:42.627 Connecting to 198.54.115.130:12071 ...
+< 2026-05-07 09:07:42.683 150 Accepted data connection
+< 2026-05-07 09:07:42.683 226 3 matches total
+. 2026-05-07 09:07:42.683 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; ..
+. 2026-05-07 09:07:42.683 type=cdir;sizd=4096;modify=20260501053745;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc556d; .
+. 2026-05-07 09:07:42.683 type=file;size=8142;modify=20260501031639;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5570; page.tsx
+. 2026-05-07 09:07:42.683 Data connection closed
+. 2026-05-07 09:07:42.683 Directory listing successful
+. 2026-05-07 09:07:42.683 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.683 page.tsx;-;8142;2026-05-01T03:16:39.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:42.683 Local file 'C:\projects\tshirt-shop\app\checkout\page.tsx' [2026-05-07T15:51:22.312Z] [9733] is modified comparing to remote file '/ding-tee.dovara.biz/app/checkout/page.tsx' [2026-05-01T03:16:39.000Z] [8142]
+. 2026-05-07 09:07:42.683 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\cart' and remote directory '/ding-tee.dovara.biz/app/cart', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.684 Local file 'C:\projects\tshirt-shop\app\cart\.' [2026-05-01T03:15:57.953Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.684 Local file 'C:\projects\tshirt-shop\app\cart\..' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.684 Local file 'C:\projects\tshirt-shop\app\cart\page.tsx' [2026-05-01T03:15:58.067Z] [5848] included to synchronization
+. 2026-05-07 09:07:42.685 Retrieving directory listing...
+> 2026-05-07 09:07:42.685 CWD /ding-tee.dovara.biz/app/cart
+< 2026-05-07 09:07:42.712 250 OK. Current directory is /ding-tee.dovara.biz/app/cart
+> 2026-05-07 09:07:42.712 PWD
+< 2026-05-07 09:07:42.733 257 "/ding-tee.dovara.biz/app/cart" is your current location
+> 2026-05-07 09:07:42.733 TYPE A
+< 2026-05-07 09:07:42.756 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.757 PASV
+< 2026-05-07 09:07:42.781 227 Entering Passive Mode (198,54,115,130,47,7)
+> 2026-05-07 09:07:42.781 MLSD
+. 2026-05-07 09:07:42.781 Connecting to 198.54.115.130:12039 ...
+< 2026-05-07 09:07:42.832 150 Accepted data connection
+< 2026-05-07 09:07:42.832 226 3 matches total
+. 2026-05-07 09:07:42.832 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; ..
+. 2026-05-07 09:07:42.832 type=cdir;sizd=4096;modify=20260501053745;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5569; .
+. 2026-05-07 09:07:42.832 type=file;size=5848;modify=20260501031558;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc556a; page.tsx
+. 2026-05-07 09:07:42.832 Data connection closed
+. 2026-05-07 09:07:42.832 Directory listing successful
+. 2026-05-07 09:07:42.832 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:42.832 page.tsx;-;5848;2026-05-01T03:15:58.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:42.833 Local file 'C:\projects\tshirt-shop\app\layout.tsx' [2026-05-07T15:51:38.656Z] [1315] is modified comparing to remote file '/ding-tee.dovara.biz/app/layout.tsx' [2026-05-01T03:41:43.000Z] [1089]
+. 2026-05-07 09:07:42.839 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\app\order-success' and remote directory '/ding-tee.dovara.biz/app/order-success', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:42.840 Local file 'C:\projects\tshirt-shop\app\order-success\.' [2026-05-01T03:16:55.197Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.840 Local file 'C:\projects\tshirt-shop\app\order-success\..' [2026-05-07T15:50:38.509Z] [0] excluded from synchronization
+. 2026-05-07 09:07:42.840 Local file 'C:\projects\tshirt-shop\app\order-success\page.tsx' [2026-05-02T17:36:58.182Z] [4250] included to synchronization
+. 2026-05-07 09:07:42.840 Retrieving directory listing...
+> 2026-05-07 09:07:42.840 CWD /ding-tee.dovara.biz/app/order-success
+< 2026-05-07 09:07:42.873 250 OK. Current directory is /ding-tee.dovara.biz/app/order-success
+> 2026-05-07 09:07:42.875 PWD
+< 2026-05-07 09:07:42.898 257 "/ding-tee.dovara.biz/app/order-success" is your current location
+> 2026-05-07 09:07:42.898 TYPE A
+< 2026-05-07 09:07:42.925 200 TYPE is now ASCII
+> 2026-05-07 09:07:42.925 PASV
+< 2026-05-07 09:07:42.951 227 Entering Passive Mode (198,54,115,130,47,67)
+> 2026-05-07 09:07:42.951 MLSD
+. 2026-05-07 09:07:42.951 Connecting to 198.54.115.130:12099 ...
+< 2026-05-07 09:07:43.006 150 Accepted data connection
+< 2026-05-07 09:07:43.007 226 3 matches total
+. 2026-05-07 09:07:43.007 type=pdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4ba3684; ..
+. 2026-05-07 09:07:43.007 type=cdir;sizd=4096;modify=20260501053746;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5571; .
+. 2026-05-07 09:07:43.007 type=file;size=4133;modify=20260501031655;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5573; page.tsx
+. 2026-05-07 09:07:43.007 Data connection closed
+. 2026-05-07 09:07:43.007 Directory listing successful
+. 2026-05-07 09:07:43.007 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:43.007 page.tsx;-;4133;2026-05-01T03:16:55.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.007 Local file 'C:\projects\tshirt-shop\app\order-success\page.tsx' [2026-05-02T17:36:58.182Z] [4250] is modified comparing to remote file '/ding-tee.dovara.biz/app/order-success/page.tsx' [2026-05-01T03:16:55.000Z] [4133]
+. 2026-05-07 09:07:43.007 Local file 'C:\projects\tshirt-shop\app\return-policy' [2026-05-07T15:50:38.511Z] [0] is new
+. 2026-05-07 09:07:43.009 Local file 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-02T17:36:58.179Z] [140] is modified comparing to remote file '/ding-tee.dovara.biz/next.config.mjs' [2026-05-01T03:23:01.000Z] [121]
+. 2026-05-07 09:07:43.009 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\public' and remote directory '/ding-tee.dovara.biz/public', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\.' [2026-05-01T03:08:42.785Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\..' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\file.svg' [2026-05-01T03:08:41.296Z] [391] included to synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\globe.svg' [2026-05-01T03:08:41.321Z] [1035] included to synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\next.svg' [2026-05-01T03:08:41.349Z] [1375] included to synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\vercel.svg' [2026-05-01T03:08:41.370Z] [128] included to synchronization
+. 2026-05-07 09:07:43.010 Local file 'C:\projects\tshirt-shop\public\window.svg' [2026-05-01T03:08:41.392Z] [385] included to synchronization
+. 2026-05-07 09:07:43.011 Retrieving directory listing...
+> 2026-05-07 09:07:43.011 CWD /ding-tee.dovara.biz/public
+< 2026-05-07 09:07:43.042 250 OK. Current directory is /ding-tee.dovara.biz/public
+> 2026-05-07 09:07:43.042 PWD
+< 2026-05-07 09:07:43.073 257 "/ding-tee.dovara.biz/public" is your current location
+> 2026-05-07 09:07:43.073 TYPE A
+< 2026-05-07 09:07:43.095 200 TYPE is now ASCII
+> 2026-05-07 09:07:43.096 PASV
+< 2026-05-07 09:07:43.122 227 Entering Passive Mode (198,54,115,130,47,57)
+> 2026-05-07 09:07:43.122 MLSD
+. 2026-05-07 09:07:43.122 Connecting to 198.54.115.130:12089 ...
+< 2026-05-07 09:07:43.175 150 Accepted data connection
+< 2026-05-07 09:07:43.175 226 7 matches total
+. 2026-05-07 09:07:43.176 type=pdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; ..
+. 2026-05-07 09:07:43.176 type=cdir;sizd=4096;modify=20260501053751;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a8; .
+. 2026-05-07 09:07:43.176 type=file;size=1375;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56ac; next.svg
+. 2026-05-07 09:07:43.176 type=file;size=1035;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56aa; globe.svg
+. 2026-05-07 09:07:43.176 type=file;size=385;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56ae; window.svg
+. 2026-05-07 09:07:43.176 type=file;size=391;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a9; file.svg
+. 2026-05-07 09:07:43.176 type=file;size=128;modify=20260501030841;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56ad; vercel.svg
+. 2026-05-07 09:07:43.176 Data connection closed
+. 2026-05-07 09:07:43.176 Directory listing successful
+. 2026-05-07 09:07:43.177 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:43.177 next.svg;-;1375;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.177 globe.svg;-;1035;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.177 window.svg;-;385;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.177 file.svg;-;391;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.177 vercel.svg;-;128;2026-05-01T03:08:41.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.180 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\lib' and remote directory '/ding-tee.dovara.biz/lib', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:43.181 Local file 'C:\projects\tshirt-shop\lib\.' [2026-05-01T03:14:10.264Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.181 Local file 'C:\projects\tshirt-shop\lib\..' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.181 Local file 'C:\projects\tshirt-shop\lib\cart-context.tsx' [2026-05-01T03:14:10.361Z] [4020] included to synchronization
+. 2026-05-07 09:07:43.181 Local file 'C:\projects\tshirt-shop\lib\stripe.ts' [2026-05-02T17:47:25.845Z] [428] included to synchronization
+. 2026-05-07 09:07:43.181 Local file 'C:\projects\tshirt-shop\lib\types.ts' [2026-05-01T03:13:52.512Z] [416] included to synchronization
+. 2026-05-07 09:07:43.181 Retrieving directory listing...
+> 2026-05-07 09:07:43.181 CWD /ding-tee.dovara.biz/lib
+< 2026-05-07 09:07:43.212 250 OK. Current directory is /ding-tee.dovara.biz/lib
+> 2026-05-07 09:07:43.212 PWD
+< 2026-05-07 09:07:43.235 257 "/ding-tee.dovara.biz/lib" is your current location
+> 2026-05-07 09:07:43.236 TYPE A
+< 2026-05-07 09:07:43.259 200 TYPE is now ASCII
+> 2026-05-07 09:07:43.259 PASV
+< 2026-05-07 09:07:43.284 227 Entering Passive Mode (198,54,115,130,47,12)
+> 2026-05-07 09:07:43.284 MLSD
+. 2026-05-07 09:07:43.284 Connecting to 198.54.115.130:12044 ...
+< 2026-05-07 09:07:43.335 150 Accepted data connection
+< 2026-05-07 09:07:43.335 226 5 matches total
+. 2026-05-07 09:07:43.335 type=pdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; ..
+. 2026-05-07 09:07:43.335 type=cdir;sizd=4096;modify=20260501053749;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a4; .
+. 2026-05-07 09:07:43.335 type=file;size=416;modify=20260501031352;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a7; types.ts
+. 2026-05-07 09:07:43.335 type=file;size=4020;modify=20260501031410;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a5; cart-context.tsx
+. 2026-05-07 09:07:43.335 type=file;size=118;modify=20260501031356;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc56a6; stripe.ts
+. 2026-05-07 09:07:43.335 Data connection closed
+. 2026-05-07 09:07:43.335 Directory listing successful
+. 2026-05-07 09:07:43.335 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:43.335 types.ts;-;416;2026-05-01T03:13:52.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.335 cart-context.tsx;-;4020;2026-05-01T03:14:10.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.335 stripe.ts;-;118;2026-05-01T03:13:56.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.336 Local file 'C:\projects\tshirt-shop\lib\stripe.ts' [2026-05-02T17:47:25.845Z] [428] is modified comparing to remote file '/ding-tee.dovara.biz/lib/stripe.ts' [2026-05-01T03:13:56.000Z] [118]
+. 2026-05-07 09:07:43.342 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\components' and remote directory '/ding-tee.dovara.biz/components', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\.' [2026-05-05T16:40:49.247Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\..' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' [2026-05-02T06:54:20.857Z] [408] included to synchronization
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\Header.tsx' [2026-05-07T15:51:38.655Z] [2675] included to synchronization
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\NailSpaBooking.tsx' [2026-05-05T16:40:49.305Z] [2409] included to synchronization
+. 2026-05-07 09:07:43.343 Local file 'C:\projects\tshirt-shop\components\ProductCard.tsx' [2026-05-01T03:14:30.096Z] [2189] included to synchronization
+. 2026-05-07 09:07:43.343 Retrieving directory listing...
+> 2026-05-07 09:07:43.343 CWD /ding-tee.dovara.biz/components
+< 2026-05-07 09:07:43.370 250 OK. Current directory is /ding-tee.dovara.biz/components
+> 2026-05-07 09:07:43.370 PWD
+< 2026-05-07 09:07:43.398 257 "/ding-tee.dovara.biz/components" is your current location
+> 2026-05-07 09:07:43.398 TYPE A
+< 2026-05-07 09:07:43.428 200 TYPE is now ASCII
+> 2026-05-07 09:07:43.428 PASV
+< 2026-05-07 09:07:43.457 227 Entering Passive Mode (198,54,115,130,47,9)
+> 2026-05-07 09:07:43.457 MLSD
+. 2026-05-07 09:07:43.457 Connecting to 198.54.115.130:12041 ...
+< 2026-05-07 09:07:43.509 150 Accepted data connection
+< 2026-05-07 09:07:43.509 226 5 matches total
+. 2026-05-07 09:07:43.509 type=file;size=2485;modify=20260501034205;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc557c; Header.tsx
+. 2026-05-07 09:07:43.509 type=pdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; ..
+. 2026-05-07 09:07:43.509 type=cdir;sizd=4096;modify=20260501053748;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5579; .
+. 2026-05-07 09:07:43.509 type=file;size=322;modify=20260501034130;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc557b; BootstrapInit.tsx
+. 2026-05-07 09:07:43.509 type=file;size=2189;modify=20260501031430;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc557d; ProductCard.tsx
+. 2026-05-07 09:07:43.509 Data connection closed
+. 2026-05-07 09:07:43.509 Directory listing successful
+. 2026-05-07 09:07:43.509 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:43.509 Header.tsx;-;2485;2026-05-01T03:42:05.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.509 BootstrapInit.tsx;-;322;2026-05-01T03:41:30.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.509 ProductCard.tsx;-;2189;2026-05-01T03:14:30.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.510 Local file 'C:\projects\tshirt-shop\components\Header.tsx' [2026-05-07T15:51:38.655Z] [2675] is modified comparing to remote file '/ding-tee.dovara.biz/components/Header.tsx' [2026-05-01T03:42:05.000Z] [2485]
+. 2026-05-07 09:07:43.510 Local file 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' [2026-05-02T06:54:20.857Z] [408] is modified comparing to remote file '/ding-tee.dovara.biz/components/BootstrapInit.tsx' [2026-05-01T03:41:30.000Z] [322]
+. 2026-05-07 09:07:43.510 Local file 'C:\projects\tshirt-shop\components\NailSpaBooking.tsx' [2026-05-05T16:40:49.305Z] [2409] is new
+. 2026-05-07 09:07:43.510 Remote file '/ding-tee.dovara.biz/.env.local' [2026-05-01T03:17:01.000Z] [729] excluded from synchronization
+. 2026-05-07 09:07:43.512 Remote file '/ding-tee.dovara.biz/tmp' [2026-05-01T05:49:01.000Z] [0] is new
+. 2026-05-07 09:07:43.512 Local file 'C:\projects\tshirt-shop\package-lock.json' [2026-05-02T07:09:40.828Z] [393163] is modified comparing to remote file '/ding-tee.dovara.biz/package-lock.json' [2026-05-01T03:41:09.000Z] [397153]
+. 2026-05-07 09:07:43.518 Local file 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-02T17:36:58.170Z] [542] is modified comparing to remote file '/ding-tee.dovara.biz/eslint.config.mjs' [2026-05-01T03:08:41.000Z] [465]
+. 2026-05-07 09:07:43.518 Remote file '/ding-tee.dovara.biz/cgi-bin' [2026-05-01T05:20:24.000Z] [0] is new
+. 2026-05-07 09:07:43.518 Remote file '/ding-tee.dovara.biz/node_modules' [2026-05-01T05:49:47.000Z] [0] - Link to: '' [n/a] [0] excluded from synchronization
+. 2026-05-07 09:07:43.522 Remote file '/ding-tee.dovara.biz/.htaccess' [2026-05-01T05:49:01.000Z] [480] is new
+. 2026-05-07 09:07:43.522 Remote file '/ding-tee.dovara.biz/server.js' [2026-05-01T05:49:01.000Z] [323] is modified comparing to local file 'C:\projects\tshirt-shop\server.js' [2026-05-01T05:44:54.473Z] [452]
+. 2026-05-07 09:07:43.522 Remote file '/ding-tee.dovara.biz/.well-known' [2026-05-01T05:20:48.000Z] [0] is new
+. 2026-05-07 09:07:43.522 Collecting synchronization list for local directory 'C:\projects\tshirt-shop\data' and remote directory '/ding-tee.dovara.biz/data', mode = Remote, params = 0x402 (NoConfirmation, BySize), file mask = '|.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example'
+. 2026-05-07 09:07:43.523 Local file 'C:\projects\tshirt-shop\data\.' [2026-05-01T03:13:48.109Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.523 Local file 'C:\projects\tshirt-shop\data\..' [2026-05-02T17:26:14.780Z] [0] excluded from synchronization
+. 2026-05-07 09:07:43.523 Local file 'C:\projects\tshirt-shop\data\products.json' [2026-05-01T03:13:48.292Z] [1760] included to synchronization
+. 2026-05-07 09:07:43.523 Retrieving directory listing...
+> 2026-05-07 09:07:43.523 CWD /ding-tee.dovara.biz/data
+< 2026-05-07 09:07:43.547 250 OK. Current directory is /ding-tee.dovara.biz/data
+> 2026-05-07 09:07:43.548 PWD
+< 2026-05-07 09:07:43.570 257 "/ding-tee.dovara.biz/data" is your current location
+> 2026-05-07 09:07:43.570 TYPE A
+< 2026-05-07 09:07:43.596 200 TYPE is now ASCII
+> 2026-05-07 09:07:43.596 PASV
+< 2026-05-07 09:07:43.621 227 Entering Passive Mode (198,54,115,130,47,71)
+> 2026-05-07 09:07:43.621 MLSD
+. 2026-05-07 09:07:43.621 Connecting to 198.54.115.130:12103 ...
+< 2026-05-07 09:07:43.678 150 Accepted data connection
+< 2026-05-07 09:07:43.678 226 3 matches total
+. 2026-05-07 09:07:43.678 type=pdir;sizd=4096;modify=20260501054947;UNIX.mode=0750;UNIX.uid=1207;UNIX.gid=99;unique=811g4ba32a7; ..
+. 2026-05-07 09:07:43.678 type=cdir;sizd=4096;modify=20260501053748;UNIX.mode=0755;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5581; .
+. 2026-05-07 09:07:43.678 type=file;size=1760;modify=20260501031348;UNIX.mode=0644;UNIX.uid=1207;UNIX.gid=1197;unique=811g4bc5582; products.json
+. 2026-05-07 09:07:43.678 Data connection closed
+. 2026-05-07 09:07:43.679 Directory listing successful
+. 2026-05-07 09:07:43.679 ..;D;0;1899-12-30T08:00:00.000Z;0;"" [0];"" [0];---------;0
+. 2026-05-07 09:07:43.679 products.json;-;1760;2026-05-01T03:13:48.000Z;4;"1207" [0];"1197" [0];rw-r--r--;0
+. 2026-05-07 09:07:43.679 Local file 'C:\projects\tshirt-shop\package.json' [2026-05-02T17:36:58.170Z] [725] is modified comparing to remote file '/ding-tee.dovara.biz/package.json' [2026-05-01T03:41:09.000Z] [695]
+. 2026-05-07 09:07:43.689 Remote file '/ding-tee.dovara.biz/stderr.log' [2026-05-01T05:49:46.000Z] [0] is new
+. 2026-05-07 09:07:43.691 Local file 'C:\projects\tshirt-shop\.gitignore' [2026-05-02T17:17:55.070Z] [504] is modified comparing to remote file '/ding-tee.dovara.biz/.gitignore' [2026-05-01T03:08:40.000Z] [480]
+. 2026-05-07 09:07:43.691 Local file 'C:\projects\tshirt-shop\.vercel' [2026-05-02T17:17:48.651Z] [0] is new
+. 2026-05-07 09:07:43.691 Local file 'C:\projects\tshirt-shop\vercel.json' [2026-05-02T17:36:58.170Z] [31] is new
+. 2026-05-07 09:07:43.691 Local file 'C:\projects\tshirt-shop\vercel-build.log' [2026-05-02T17:49:58.142Z] [8328] is new
+< 2026-05-07 09:07:43.691 Script: Synchronizing...
+. 2026-05-07 09:07:43.693 Synchronizing local directory 'C:\projects\tshirt-shop\' with remote directory '/ding-tee.dovara.biz/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:43.693 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 504
+. 2026-05-07 09:07:43.693   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:43.693   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:43.693   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:43.693 File: 'C:\projects\tshirt-shop\.gitignore' [2026-05-02T17:17:55.070Z] [504]
+< 2026-05-07 09:07:43.694 Script: Local 'C:\projects\tshirt-shop' => Remote '/ding-tee.dovara.biz'
+. 2026-05-07 09:07:43.694 Copying "C:\projects\tshirt-shop\.gitignore" to remote directory started.
+. 2026-05-07 09:07:43.694 Binary transfer mode selected.
+. 2026-05-07 09:07:43.695 Starting upload of C:\projects\tshirt-shop\.gitignore
+> 2026-05-07 09:07:43.695 CWD /ding-tee.dovara.biz
+< 2026-05-07 09:07:43.720 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-05-07 09:07:43.720 PWD
+< 2026-05-07 09:07:43.753 257 "/ding-tee.dovara.biz" is your current location
+> 2026-05-07 09:07:43.753 TYPE I
+< 2026-05-07 09:07:43.778 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:43.778 PASV
+< 2026-05-07 09:07:43.804 227 Entering Passive Mode (198,54,115,130,47,16)
+> 2026-05-07 09:07:43.805 STOR .gitignore
+. 2026-05-07 09:07:43.805 Connecting to 198.54.115.130:12048 ...
+< 2026-05-07 09:07:43.864 150 Accepted data connection
+< 2026-05-07 09:07:43.893 226-File successfully transferred
+< 2026-05-07 09:07:43.893 226 0.030 seconds (measured here), 16.23 Kbytes per second
+> 2026-05-07 09:07:43.893 MFMT 20260502171755 .gitignore
+< 2026-05-07 09:07:43.927 213 UTIME OK
+. 2026-05-07 09:07:43.927 Upload successful
+. 2026-05-07 09:07:43.928 Transfer done: 'C:\projects\tshirt-shop\.gitignore' => '/ding-tee.dovara.biz/.gitignore' [504]
+. 2026-05-07 09:07:43.928 Copying finished: Transferred: 504, Elapsed: 0:00:00, CPS: 2,144/s
+. 2026-05-07 09:07:43.929 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/"
+. 2026-05-07 09:07:43.929   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:43.929   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:43.929   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:43.929 File: 'C:\projects\tshirt-shop\.vercel' [2026-05-02T17:17:48.651Z] [0]
+. 2026-05-07 09:07:43.930 File: 'C:\projects\tshirt-shop\.vercel\project.json' [2026-05-02T17:17:48.650Z] [115]
+. 2026-05-07 09:07:43.943 Copying "C:\projects\tshirt-shop\.vercel\project.json" to remote directory started.
+. 2026-05-07 09:07:43.943 Binary transfer mode selected.
+. 2026-05-07 09:07:43.943 Starting upload of C:\projects\tshirt-shop\.vercel\project.json
+> 2026-05-07 09:07:43.943 CWD /ding-tee.dovara.biz/.vercel
+< 2026-05-07 09:07:43.971 550 Can't change directory to /ding-tee.dovara.biz/.vercel: No such file or directory
+> 2026-05-07 09:07:43.971 CWD /ding-tee.dovara.biz
+< 2026-05-07 09:07:43.999 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-05-07 09:07:43.999 MKD .vercel
+< 2026-05-07 09:07:44.025 257 ".vercel" : The directory was successfully created
+> 2026-05-07 09:07:44.025 CWD /ding-tee.dovara.biz/.vercel
+< 2026-05-07 09:07:44.054 250 OK. Current directory is /ding-tee.dovara.biz/.vercel
+> 2026-05-07 09:07:44.054 PWD
+< 2026-05-07 09:07:44.090 257 "/ding-tee.dovara.biz/.vercel" is your current location
+> 2026-05-07 09:07:44.090 TYPE I
+< 2026-05-07 09:07:44.113 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:44.113 PASV
+< 2026-05-07 09:07:44.132 227 Entering Passive Mode (198,54,115,130,47,28)
+> 2026-05-07 09:07:44.132 STOR project.json
+. 2026-05-07 09:07:44.132 Connecting to 198.54.115.130:12060 ...
+< 2026-05-07 09:07:44.211 150 Accepted data connection
+< 2026-05-07 09:07:44.240 226-File successfully transferred
+< 2026-05-07 09:07:44.240 226 0.038 seconds (measured here), 2.95 Kbytes per second
+> 2026-05-07 09:07:44.240 MFMT 20260502171748 project.json
+< 2026-05-07 09:07:44.268 213 UTIME OK
+. 2026-05-07 09:07:44.268 Upload successful
+. 2026-05-07 09:07:44.269 Transfer done: 'C:\projects\tshirt-shop\.vercel\project.json' => '/ding-tee.dovara.biz/.vercel/project.json' [115]
+. 2026-05-07 09:07:44.270 File: 'C:\projects\tshirt-shop\.vercel\README.txt' [2026-05-02T17:17:48.651Z] [520]
+. 2026-05-07 09:07:44.287 Copying "C:\projects\tshirt-shop\.vercel\README.txt" to remote directory started.
+. 2026-05-07 09:07:44.287 Binary transfer mode selected.
+. 2026-05-07 09:07:44.288 Starting upload of C:\projects\tshirt-shop\.vercel\README.txt
+> 2026-05-07 09:07:44.288 TYPE I
+< 2026-05-07 09:07:44.310 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:44.310 PASV
+< 2026-05-07 09:07:44.336 227 Entering Passive Mode (198,54,115,130,47,6)
+> 2026-05-07 09:07:44.337 STOR README.txt
+. 2026-05-07 09:07:44.337 Connecting to 198.54.115.130:12038 ...
+< 2026-05-07 09:07:44.387 150 Accepted data connection
+< 2026-05-07 09:07:44.410 226-File successfully transferred
+< 2026-05-07 09:07:44.410 226 0.023 seconds (measured here), 21.95 Kbytes per second
+> 2026-05-07 09:07:44.410 MFMT 20260502171748 README.txt
+< 2026-05-07 09:07:44.435 213 UTIME OK
+. 2026-05-07 09:07:44.435 Upload successful
+. 2026-05-07 09:07:44.436 Transfer done: 'C:\projects\tshirt-shop\.vercel\README.txt' => '/ding-tee.dovara.biz/.vercel/README.txt' [520]
+. 2026-05-07 09:07:44.436 Copying finished: Transferred: 1,139, Elapsed: 0:00:00, CPS: 1,532/s
+. 2026-05-07 09:07:44.437 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 542
+. 2026-05-07 09:07:44.437   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:44.437   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:44.437   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:44.437 File: 'C:\projects\tshirt-shop\eslint.config.mjs' [2026-05-02T17:36:58.170Z] [542]
+. 2026-05-07 09:07:44.458 Copying "C:\projects\tshirt-shop\eslint.config.mjs" to remote directory started.
+. 2026-05-07 09:07:44.458 Binary transfer mode selected.
+. 2026-05-07 09:07:44.458 Starting upload of C:\projects\tshirt-shop\eslint.config.mjs
+> 2026-05-07 09:07:44.458 CWD /ding-tee.dovara.biz
+< 2026-05-07 09:07:44.485 250 OK. Current directory is /ding-tee.dovara.biz
+> 2026-05-07 09:07:44.485 PWD
+< 2026-05-07 09:07:44.508 257 "/ding-tee.dovara.biz" is your current location
+> 2026-05-07 09:07:44.508 TYPE I
+< 2026-05-07 09:07:44.531 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:44.531 PASV
+< 2026-05-07 09:07:44.553 227 Entering Passive Mode (198,54,115,130,47,81)
+> 2026-05-07 09:07:44.554 STOR eslint.config.mjs
+. 2026-05-07 09:07:44.554 Connecting to 198.54.115.130:12113 ...
+< 2026-05-07 09:07:44.616 150 Accepted data connection
+< 2026-05-07 09:07:44.648 226-File successfully transferred
+< 2026-05-07 09:07:44.648 226 0.032 seconds (measured here), 16.34 Kbytes per second
+> 2026-05-07 09:07:44.648 MFMT 20260502173658 eslint.config.mjs
+< 2026-05-07 09:07:44.677 213 UTIME OK
+. 2026-05-07 09:07:44.678 Upload successful
+. 2026-05-07 09:07:44.678 Transfer done: 'C:\projects\tshirt-shop\eslint.config.mjs' => '/ding-tee.dovara.biz/eslint.config.mjs' [542]
+. 2026-05-07 09:07:44.678 Copying finished: Transferred: 1,681, Elapsed: 0:00:00, CPS: 1,706/s
+. 2026-05-07 09:07:44.678 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 140
+. 2026-05-07 09:07:44.678   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:44.678   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:44.678   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:44.678 File: 'C:\projects\tshirt-shop\next.config.mjs' [2026-05-02T17:36:58.179Z] [140]
+. 2026-05-07 09:07:44.678 Copying "C:\projects\tshirt-shop\next.config.mjs" to remote directory started.
+. 2026-05-07 09:07:44.678 Binary transfer mode selected.
+. 2026-05-07 09:07:44.679 Starting upload of C:\projects\tshirt-shop\next.config.mjs
+> 2026-05-07 09:07:44.679 TYPE I
+< 2026-05-07 09:07:44.706 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:44.706 PASV
+< 2026-05-07 09:07:44.729 227 Entering Passive Mode (198,54,115,130,47,3)
+> 2026-05-07 09:07:44.729 STOR next.config.mjs
+. 2026-05-07 09:07:44.729 Connecting to 198.54.115.130:12035 ...
+< 2026-05-07 09:07:44.782 150 Accepted data connection
+< 2026-05-07 09:07:44.809 226-File successfully transferred
+< 2026-05-07 09:07:44.809 226 0.028 seconds (measured here), 4.91 Kbytes per second
+> 2026-05-07 09:07:44.810 MFMT 20260502173658 next.config.mjs
+< 2026-05-07 09:07:44.837 213 UTIME OK
+. 2026-05-07 09:07:44.837 Upload successful
+. 2026-05-07 09:07:44.838 Transfer done: 'C:\projects\tshirt-shop\next.config.mjs' => '/ding-tee.dovara.biz/next.config.mjs' [140]
+. 2026-05-07 09:07:44.838 Copying finished: Transferred: 1,821, Elapsed: 0:00:01, CPS: 1,590/s
+. 2026-05-07 09:07:44.838 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 725
+. 2026-05-07 09:07:44.838   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:44.838   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:44.838   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:44.838 File: 'C:\projects\tshirt-shop\package.json' [2026-05-02T17:36:58.170Z] [725]
+. 2026-05-07 09:07:44.839 Copying "C:\projects\tshirt-shop\package.json" to remote directory started.
+. 2026-05-07 09:07:44.839 Binary transfer mode selected.
+. 2026-05-07 09:07:44.839 Starting upload of C:\projects\tshirt-shop\package.json
+> 2026-05-07 09:07:44.839 TYPE I
+< 2026-05-07 09:07:44.862 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:44.862 PASV
+< 2026-05-07 09:07:44.887 227 Entering Passive Mode (198,54,115,130,47,46)
+> 2026-05-07 09:07:44.887 STOR package.json
+. 2026-05-07 09:07:44.887 Connecting to 198.54.115.130:12078 ...
+< 2026-05-07 09:07:44.938 150 Accepted data connection
+< 2026-05-07 09:07:44.965 226-File successfully transferred
+< 2026-05-07 09:07:44.965 226 0.026 seconds (measured here), 27.57 Kbytes per second
+> 2026-05-07 09:07:44.965 MFMT 20260502173658 package.json
+< 2026-05-07 09:07:44.993 213 UTIME OK
+. 2026-05-07 09:07:44.993 Upload successful
+. 2026-05-07 09:07:44.994 Transfer done: 'C:\projects\tshirt-shop\package.json' => '/ding-tee.dovara.biz/package.json' [725]
+. 2026-05-07 09:07:44.994 Copying finished: Transferred: 2,546, Elapsed: 0:00:01, CPS: 1,956/s
+. 2026-05-07 09:07:44.994 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 393,163
+. 2026-05-07 09:07:44.994   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:44.994   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:44.994   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:44.994 File: 'C:\projects\tshirt-shop\package-lock.json' [2026-05-02T07:09:40.828Z] [393163]
+. 2026-05-07 09:07:45.009 Copying "C:\projects\tshirt-shop\package-lock.json" to remote directory started.
+. 2026-05-07 09:07:45.009 Binary transfer mode selected.
+. 2026-05-07 09:07:45.009 Starting upload of C:\projects\tshirt-shop\package-lock.json
+> 2026-05-07 09:07:45.009 TYPE I
+< 2026-05-07 09:07:45.057 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:45.057 PASV
+< 2026-05-07 09:07:45.081 227 Entering Passive Mode (198,54,115,130,47,4)
+> 2026-05-07 09:07:45.081 STOR package-lock.json
+. 2026-05-07 09:07:45.081 Connecting to 198.54.115.130:12036 ...
+< 2026-05-07 09:07:45.139 150 Accepted data connection
+< 2026-05-07 09:07:45.342 226-File successfully transferred
+< 2026-05-07 09:07:45.342 226 0.203 seconds (measured here), 1.85 Mbytes per second
+> 2026-05-07 09:07:45.342 MFMT 20260502070940 package-lock.json
+< 2026-05-07 09:07:45.372 213 UTIME OK
+. 2026-05-07 09:07:45.372 Upload successful
+. 2026-05-07 09:07:45.373 Transfer done: 'C:\projects\tshirt-shop\package-lock.json' => '/ding-tee.dovara.biz/package-lock.json' [393163]
+. 2026-05-07 09:07:45.373 Copying finished: Transferred: 395,709, Elapsed: 0:00:01, CPS: 235,541/s
+. 2026-05-07 09:07:45.373 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 31
+. 2026-05-07 09:07:45.373   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:45.373   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:45.373   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:45.373 File: 'C:\projects\tshirt-shop\vercel.json' [2026-05-02T17:36:58.170Z] [31]
+. 2026-05-07 09:07:45.381 Copying "C:\projects\tshirt-shop\vercel.json" to remote directory started.
+. 2026-05-07 09:07:45.381 Binary transfer mode selected.
+. 2026-05-07 09:07:45.382 Starting upload of C:\projects\tshirt-shop\vercel.json
+> 2026-05-07 09:07:45.383 TYPE I
+< 2026-05-07 09:07:45.408 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:45.408 PASV
+< 2026-05-07 09:07:45.431 227 Entering Passive Mode (198,54,115,130,47,47)
+> 2026-05-07 09:07:45.431 STOR vercel.json
+. 2026-05-07 09:07:45.432 Connecting to 198.54.115.130:12079 ...
+< 2026-05-07 09:07:45.483 150 Accepted data connection
+< 2026-05-07 09:07:45.512 226-File successfully transferred
+< 2026-05-07 09:07:45.512 226 0.029 seconds (measured here), 1.06 Kbytes per second
+> 2026-05-07 09:07:45.512 MFMT 20260502173658 vercel.json
+< 2026-05-07 09:07:45.544 213 UTIME OK
+. 2026-05-07 09:07:45.544 Upload successful
+. 2026-05-07 09:07:45.545 Transfer done: 'C:\projects\tshirt-shop\vercel.json' => '/ding-tee.dovara.biz/vercel.json' [31]
+. 2026-05-07 09:07:45.545 Copying finished: Transferred: 395,740, Elapsed: 0:00:01, CPS: 213,682/s
+. 2026-05-07 09:07:45.545 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/" - total size: 8,328
+. 2026-05-07 09:07:45.545   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:45.545   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:45.545   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:45.545 File: 'C:\projects\tshirt-shop\vercel-build.log' [2026-05-02T17:49:58.142Z] [8328]
+. 2026-05-07 09:07:45.563 Copying "C:\projects\tshirt-shop\vercel-build.log" to remote directory started.
+. 2026-05-07 09:07:45.563 Binary transfer mode selected.
+. 2026-05-07 09:07:45.563 Starting upload of C:\projects\tshirt-shop\vercel-build.log
+> 2026-05-07 09:07:45.563 TYPE I
+< 2026-05-07 09:07:45.585 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:45.585 PASV
+< 2026-05-07 09:07:45.608 227 Entering Passive Mode (198,54,115,130,47,84)
+> 2026-05-07 09:07:45.609 STOR vercel-build.log
+. 2026-05-07 09:07:45.609 Connecting to 198.54.115.130:12116 ...
+< 2026-05-07 09:07:45.683 150 Accepted data connection
+< 2026-05-07 09:07:45.716 226-File successfully transferred
+< 2026-05-07 09:07:45.716 226 0.036 seconds (measured here), 224.50 Kbytes per second
+> 2026-05-07 09:07:45.717 MFMT 20260502174958 vercel-build.log
+< 2026-05-07 09:07:45.746 213 UTIME OK
+. 2026-05-07 09:07:45.746 Upload successful
+. 2026-05-07 09:07:45.747 Transfer done: 'C:\projects\tshirt-shop\vercel-build.log' => '/ding-tee.dovara.biz/vercel-build.log' [8328]
+. 2026-05-07 09:07:45.747 Copying finished: Transferred: 404,068, Elapsed: 0:00:02, CPS: 196,722/s
+. 2026-05-07 09:07:45.747 Synchronizing local directory 'C:\projects\tshirt-shop\app\' with remote directory '/ding-tee.dovara.biz/app/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:45.747 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/" - total size: 1,315
+. 2026-05-07 09:07:45.747   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:45.747   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:45.747   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:45.747 File: 'C:\projects\tshirt-shop\app\layout.tsx' [2026-05-07T15:51:38.656Z] [1315]
+< 2026-05-07 09:07:45.767 Script: Local 'C:\projects\tshirt-shop\app' => Remote '/ding-tee.dovara.biz/app'
+. 2026-05-07 09:07:45.768 Copying "C:\projects\tshirt-shop\app\layout.tsx" to remote directory started.
+. 2026-05-07 09:07:45.768 Binary transfer mode selected.
+. 2026-05-07 09:07:45.769 Starting upload of C:\projects\tshirt-shop\app\layout.tsx
+> 2026-05-07 09:07:45.769 CWD /ding-tee.dovara.biz/app
+< 2026-05-07 09:07:45.798 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-05-07 09:07:45.798 PWD
+< 2026-05-07 09:07:45.820 257 "/ding-tee.dovara.biz/app" is your current location
+> 2026-05-07 09:07:45.821 TYPE I
+< 2026-05-07 09:07:45.843 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:45.843 PASV
+< 2026-05-07 09:07:45.864 227 Entering Passive Mode (198,54,115,130,47,7)
+> 2026-05-07 09:07:45.865 STOR layout.tsx
+. 2026-05-07 09:07:45.865 Connecting to 198.54.115.130:12039 ...
+< 2026-05-07 09:07:45.915 150 Accepted data connection
+< 2026-05-07 09:07:45.939 226-File successfully transferred
+< 2026-05-07 09:07:45.939 226 0.025 seconds (measured here), 52.34 Kbytes per second
+> 2026-05-07 09:07:45.939 MFMT 20260507155138 layout.tsx
+< 2026-05-07 09:07:45.969 213 UTIME OK
+. 2026-05-07 09:07:45.970 Upload successful
+. 2026-05-07 09:07:45.970 Transfer done: 'C:\projects\tshirt-shop\app\layout.tsx' => '/ding-tee.dovara.biz/app/layout.tsx' [1315]
+. 2026-05-07 09:07:45.970 Copying finished: Transferred: 405,383, Elapsed: 0:00:02, CPS: 178,033/s
+. 2026-05-07 09:07:45.970 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/" - total size: 1,061
+. 2026-05-07 09:07:45.970   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:45.970   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:45.970   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:45.971 File: 'C:\projects\tshirt-shop\app\page.tsx' [2026-05-05T16:53:05.256Z] [1061]
+. 2026-05-07 09:07:45.971 Copying "C:\projects\tshirt-shop\app\page.tsx" to remote directory started.
+. 2026-05-07 09:07:45.971 Binary transfer mode selected.
+. 2026-05-07 09:07:45.972 Starting upload of C:\projects\tshirt-shop\app\page.tsx
+> 2026-05-07 09:07:45.972 TYPE I
+< 2026-05-07 09:07:45.997 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:45.997 PASV
+< 2026-05-07 09:07:46.024 227 Entering Passive Mode (198,54,115,130,47,36)
+> 2026-05-07 09:07:46.026 STOR page.tsx
+. 2026-05-07 09:07:46.026 Connecting to 198.54.115.130:12068 ...
+< 2026-05-07 09:07:46.078 150 Accepted data connection
+< 2026-05-07 09:07:46.108 226-File successfully transferred
+< 2026-05-07 09:07:46.108 226 0.030 seconds (measured here), 35.05 Kbytes per second
+> 2026-05-07 09:07:46.109 MFMT 20260505165305 page.tsx
+< 2026-05-07 09:07:46.138 213 UTIME OK
+. 2026-05-07 09:07:46.138 Upload successful
+. 2026-05-07 09:07:46.139 Transfer done: 'C:\projects\tshirt-shop\app\page.tsx' => '/ding-tee.dovara.biz/app/page.tsx' [1061]
+. 2026-05-07 09:07:46.139 Copying finished: Transferred: 406,444, Elapsed: 0:00:02, CPS: 166,166/s
+. 2026-05-07 09:07:46.139 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/"
+. 2026-05-07 09:07:46.139   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:46.139   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:46.139   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:46.139 File: 'C:\projects\tshirt-shop\app\return-policy' [2026-05-07T15:50:38.511Z] [0]
+. 2026-05-07 09:07:46.140 File: 'C:\projects\tshirt-shop\app\return-policy\page.tsx' [2026-05-07T15:50:38.568Z] [4303]
+. 2026-05-07 09:07:46.140 Copying "C:\projects\tshirt-shop\app\return-policy\page.tsx" to remote directory started.
+. 2026-05-07 09:07:46.140 Binary transfer mode selected.
+. 2026-05-07 09:07:46.141 Starting upload of C:\projects\tshirt-shop\app\return-policy\page.tsx
+> 2026-05-07 09:07:46.141 CWD /ding-tee.dovara.biz/app/return-policy
+< 2026-05-07 09:07:46.165 550 Can't change directory to /ding-tee.dovara.biz/app/return-policy: No such file or directory
+> 2026-05-07 09:07:46.165 CWD /ding-tee.dovara.biz/app
+< 2026-05-07 09:07:46.190 250 OK. Current directory is /ding-tee.dovara.biz/app
+> 2026-05-07 09:07:46.190 MKD return-policy
+< 2026-05-07 09:07:46.212 257 "return-policy" : The directory was successfully created
+> 2026-05-07 09:07:46.212 CWD /ding-tee.dovara.biz/app/return-policy
+< 2026-05-07 09:07:46.237 250 OK. Current directory is /ding-tee.dovara.biz/app/return-policy
+> 2026-05-07 09:07:46.237 PWD
+< 2026-05-07 09:07:46.262 257 "/ding-tee.dovara.biz/app/return-policy" is your current location
+> 2026-05-07 09:07:46.262 TYPE I
+< 2026-05-07 09:07:46.295 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:46.295 PASV
+< 2026-05-07 09:07:46.316 227 Entering Passive Mode (198,54,115,130,47,34)
+> 2026-05-07 09:07:46.317 STOR page.tsx
+. 2026-05-07 09:07:46.317 Connecting to 198.54.115.130:12066 ...
+< 2026-05-07 09:07:46.370 150 Accepted data connection
+< 2026-05-07 09:07:46.398 226-File successfully transferred
+< 2026-05-07 09:07:46.398 226 0.028 seconds (measured here), 151.61 Kbytes per second
+> 2026-05-07 09:07:46.398 MFMT 20260507155038 page.tsx
+< 2026-05-07 09:07:46.429 213 UTIME OK
+. 2026-05-07 09:07:46.429 Upload successful
+. 2026-05-07 09:07:46.429 Transfer done: 'C:\projects\tshirt-shop\app\return-policy\page.tsx' => '/ding-tee.dovara.biz/app/return-policy/page.tsx' [4303]
+. 2026-05-07 09:07:46.430 Copying finished: Transferred: 410,747, Elapsed: 0:00:02, CPS: 150,071/s
+. 2026-05-07 09:07:46.430 Synchronizing local directory 'C:\projects\tshirt-shop\app\api\' with remote directory '/ding-tee.dovara.biz/app/api/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:46.430 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/api/"
+. 2026-05-07 09:07:46.430   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:46.430   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:46.430   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:46.430 File: 'C:\projects\tshirt-shop\app\api\webhook' [2026-05-02T16:44:08.217Z] [0]
+< 2026-05-07 09:07:46.430 Script: Local 'C:\projects\tshirt-shop\app\api' => Remote '/ding-tee.dovara.biz/app/api'
+. 2026-05-07 09:07:46.431 File: 'C:\projects\tshirt-shop\app\api\webhook\route.ts' [2026-05-02T17:48:12.523Z] [3610]
+. 2026-05-07 09:07:46.431 Copying "C:\projects\tshirt-shop\app\api\webhook\route.ts" to remote directory started.
+. 2026-05-07 09:07:46.431 Binary transfer mode selected.
+. 2026-05-07 09:07:46.432 Starting upload of C:\projects\tshirt-shop\app\api\webhook\route.ts
+> 2026-05-07 09:07:46.432 CWD /ding-tee.dovara.biz/app/api/webhook
+< 2026-05-07 09:07:46.462 550 Can't change directory to /ding-tee.dovara.biz/app/api/webhook: No such file or directory
+> 2026-05-07 09:07:46.462 CWD /ding-tee.dovara.biz/app/api
+< 2026-05-07 09:07:46.488 250 OK. Current directory is /ding-tee.dovara.biz/app/api
+> 2026-05-07 09:07:46.488 MKD webhook
+< 2026-05-07 09:07:46.518 257 "webhook" : The directory was successfully created
+> 2026-05-07 09:07:46.519 CWD /ding-tee.dovara.biz/app/api/webhook
+< 2026-05-07 09:07:46.546 250 OK. Current directory is /ding-tee.dovara.biz/app/api/webhook
+> 2026-05-07 09:07:46.546 PWD
+< 2026-05-07 09:07:46.574 257 "/ding-tee.dovara.biz/app/api/webhook" is your current location
+> 2026-05-07 09:07:46.574 TYPE I
+< 2026-05-07 09:07:46.598 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:46.598 PASV
+< 2026-05-07 09:07:46.621 227 Entering Passive Mode (198,54,115,130,47,27)
+> 2026-05-07 09:07:46.622 STOR route.ts
+. 2026-05-07 09:07:46.622 Connecting to 198.54.115.130:12059 ...
+< 2026-05-07 09:07:46.669 150 Accepted data connection
+< 2026-05-07 09:07:46.701 226-File successfully transferred
+< 2026-05-07 09:07:46.701 226 0.032 seconds (measured here), 109.08 Kbytes per second
+> 2026-05-07 09:07:46.702 MFMT 20260502174812 route.ts
+< 2026-05-07 09:07:46.733 213 UTIME OK
+. 2026-05-07 09:07:46.733 Upload successful
+. 2026-05-07 09:07:46.733 Transfer done: 'C:\projects\tshirt-shop\app\api\webhook\route.ts' => '/ding-tee.dovara.biz/app/api/webhook/route.ts' [3610]
+. 2026-05-07 09:07:46.734 Copying finished: Transferred: 414,357, Elapsed: 0:00:03, CPS: 136,256/s
+. 2026-05-07 09:07:46.734 Synchronizing local directory 'C:\projects\tshirt-shop\app\api\checkout\' with remote directory '/ding-tee.dovara.biz/app/api/checkout/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:46.734 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/api/checkout/" - total size: 2,145
+. 2026-05-07 09:07:46.734   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:46.734   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:46.734   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:46.734 File: 'C:\projects\tshirt-shop\app\api\checkout\route.ts' [2026-05-02T17:48:12.501Z] [2145]
+< 2026-05-07 09:07:46.734 Script: Local 'C:\projects\tshirt-shop\app\api\checkout' => Remote '/ding-tee.dovara.biz/app/api/checkout'
+. 2026-05-07 09:07:46.735 Copying "C:\projects\tshirt-shop\app\api\checkout\route.ts" to remote directory started.
+. 2026-05-07 09:07:46.736 Binary transfer mode selected.
+. 2026-05-07 09:07:46.736 Starting upload of C:\projects\tshirt-shop\app\api\checkout\route.ts
+> 2026-05-07 09:07:46.736 CWD /ding-tee.dovara.biz/app/api/checkout
+< 2026-05-07 09:07:46.763 250 OK. Current directory is /ding-tee.dovara.biz/app/api/checkout
+> 2026-05-07 09:07:46.763 PWD
+< 2026-05-07 09:07:46.784 257 "/ding-tee.dovara.biz/app/api/checkout" is your current location
+> 2026-05-07 09:07:46.784 TYPE I
+< 2026-05-07 09:07:46.807 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:46.807 PASV
+< 2026-05-07 09:07:46.829 227 Entering Passive Mode (198,54,115,130,47,87)
+> 2026-05-07 09:07:46.830 STOR route.ts
+. 2026-05-07 09:07:46.830 Connecting to 198.54.115.130:12119 ...
+< 2026-05-07 09:07:46.885 150 Accepted data connection
+< 2026-05-07 09:07:46.918 226-File successfully transferred
+< 2026-05-07 09:07:46.918 226 0.035 seconds (measured here), 59.58 Kbytes per second
+> 2026-05-07 09:07:46.918 MFMT 20260502174812 route.ts
+< 2026-05-07 09:07:46.947 213 UTIME OK
+. 2026-05-07 09:07:46.947 Upload successful
+. 2026-05-07 09:07:46.948 Transfer done: 'C:\projects\tshirt-shop\app\api\checkout\route.ts' => '/ding-tee.dovara.biz/app/api/checkout/route.ts' [2145]
+. 2026-05-07 09:07:46.948 Copying finished: Transferred: 416,502, Elapsed: 0:00:03, CPS: 127,957/s
+. 2026-05-07 09:07:46.948 Synchronizing local directory 'C:\projects\tshirt-shop\app\checkout\' with remote directory '/ding-tee.dovara.biz/app/checkout/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:46.948 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/checkout/" - total size: 9,733
+. 2026-05-07 09:07:46.948   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:46.948   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:46.948   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:46.949 File: 'C:\projects\tshirt-shop\app\checkout\page.tsx' [2026-05-07T15:51:22.312Z] [9733]
+< 2026-05-07 09:07:46.977 Script: Local 'C:\projects\tshirt-shop\app\checkout' => Remote '/ding-tee.dovara.biz/app/checkout'
+. 2026-05-07 09:07:46.977 Copying "C:\projects\tshirt-shop\app\checkout\page.tsx" to remote directory started.
+. 2026-05-07 09:07:46.977 Binary transfer mode selected.
+. 2026-05-07 09:07:46.977 Starting upload of C:\projects\tshirt-shop\app\checkout\page.tsx
+> 2026-05-07 09:07:46.977 CWD /ding-tee.dovara.biz/app/checkout
+< 2026-05-07 09:07:47.009 250 OK. Current directory is /ding-tee.dovara.biz/app/checkout
+> 2026-05-07 09:07:47.010 PWD
+< 2026-05-07 09:07:47.033 257 "/ding-tee.dovara.biz/app/checkout" is your current location
+> 2026-05-07 09:07:47.033 TYPE I
+< 2026-05-07 09:07:47.055 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:47.055 PASV
+< 2026-05-07 09:07:47.088 227 Entering Passive Mode (198,54,115,130,47,17)
+> 2026-05-07 09:07:47.088 STOR page.tsx
+. 2026-05-07 09:07:47.088 Connecting to 198.54.115.130:12049 ...
+< 2026-05-07 09:07:47.142 150 Accepted data connection
+< 2026-05-07 09:07:47.171 226-File successfully transferred
+< 2026-05-07 09:07:47.171 226 0.029 seconds (measured here), 324.61 Kbytes per second
+> 2026-05-07 09:07:47.171 MFMT 20260507155122 page.tsx
+< 2026-05-07 09:07:47.203 213 UTIME OK
+. 2026-05-07 09:07:47.203 Upload successful
+. 2026-05-07 09:07:47.203 Transfer done: 'C:\projects\tshirt-shop\app\checkout\page.tsx' => '/ding-tee.dovara.biz/app/checkout/page.tsx' [9733]
+. 2026-05-07 09:07:47.203 Copying finished: Transferred: 426,235, Elapsed: 0:00:03, CPS: 121,434/s
+. 2026-05-07 09:07:47.203 Synchronizing local directory 'C:\projects\tshirt-shop\app\order-success\' with remote directory '/ding-tee.dovara.biz/app/order-success/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:47.204 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/order-success/" - total size: 4,250
+. 2026-05-07 09:07:47.204   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:47.204   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:47.204   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:47.204 File: 'C:\projects\tshirt-shop\app\order-success\page.tsx' [2026-05-02T17:36:58.182Z] [4250]
+< 2026-05-07 09:07:47.204 Script: Local 'C:\projects\tshirt-shop\app\order-success' => Remote '/ding-tee.dovara.biz/app/order-success'
+. 2026-05-07 09:07:47.205 Copying "C:\projects\tshirt-shop\app\order-success\page.tsx" to remote directory started.
+. 2026-05-07 09:07:47.205 Binary transfer mode selected.
+. 2026-05-07 09:07:47.205 Starting upload of C:\projects\tshirt-shop\app\order-success\page.tsx
+> 2026-05-07 09:07:47.205 CWD /ding-tee.dovara.biz/app/order-success
+< 2026-05-07 09:07:47.230 250 OK. Current directory is /ding-tee.dovara.biz/app/order-success
+> 2026-05-07 09:07:47.230 PWD
+< 2026-05-07 09:07:47.255 257 "/ding-tee.dovara.biz/app/order-success" is your current location
+> 2026-05-07 09:07:47.255 TYPE I
+< 2026-05-07 09:07:47.279 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:47.279 PASV
+< 2026-05-07 09:07:47.302 227 Entering Passive Mode (198,54,115,130,47,69)
+> 2026-05-07 09:07:47.303 STOR page.tsx
+. 2026-05-07 09:07:47.303 Connecting to 198.54.115.130:12101 ...
+< 2026-05-07 09:07:47.362 150 Accepted data connection
+< 2026-05-07 09:07:47.390 226-File successfully transferred
+< 2026-05-07 09:07:47.390 226 0.027 seconds (measured here), 151.39 Kbytes per second
+> 2026-05-07 09:07:47.390 MFMT 20260502173658 page.tsx
+< 2026-05-07 09:07:47.412 213 UTIME OK
+. 2026-05-07 09:07:47.412 Upload successful
+. 2026-05-07 09:07:47.413 Transfer done: 'C:\projects\tshirt-shop\app\order-success\page.tsx' => '/ding-tee.dovara.biz/app/order-success/page.tsx' [4250]
+. 2026-05-07 09:07:47.413 Copying finished: Transferred: 430,485, Elapsed: 0:00:03, CPS: 115,721/s
+. 2026-05-07 09:07:47.413 Synchronizing local directory 'C:\projects\tshirt-shop\app\products\[id]\' with remote directory '/ding-tee.dovara.biz/app/products/[id]/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:47.413 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/products/[id]/" - total size: 6,920
+. 2026-05-07 09:07:47.413   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:47.413   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:47.413   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:47.413 File: 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' [2026-05-07T15:51:05.871Z] [6920]
+< 2026-05-07 09:07:47.430 Script: Local 'C:\projects\tshirt-shop\app\products\[id]' => Remote '/ding-tee.dovara.biz/app/products/[id]'
+. 2026-05-07 09:07:47.430 Copying "C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx" to remote directory started.
+. 2026-05-07 09:07:47.430 Binary transfer mode selected.
+. 2026-05-07 09:07:47.431 Starting upload of C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx
+> 2026-05-07 09:07:47.431 CWD /ding-tee.dovara.biz/app/products/[id]
+< 2026-05-07 09:07:47.458 250 OK. Current directory is /ding-tee.dovara.biz/app/products/[id]
+> 2026-05-07 09:07:47.458 PWD
+< 2026-05-07 09:07:47.486 257 "/ding-tee.dovara.biz/app/products/[id]" is your current location
+> 2026-05-07 09:07:47.486 TYPE I
+< 2026-05-07 09:07:47.504 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:47.504 PASV
+< 2026-05-07 09:07:47.529 227 Entering Passive Mode (198,54,115,130,47,22)
+> 2026-05-07 09:07:47.529 STOR AddToCartSection.tsx
+. 2026-05-07 09:07:47.529 Connecting to 198.54.115.130:12054 ...
+< 2026-05-07 09:07:47.591 150 Accepted data connection
+< 2026-05-07 09:07:47.619 226-File successfully transferred
+< 2026-05-07 09:07:47.619 226 0.029 seconds (measured here), 231.72 Kbytes per second
+> 2026-05-07 09:07:47.619 MFMT 20260507155105 AddToCartSection.tsx
+< 2026-05-07 09:07:47.649 213 UTIME OK
+. 2026-05-07 09:07:47.649 Upload successful
+. 2026-05-07 09:07:47.650 Transfer done: 'C:\projects\tshirt-shop\app\products\[id]\AddToCartSection.tsx' => '/ding-tee.dovara.biz/app/products/[id]/AddToCartSection.tsx' [6920]
+. 2026-05-07 09:07:47.650 Copying finished: Transferred: 437,405, Elapsed: 0:00:03, CPS: 110,539/s
+. 2026-05-07 09:07:47.650 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/app/products/[id]/" - total size: 2,626
+. 2026-05-07 09:07:47.650   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:47.650   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:47.650   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:47.650 File: 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' [2026-05-07T15:51:38.648Z] [2626]
+. 2026-05-07 09:07:47.673 Copying "C:\projects\tshirt-shop\app\products\[id]\page.tsx" to remote directory started.
+. 2026-05-07 09:07:47.673 Binary transfer mode selected.
+. 2026-05-07 09:07:47.673 Starting upload of C:\projects\tshirt-shop\app\products\[id]\page.tsx
+> 2026-05-07 09:07:47.673 TYPE I
+< 2026-05-07 09:07:47.696 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:47.696 PASV
+< 2026-05-07 09:07:47.718 227 Entering Passive Mode (198,54,115,130,47,42)
+> 2026-05-07 09:07:47.719 STOR page.tsx
+. 2026-05-07 09:07:47.719 Connecting to 198.54.115.130:12074 ...
+< 2026-05-07 09:07:47.780 150 Accepted data connection
+< 2026-05-07 09:07:47.811 226-File successfully transferred
+< 2026-05-07 09:07:47.811 226 0.032 seconds (measured here), 81.27 Kbytes per second
+> 2026-05-07 09:07:47.811 MFMT 20260507155138 page.tsx
+< 2026-05-07 09:07:47.839 213 UTIME OK
+. 2026-05-07 09:07:47.839 Upload successful
+. 2026-05-07 09:07:47.840 Transfer done: 'C:\projects\tshirt-shop\app\products\[id]\page.tsx' => '/ding-tee.dovara.biz/app/products/[id]/page.tsx' [2626]
+. 2026-05-07 09:07:47.840 Copying finished: Transferred: 440,031, Elapsed: 0:00:04, CPS: 106,108/s
+. 2026-05-07 09:07:47.840 Synchronizing local directory 'C:\projects\tshirt-shop\components\' with remote directory '/ding-tee.dovara.biz/components/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:47.840 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/components/" - total size: 408
+. 2026-05-07 09:07:47.840   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:47.840   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:47.840   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:47.840 File: 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' [2026-05-02T06:54:20.857Z] [408]
+< 2026-05-07 09:07:47.840 Script: Local 'C:\projects\tshirt-shop\components' => Remote '/ding-tee.dovara.biz/components'
+. 2026-05-07 09:07:47.841 Copying "C:\projects\tshirt-shop\components\BootstrapInit.tsx" to remote directory started.
+. 2026-05-07 09:07:47.841 Binary transfer mode selected.
+. 2026-05-07 09:07:47.842 Starting upload of C:\projects\tshirt-shop\components\BootstrapInit.tsx
+> 2026-05-07 09:07:47.842 CWD /ding-tee.dovara.biz/components
+< 2026-05-07 09:07:47.867 250 OK. Current directory is /ding-tee.dovara.biz/components
+> 2026-05-07 09:07:47.867 PWD
+< 2026-05-07 09:07:47.888 257 "/ding-tee.dovara.biz/components" is your current location
+> 2026-05-07 09:07:47.889 TYPE I
+< 2026-05-07 09:07:47.911 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:47.911 PASV
+< 2026-05-07 09:07:47.933 227 Entering Passive Mode (198,54,115,130,47,36)
+> 2026-05-07 09:07:47.933 STOR BootstrapInit.tsx
+. 2026-05-07 09:07:47.933 Connecting to 198.54.115.130:12068 ...
+< 2026-05-07 09:07:47.985 150 Accepted data connection
+< 2026-05-07 09:07:48.007 226-File successfully transferred
+< 2026-05-07 09:07:48.007 226 0.022 seconds (measured here), 18.13 Kbytes per second
+> 2026-05-07 09:07:48.007 MFMT 20260502065420 BootstrapInit.tsx
+< 2026-05-07 09:07:48.034 213 UTIME OK
+. 2026-05-07 09:07:48.034 Upload successful
+. 2026-05-07 09:07:48.035 Transfer done: 'C:\projects\tshirt-shop\components\BootstrapInit.tsx' => '/ding-tee.dovara.biz/components/BootstrapInit.tsx' [408]
+. 2026-05-07 09:07:48.035 Copying finished: Transferred: 440,439, Elapsed: 0:00:04, CPS: 101,436/s
+. 2026-05-07 09:07:48.036 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/components/" - total size: 2,675
+. 2026-05-07 09:07:48.036   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:48.036   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:48.036   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:48.036 File: 'C:\projects\tshirt-shop\components\Header.tsx' [2026-05-07T15:51:38.655Z] [2675]
+. 2026-05-07 09:07:48.047 Copying "C:\projects\tshirt-shop\components\Header.tsx" to remote directory started.
+. 2026-05-07 09:07:48.047 Binary transfer mode selected.
+. 2026-05-07 09:07:48.048 Starting upload of C:\projects\tshirt-shop\components\Header.tsx
+> 2026-05-07 09:07:48.048 TYPE I
+< 2026-05-07 09:07:48.072 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:48.072 PASV
+< 2026-05-07 09:07:48.096 227 Entering Passive Mode (198,54,115,130,47,73)
+> 2026-05-07 09:07:48.096 STOR Header.tsx
+. 2026-05-07 09:07:48.097 Connecting to 198.54.115.130:12105 ...
+< 2026-05-07 09:07:48.144 150 Accepted data connection
+< 2026-05-07 09:07:48.178 226-File successfully transferred
+< 2026-05-07 09:07:48.178 226 0.036 seconds (measured here), 73.00 Kbytes per second
+> 2026-05-07 09:07:48.178 MFMT 20260507155138 Header.tsx
+< 2026-05-07 09:07:48.208 213 UTIME OK
+. 2026-05-07 09:07:48.208 Upload successful
+. 2026-05-07 09:07:48.208 Transfer done: 'C:\projects\tshirt-shop\components\Header.tsx' => '/ding-tee.dovara.biz/components/Header.tsx' [2675]
+. 2026-05-07 09:07:48.208 Copying finished: Transferred: 443,114, Elapsed: 0:00:04, CPS: 98,142/s
+. 2026-05-07 09:07:48.208 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/components/" - total size: 2,409
+. 2026-05-07 09:07:48.208   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:48.208   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:48.208   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:48.209 File: 'C:\projects\tshirt-shop\components\NailSpaBooking.tsx' [2026-05-05T16:40:49.305Z] [2409]
+. 2026-05-07 09:07:48.209 Copying "C:\projects\tshirt-shop\components\NailSpaBooking.tsx" to remote directory started.
+. 2026-05-07 09:07:48.209 Binary transfer mode selected.
+. 2026-05-07 09:07:48.211 Starting upload of C:\projects\tshirt-shop\components\NailSpaBooking.tsx
+> 2026-05-07 09:07:48.211 TYPE I
+< 2026-05-07 09:07:48.237 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:48.237 PASV
+< 2026-05-07 09:07:48.264 227 Entering Passive Mode (198,54,115,130,46,254)
+> 2026-05-07 09:07:48.265 STOR NailSpaBooking.tsx
+. 2026-05-07 09:07:48.265 Connecting to 198.54.115.130:12030 ...
+< 2026-05-07 09:07:49.332 150 Accepted data connection
+< 2026-05-07 09:07:49.365 226-File successfully transferred
+< 2026-05-07 09:07:49.365 226 0.035 seconds (measured here), 67.95 Kbytes per second
+> 2026-05-07 09:07:49.366 MFMT 20260505164049 NailSpaBooking.tsx
+< 2026-05-07 09:07:49.396 213 UTIME OK
+. 2026-05-07 09:07:49.397 Upload successful
+. 2026-05-07 09:07:49.398 Transfer done: 'C:\projects\tshirt-shop\components\NailSpaBooking.tsx' => '/ding-tee.dovara.biz/components/NailSpaBooking.tsx' [2409]
+. 2026-05-07 09:07:49.398 Copying finished: Transferred: 445,523, Elapsed: 0:00:05, CPS: 78,093/s
+. 2026-05-07 09:07:49.399 Synchronizing local directory 'C:\projects\tshirt-shop\lib\' with remote directory '/ding-tee.dovara.biz/lib/', params = 0x402 (NoConfirmation, BySize)
+. 2026-05-07 09:07:49.399 Copying 1 files/directories to remote directory "/ding-tee.dovara.biz/lib/" - total size: 428
+. 2026-05-07 09:07:49.399   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0001; Resume: S (102400); CalcS: No; Mask: *.*
+. 2026-05-07 09:07:49.399   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; EncryptNewFiles: Yes; ExcludeHiddenFiles: No; ExcludeEmptyDirectories: No; InclM: |.git/;node_modules/;.next/;deploy.ps1;watch-deploy.ps1;deploy.log;.vscode/;.env.local;.env.local.example; ResumeL: 0
+. 2026-05-07 09:07:49.399   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2026-05-07 09:07:49.400 File: 'C:\projects\tshirt-shop\lib\stripe.ts' [2026-05-02T17:47:25.845Z] [428]
+< 2026-05-07 09:07:49.400 Script: Local 'C:\projects\tshirt-shop\lib' => Remote '/ding-tee.dovara.biz/lib'
+. 2026-05-07 09:07:49.401 Copying "C:\projects\tshirt-shop\lib\stripe.ts" to remote directory started.
+. 2026-05-07 09:07:49.401 Binary transfer mode selected.
+. 2026-05-07 09:07:49.402 Starting upload of C:\projects\tshirt-shop\lib\stripe.ts
+> 2026-05-07 09:07:49.403 CWD /ding-tee.dovara.biz/lib
+< 2026-05-07 09:07:49.427 250 OK. Current directory is /ding-tee.dovara.biz/lib
+> 2026-05-07 09:07:49.427 PWD
+< 2026-05-07 09:07:49.449 257 "/ding-tee.dovara.biz/lib" is your current location
+> 2026-05-07 09:07:49.449 TYPE I
+< 2026-05-07 09:07:49.478 200 TYPE is now 8-bit binary
+> 2026-05-07 09:07:49.478 PASV
+< 2026-05-07 09:07:49.507 227 Entering Passive Mode (198,54,115,130,47,19)
+> 2026-05-07 09:07:49.507 STOR stripe.ts
+. 2026-05-07 09:07:49.507 Connecting to 198.54.115.130:12051 ...
+< 2026-05-07 09:07:49.558 150 Accepted data connection
+< 2026-05-07 09:07:49.583 226-File successfully transferred
+< 2026-05-07 09:07:49.583 226 0.025 seconds (measured here), 16.71 Kbytes per second
+> 2026-05-07 09:07:49.583 MFMT 20260502174725 stripe.ts
+< 2026-05-07 09:07:49.609 213 UTIME OK
+. 2026-05-07 09:07:49.609 Upload successful
+. 2026-05-07 09:07:49.609 Transfer done: 'C:\projects\tshirt-shop\lib\stripe.ts' => '/ding-tee.dovara.biz/lib/stripe.ts' [428]
+. 2026-05-07 09:07:49.609 Copying finished: Transferred: 445,951, Elapsed: 0:00:05, CPS: 75,380/s
+> 2026-05-07 09:07:49.610 Script: exit
+. 2026-05-07 09:07:49.610 Script: Exit code: 0
+. 2026-05-07 09:07:49.617 Disconnected from server

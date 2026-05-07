@@ -1,5 +1,5 @@
 # watch-deploy.ps1
-# Watches the project folder for TS/TSX/JS/CSS/JSON changes and auto-deploys to ding-tee.dovara.biz.
+# Watches the project folder for TS/TSX/JS/CSS/JSON changes and auto-deploys via Git + Vercel CLI.
 # Run this once; it stays alive in the background terminal.
 # Stop it with Ctrl+C or close the terminal.
 
@@ -19,7 +19,7 @@ $IgnoreDirs = @('.git', '.vscode', '.next', 'node_modules')
 Write-Host "👀 Watching $ProjectRoot for changes..." -ForegroundColor Cyan
 Write-Host "   Extensions : $($Filter -join ', ')" -ForegroundColor DarkCyan
 Write-Host "   Debounce   : ${DebounceSeconds}s" -ForegroundColor DarkCyan
-Write-Host "   Target     : ding-tee.dovara.biz" -ForegroundColor Yellow
+Write-Host "   Target     : Vercel (production)" -ForegroundColor Yellow
 Write-Host "   Press Ctrl+C to stop." -ForegroundColor DarkGray
 Write-Host ""
 
@@ -67,7 +67,7 @@ try {
                 $rel = $script:ChangedFile.Replace($ProjectRoot, '').TrimStart('\')
                 Write-Host ""
                 Write-Host "🔄 Change detected: $rel" -ForegroundColor Yellow
-                Write-Host "🚀 Deploying to ding-tee.dovara.biz..." -ForegroundColor Cyan
+                Write-Host "🚀 Deploying via Git + Vercel CLI..." -ForegroundColor Cyan
                 & powershell.exe -ExecutionPolicy Bypass -File $DeployScript
                 Write-Host ""
                 Write-Host "👀 Watching for more changes..." -ForegroundColor Cyan

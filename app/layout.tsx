@@ -28,6 +28,11 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <footer className="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} TeeStore. All rights reserved.</p>
+            <p className="mt-2">
+              <a href="/return-policy" className="text-gray-400 hover:text-gray-600 underline transition-colors">
+                Return &amp; Refund Policy
+              </a>
+            </p>
           </footer>
         </CartProvider>
       </body>

@@ -65,6 +65,11 @@ export default function Header() {
                 Shop
               </Link>
             </li>
+            <li className="nav-item">
+              <Link href="/return-policy" className="nav-link fw-medium">
+                Returns
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

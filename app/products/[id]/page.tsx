@@ -41,9 +41,21 @@ export default async function ProductPage({ params }: Props) {
           <p className="text-2xl font-bold text-gray-900 mb-4">
             ${product.price.toFixed(2)}
           </p>
-          <p className="text-gray-600 leading-relaxed mb-8">
+          <p className="text-gray-600 leading-relaxed mb-6">
             {product.description}
           </p>
+
+          {/* Shipping info */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="shrink-0 text-gray-500">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            </svg>
+            <span>
+              <strong className="text-gray-900">Ships within 3–5 business days</strong>
+              {" "}&mdash; Free shipping on all orders
+            </span>
+          </div>
+
           <AddToCartSection product={product} />
         </div>
       </div>

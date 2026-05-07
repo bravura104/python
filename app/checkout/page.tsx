@@ -85,6 +85,33 @@ function CheckoutForm({ totalPrice }: { totalPrice: number }) {
           `Pay $${totalPrice.toFixed(2)}`
         )}
       </button>
+
+      {/* Payment trust badges */}
+      <div className="flex items-center justify-center gap-3 pt-1">
+        <span className="text-xs text-gray-400">Secured by</span>
+        {/* Visa */}
+        <span className="inline-flex items-center px-2.5 py-1 rounded border border-gray-200 bg-white">
+          <svg width="38" height="14" viewBox="0 0 38 14" aria-label="Visa">
+            <text x="0" y="12" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="13" fill="#1a1f71" fontStyle="italic">VISA</text>
+          </svg>
+        </span>
+        {/* Mastercard */}
+        <span className="inline-flex items-center gap-0.5 px-2 py-1 rounded border border-gray-200 bg-white" aria-label="Mastercard">
+          <svg width="30" height="20" viewBox="0 0 30 20">
+            <circle cx="10" cy="10" r="9" fill="#EB001B" />
+            <circle cx="20" cy="10" r="9" fill="#F79E1B" />
+            <path d="M15 3.8a9 9 0 0 1 0 12.4A9 9 0 0 1 15 3.8z" fill="#FF5F00" />
+          </svg>
+        </span>
+        {/* PayPal */}
+        <span className="inline-flex items-center px-2.5 py-1 rounded border border-gray-200 bg-white">
+          <svg width="52" height="14" viewBox="0 0 52 14" aria-label="PayPal">
+            <text x="0" y="11" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="11" fill="#003087">Pay</text>
+            <text x="22" y="11" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="11" fill="#009cde">Pal</text>
+          </svg>
+        </span>
+        <span className="text-xs text-gray-400">· 256-bit SSL</span>
+      </div>
     </form>
   );
 }

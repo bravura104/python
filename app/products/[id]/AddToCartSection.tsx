@@ -5,6 +5,14 @@ import { useRouter } from "next/navigation";
 import type { Product } from "@/lib/types";
 import { useCart } from "@/lib/cart-context";
 
+const SIZE_GUIDE = [
+  { size: "S",   chest: "86–91",   length: "68" },
+  { size: "M",   chest: "96–101",  length: "71" },
+  { size: "L",   chest: "107–112", length: "74" },
+  { size: "XL",  chest: "117–122", length: "77" },
+  { size: "2XL", chest: "127–132", length: "79" },
+];
+
 export default function AddToCartSection({ product }: { product: Product }) {
   const { addItem } = useCart();
   const router = useRouter();
@@ -12,6 +20,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
 
   const handleAddToCart = () => {
     if (!selectedSize) return;
@@ -57,12 +66,21 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
       {/* Size selector */}
       <div>
-        <p className="text-sm font-semibold text-gray-700 mb-2">
-          Size:{" "}
-          {!selectedSize && (
-            <span className="text-red-500 font-normal">Please select a size</span>
-          )}
-        </p>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-sm font-semibold text-gray-700">
+            Size:{" "}
+            {!selectedSize && (
+              <span className="text-red-500 font-normal">Please select a size</span>
+            )}
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowSizeGuide((v) => !v)}
+            className="text-xs text-gray-500 underline hover:text-gray-800 transition-colors"
+          >
+            {showSizeGuide ? "Hide size guide" : "Size guide"}
+          </button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {product.sizes.map((size) => (
             <button
@@ -78,6 +96,31 @@ export default function AddToCartSection({ product }: { product: Product }) {
             </button>
           ))}
         </div>
+        {showSizeGuide && (
+          <div className="mt-3 rounded-xl border border-gray-200 overflow-hidden text-sm">
+            <table className="w-full text-left">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-3 py-2 font-semibold text-gray-700">Size</th>
+                  <th className="px-3 py-2 font-semibold text-gray-700">Chest (cm)</th>
+                  <th className="px-3 py-2 font-semibold text-gray-700">Length (cm)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {SIZE_GUIDE.map((row) => (
+                  <tr key={row.size} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-3 py-2 font-medium text-gray-900">{row.size}</td>
+                    <td className="px-3 py-2 text-gray-600">{row.chest}</td>
+                    <td className="px-3 py-2 text-gray-600">{row.length}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="px-3 py-2 text-xs text-gray-400 bg-gray-50 border-t border-gray-100">
+              All measurements are body measurements. If between sizes, size up.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Quantity */}
