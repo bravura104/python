@@ -3,6 +3,7 @@ import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import AddToCartSection from "./AddToCartSection";
 import ProductImage from "@/components/ProductImage";
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES } from "@/lib/shipping";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -48,14 +49,25 @@ export default async function ProductPage({ params }: Props) {
           </p>
 
           {/* Shipping info */}
-          <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-8">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="shrink-0 text-gray-500">
+          <div className="flex items-start gap-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="shrink-0 text-gray-500 mt-0.5">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
             </svg>
-            <span>
-              <strong className="text-gray-900">Ships within 3–5 business days</strong>
-              {" "}&mdash; Free shipping on all orders
-            </span>
+            <div className="space-y-0.5">
+              <p>
+                <strong className="text-gray-900">Standard</strong>
+                {" — Ships within 3–5 business days · "}
+                <span className="font-medium">${SHIPPING_RATES.standard.price.toFixed(2)}</span>
+              </p>
+              <p>
+                <strong className="text-gray-900">Same-day</strong>
+                {" — Ontario only · "}
+                <span className="font-medium">${SHIPPING_RATES.sameday_ontario.price.toFixed(2)}</span>
+              </p>
+              <p className="text-green-700 font-medium">
+                Free shipping on orders over ${FREE_SHIPPING_THRESHOLD}
+              </p>
+            </div>
           </div>
 
           <AddToCartSection product={product} />
