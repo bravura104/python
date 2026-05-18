@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense, useState, useEffect } from "react";
 import { useCart } from "@/lib/cart-context";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 
-export default function Header() {
+/** Contains all hooks including useSearchParams – must live inside <Suspense> */
+function HeaderInner() {
   const { totalItems } = useCart();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -125,5 +126,21 @@ export default function Header() {
         </div>
       </div>
     </nav>
+  );
+}
+
+/** Thin shell that provides the required Suspense boundary for useSearchParams */
+export default function Header() {
+  return (
+    <Suspense
+      fallback={
+        <nav
+          className="navbar navbar-light bg-white border-bottom sticky-top shadow-sm"
+          style={{ minHeight: 56 }}
+        />
+      }
+    >
+      <HeaderInner />
+    </Suspense>
   );
 }
