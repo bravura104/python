@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/lib/types";
+import ProductImage from "@/components/ProductImage";
 
 export default function ProductCard({ product }: { product: Product }) {
   const bgColor = product.colors[0]?.hex ?? "#e5e7eb";
@@ -8,11 +9,14 @@ export default function ProductCard({ product }: { product: Product }) {
     <Link href={`/products/${product.id}`} className="group block">
       <div className="rounded-2xl overflow-hidden border border-gray-200 group-hover:border-gray-400 group-hover:shadow-xl transition-all duration-200">
         {/* Product visual */}
-        <div
-          className="h-64 flex items-center justify-center relative"
-          style={{ backgroundColor: bgColor }}
-        >
-          <span className="text-8xl drop-shadow-lg select-none">👕</span>
+        <div className="relative">
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            bgColor={bgColor}
+            className="h-44"
+            emojiSize="text-7xl"
+          />
           {product.badge && (
             <span className="absolute top-3 right-3 bg-black text-white text-xs px-2.5 py-1 rounded-full font-semibold tracking-wide">
               {product.badge}

@@ -2,9 +2,24 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const { totalItems } = useCart();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  useEffect(() => {
+    setQuery(searchParams.get("q") ?? "");
+  }, [searchParams]);
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = query.trim();
+    router.push(trimmed ? `/?q=${encodeURIComponent(trimmed)}` : "/");
+  }
 
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top shadow-sm">
@@ -12,8 +27,27 @@ export default function Header() {
         {/* Brand */}
         <Link href="/" className="navbar-brand fw-bold d-flex align-items-center gap-2">
           <span style={{ fontSize: "1.5rem" }}>👕</span>
-          <span>TeeStore</span>
+          <span>DingTee909</span>
         </Link>
+
+        {/* Search bar – visible on md+ inline, collapses into nav on mobile */}
+        <form
+          onSubmit={handleSearch}
+          className="d-none d-md-flex align-items-center gap-1 flex-grow-1 mx-3"
+          style={{ maxWidth: "380px" }}
+        >
+          <input
+            type="search"
+            className="form-control form-control-sm"
+            placeholder="Search products…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Search products"
+          />
+          <button type="submit" className="btn btn-sm btn-dark">
+            Search
+          </button>
+        </form>
 
         {/* Cart icon + Hamburger toggler – always visible on the right */}
         <div className="d-flex align-items-center gap-2">
@@ -58,15 +92,32 @@ export default function Header() {
         </div>
 
         {/* Collapsible nav links */}
-        <div className="collapse navbar-collapse" id="mainNav">
+        <div className="collapse navbar-collapse bg-white" id="mainNav">
+          {/* Mobile search bar inside collapsed menu */}
+          <form
+            onSubmit={handleSearch}
+            className="d-flex d-md-none align-items-center gap-1 mt-2 mb-1"
+          >
+            <input
+              type="search"
+              className="form-control form-control-sm"
+              placeholder="Search products…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Search products"
+            />
+            <button type="submit" className="btn btn-sm btn-dark">
+              Search
+            </button>
+          </form>
           <ul className="navbar-nav ms-auto align-items-md-center gap-md-2">
             <li className="nav-item">
-              <Link href="/" className="nav-link fw-medium">
+              <Link href="/" className="nav-link fw-medium text-dark">
                 Shop
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/return-policy" className="nav-link fw-medium">
+              <Link href="/return-policy" className="nav-link fw-medium text-dark">
                 Returns
               </Link>
             </li>

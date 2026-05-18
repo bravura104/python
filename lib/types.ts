@@ -11,6 +11,7 @@ export interface Product {
   badge: string | null;
   sizes: string[];
   colors: ProductColor[];
+  image?: string;
 }
 
 export interface CartItem {
@@ -21,4 +22,5 @@ export interface CartItem {
   color: string;
   colorHex: string;
   quantity: number;
+  image?: string;
 }

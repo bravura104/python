@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES } from "@/lib/shipping";
+import ProductImage from "@/components/ProductImage";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } =
@@ -45,12 +47,13 @@ export default function CartPage() {
               className="flex gap-4 p-5 rounded-2xl border border-gray-200 bg-white"
             >
               {/* Color thumbnail */}
-              <div
-                className="w-20 h-20 rounded-xl shrink-0 flex items-center justify-center text-3xl"
-                style={{ backgroundColor: item.colorHex }}
-              >
-                👕
-              </div>
+              <ProductImage
+                src={item.image}
+                alt={item.name}
+                bgColor={item.colorHex}
+                className="w-20 h-20 rounded-xl shrink-0"
+                emojiSize="text-3xl"
+              />
 
               {/* Item details */}
               <div className="flex-1 min-w-0">
@@ -128,8 +131,17 @@ export default function CartPage() {
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span className="text-green-600 font-medium">Free</span>
+              {totalPrice >= FREE_SHIPPING_THRESHOLD ? (
+                <span className="text-green-600 font-medium">Free ✓</span>
+              ) : (
+                <span className="text-gray-500">From ${SHIPPING_RATES.standard.price.toFixed(2)}</span>
+              )}
             </div>
+            {totalPrice < FREE_SHIPPING_THRESHOLD && (
+              <p className="text-xs text-green-700 bg-green-50 rounded-lg px-3 py-2">
+                Add ${(FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2)} more for free shipping!
+              </p>
+            )}
             <div className="border-t border-gray-200 pt-3 flex justify-between text-base font-bold text-gray-900">
               <span>Total</span>
               <span>${totalPrice.toFixed(2)}</span>

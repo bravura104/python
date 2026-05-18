@@ -33,6 +33,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
       color: selectedColor.name,
       colorHex: selectedColor.hex,
       quantity,
+      image: product.image,
     });
 
     setAdded(true);

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import AddToCartSection from "./AddToCartSection";
+import ProductImage from "@/components/ProductImage";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -18,13 +19,14 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Product visual */}
-        <div
-          className="rounded-3xl h-[480px] flex items-center justify-center shadow-inner"
-          style={{ backgroundColor: product.colors[0]?.hex ?? "#e5e7eb" }}
-        >
-          <span className="text-[160px] drop-shadow-xl select-none">👕</span>
-        </div>
+        {/* Product image — large view */}
+        <ProductImage
+          src={product.image}
+          alt={product.name}
+          bgColor={product.colors[0]?.hex ?? "#e5e7eb"}
+          className="rounded-3xl h-[480px] shadow-inner"
+          emojiSize="text-[160px]"
+        />
 
         {/* Product info + add to cart */}
         <div className="sticky top-24">

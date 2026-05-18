@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
+import { calcShipping, type ShippingOptionKey, SHIPPING_RATES } from "@/lib/shipping";
 
 export const dynamic = "force-dynamic";
 
@@ -14,12 +15,18 @@ interface CartItemPayload {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json() as { items: CartItemPayload[] };
-    const { items } = body;
+    const body = await req.json() as { items: CartItemPayload[]; shippingOption?: string };
+    const { items, shippingOption } = body;
 
     if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
     }
+
+    const validShippingOptions = Object.keys(SHIPPING_RATES) as ShippingOptionKey[];
+    const resolvedShipping: ShippingOptionKey =
+      shippingOption && validShippingOptions.includes(shippingOption as ShippingOptionKey)
+        ? (shippingOption as ShippingOptionKey)
+        : "standard";
 
     // Calculate amount server-side from the authoritative product catalog
     let amount = 0;
@@ -48,8 +55,12 @@ export async function POST(req: NextRequest) {
       amount += Math.round(product.price * 100) * item.quantity;
     }
 
+    const subtotalCents = amount;
+    const shippingCents = Math.round(calcShipping(subtotalCents / 100, resolvedShipping) * 100);
+    const totalCents = subtotalCents + shippingCents;
+
     const paymentIntent = await (await getStripe()).paymentIntents.create({
-      amount,
+      amount: totalCents,
       currency: "usd",
       automatic_payment_methods: { enabled: true },
       metadata: {
@@ -61,6 +72,8 @@ export async function POST(req: NextRequest) {
             qty: i.quantity,
           }))
         ),
+        shipping_option: resolvedShipping,
+        shipping_fee: (shippingCents / 100).toFixed(2),
       },
     });
 

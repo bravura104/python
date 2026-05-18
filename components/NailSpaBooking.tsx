@@ -14,7 +14,7 @@ export default function NailSpaBooking() {
 
         {/* Heading */}
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-2">
-          Graduation &amp; Congratulations?
+          PROM - Need Pink and White Nail job done?
         </h2>
         <p className="text-center text-gray-500 mb-8 text-base">
           Complete your celebration look with a&nbsp;

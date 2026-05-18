@@ -11,6 +11,13 @@ import {
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {
+  calcShipping,
+  SHIPPING_RATES,
+  FREE_SHIPPING_THRESHOLD,
+  type ShippingOptionKey,
+} from "@/lib/shipping";
+import ProductImage from "@/components/ProductImage";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -119,11 +126,17 @@ function CheckoutForm({ totalPrice }: { totalPrice: number }) {
 export default function CheckoutPage() {
   const { items, totalPrice } = useCart();
   const router = useRouter();
+  const [shippingOption, setShippingOption] = useState<ShippingOptionKey>("standard");
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
+  const shippingFee = calcShipping(totalPrice, shippingOption);
+  const grandTotal = totalPrice + shippingFee;
+
   useEffect(() => {
     if (items.length === 0) return;
+    setClientSecret(null);
+    setFetchError(null);
 
     fetch("/api/checkout", {
       method: "POST",
@@ -135,6 +148,7 @@ export default function CheckoutPage() {
           color: i.color,
           quantity: i.quantity,
         })),
+        shippingOption,
       }),
     })
       .then((r) => r.json())
@@ -146,7 +160,7 @@ export default function CheckoutPage() {
         }
       })
       .catch(() => setFetchError("Failed to initialize payment. Please try again."));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [shippingOption]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (items.length === 0) {
     return (
@@ -212,7 +226,7 @@ export default function CheckoutPage() {
               </div>
             ) : (
               <Elements stripe={stripePromise} options={{ clientSecret }}>
-                <CheckoutForm totalPrice={totalPrice} />
+                <CheckoutForm totalPrice={grandTotal} />
               </Elements>
             )}
           </div>
@@ -230,12 +244,13 @@ export default function CheckoutPage() {
                   key={`${item.productId}-${item.size}-${item.color}`}
                   className="flex items-center gap-3"
                 >
-                  <div
-                    className="w-12 h-12 rounded-lg shrink-0 flex items-center justify-center text-xl"
-                    style={{ backgroundColor: item.colorHex }}
-                  >
-                    👕
-                  </div>
+                  <ProductImage
+                    src={item.image}
+                    alt={item.name}
+                    bgColor={item.colorHex}
+                    className="w-12 h-12 rounded-lg shrink-0"
+                    emojiSize="text-xl"
+                  />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">
                       {item.name}
@@ -250,18 +265,54 @@ export default function CheckoutPage() {
                 </div>
               ))}
             </div>
-            <div className="border-t border-gray-200 pt-4 space-y-2 text-sm text-gray-700">
+            {/* Shipping method selector */}
+            <div className="border-t border-gray-200 pt-4 mb-4">
+              <p className="text-sm font-semibold text-gray-900 mb-3">Shipping Method</p>
+              {totalPrice >= FREE_SHIPPING_THRESHOLD ? (
+                <p className="text-sm text-green-600 font-medium">✓ Free shipping applied on orders over ${FREE_SHIPPING_THRESHOLD}</p>
+              ) : (
+                <div className="space-y-2">
+                  {(Object.keys(SHIPPING_RATES) as ShippingOptionKey[]).map((key) => (
+                    <label
+                      key={key}
+                      className={`flex items-center gap-3 cursor-pointer p-2.5 rounded-xl border transition-colors ${
+                        shippingOption === key
+                          ? "border-black bg-gray-50"
+                          : "border-gray-200 hover:border-gray-400"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value={key}
+                        checked={shippingOption === key}
+                        onChange={() => setShippingOption(key)}
+                        className="accent-black"
+                      />
+                      <span className="flex-1 text-sm text-gray-800">{SHIPPING_RATES[key].label}</span>
+                      <span className="text-sm font-semibold text-gray-900">${SHIPPING_RATES[key].price.toFixed(2)}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2 text-sm text-gray-700">
               <div className="flex justify-between">
                 <span>Subtotal</span>
                 <span>${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
-                <span className="text-green-600 font-medium">Free</span>
+                {shippingFee === 0 ? (
+                  <span className="text-green-600 font-medium">Free</span>
+                ) : (
+                  <span>${shippingFee.toFixed(2)}</span>
+                )}
               </div>
               <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
                 <span>Total</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>${grandTotal.toFixed(2)}</span>
               </div>
             </div>
           </div>

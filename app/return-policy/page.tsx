@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Return & Refund Policy – TeeStore",
-  description: "TeeStore's return and refund policy for custom print orders.",
+  title: "Return & Refund Policy – DingTee909",
+  description: "DingTee909's return and refund policy for custom print orders.",
 };
 
 export default function ReturnPolicyPage() {
