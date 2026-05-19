@@ -135,6 +135,8 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (items.length === 0) return;
+
+    let cancelled = false;
     setClientSecret(null);
     setFetchError(null);
 
@@ -153,14 +155,20 @@ export default function CheckoutPage() {
     })
       .then((r) => r.json())
       .then((data) => {
+        if (cancelled) return;
         if (data.error) {
           setFetchError(data.error);
         } else {
           setClientSecret(data.clientSecret as string);
         }
       })
-      .catch(() => setFetchError("Failed to initialize payment. Please try again."));
-  }, [shippingOption]); // eslint-disable-line react-hooks/exhaustive-deps
+      .catch(() => {
+        if (cancelled) return;
+        setFetchError("Failed to initialize payment. Please try again.");
+      });
+
+    return () => { cancelled = true; };
+  }, [items, shippingOption]); // re-run when cart or shipping method changes
 
   if (items.length === 0) {
     return (
