@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
   PaymentElement,
+  AddressElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
@@ -36,6 +37,14 @@ function CheckoutForm({ totalPrice }: { totalPrice: number }) {
     setLoading(true);
     setError(null);
 
+    // Validate address + payment fields before charging
+    const { error: submitError } = await elements.submit();
+    if (submitError) {
+      setError(submitError.message ?? "Please check your details and try again.");
+      setLoading(false);
+      return;
+    }
+
     const { error: stripeError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -52,7 +61,22 @@ function CheckoutForm({ totalPrice }: { totalPrice: number }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <PaymentElement />
+      {/* Shipping address */}
+      <div>
+        <h3 className="text-base font-semibold text-gray-900 mb-3">Shipping Address</h3>
+        <AddressElement
+          options={{
+            mode: "shipping",
+            allowedCountries: ["CA", "US"],
+          }}
+        />
+      </div>
+
+      {/* Payment */}
+      <div className="border-t border-gray-100 pt-5">
+        <h3 className="text-base font-semibold text-gray-900 mb-3">Payment Details</h3>
+        <PaymentElement />
+      </div>
 
       {error && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
@@ -207,7 +231,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-3">
           <div className="bg-white border border-gray-200 rounded-2xl p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6">
-              Payment Details
+              Shipping &amp; Payment
             </h2>
             {!clientSecret ? (
               <div className="flex items-center justify-center py-10 text-gray-400 gap-3">

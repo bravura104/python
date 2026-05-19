@@ -72,6 +72,17 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const shipping = paymentIntent.shipping;
+    const shippingAddress = shipping ? {
+      name:        shipping.name ?? "",
+      line1:       shipping.address?.line1 ?? "",
+      line2:       shipping.address?.line2 ?? "",
+      city:        shipping.address?.city ?? "",
+      state:       shipping.address?.state ?? "",
+      postal_code: shipping.address?.postal_code ?? "",
+      country:     shipping.address?.country ?? "",
+    } : null;
+
     const res = await fetch(dovaraUrl, {
       method:  "POST",
       headers: {
@@ -85,6 +96,7 @@ export async function POST(req: NextRequest) {
         total_amount:      paymentIntent.amount / 100,
         currency:          paymentIntent.currency,
         items:             orderItems,
+        shipping_address:  shippingAddress,
       }),
     });
 
