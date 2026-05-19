@@ -6,6 +6,13 @@ import { calcShipping, type ShippingOptionKey, SHIPPING_RATES } from "@/lib/ship
 
 export const dynamic = "force-dynamic";
 
+// Allowed browser origins — only our own domain may call this endpoint
+const ALLOWED_ORIGINS = new Set(
+  process.env.NODE_ENV === "production"
+    ? ["https://dingtee909.com", "https://www.dingtee909.com", "https://ding-tee.dovara.biz"]
+    : ["http://localhost:3000"]
+);
+
 interface CartItemPayload {
   productId: string;
   size: string;
@@ -14,6 +21,12 @@ interface CartItemPayload {
 }
 
 export async function POST(req: NextRequest) {
+  // Origin check — block cross-site requests from untrusted origins
+  const origin = req.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   try {
     const body = await req.json() as { items: CartItemPayload[]; shippingOption?: string };
     const { items, shippingOption } = body;
