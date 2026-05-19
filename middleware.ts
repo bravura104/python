@@ -39,8 +39,8 @@ function getClientIp(req: NextRequest): string {
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // 1. Rate-limit the payment intent creation API
-  if (pathname.startsWith("/api/checkout")) {
+  // 1. Rate-limit the payment intent creation API and confirm-order
+  if (pathname.startsWith("/api/checkout") || pathname.startsWith("/api/confirm-order")) {
     if (!checkRateLimit(getClientIp(req))) {
       return new NextResponse(
         JSON.stringify({ error: "Too many requests. Please wait and try again." }),
@@ -76,5 +76,5 @@ export function middleware(req: NextRequest) {
 
 // Only run middleware on checkout-related paths
 export const config = {
-  matcher: ["/checkout/:path*", "/api/checkout/:path*"],
+  matcher: ["/checkout/:path*", "/api/checkout/:path*", "/api/confirm-order/:path*"],
 };

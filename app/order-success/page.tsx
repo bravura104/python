@@ -20,7 +20,8 @@ function OrderStatusContent() {
   const clearedRef = useRef(false);
 
   useEffect(() => {
-    const clientSecret = searchParams.get("payment_intent_client_secret");
+    const clientSecret   = searchParams.get("payment_intent_client_secret");
+    const paymentIntentId = searchParams.get("payment_intent");
 
     async function checkStatus() {
       if (!clientSecret) {
@@ -37,6 +38,14 @@ function OrderStatusContent() {
         if (!clearedRef.current) {
           clearedRef.current = true;
           clearCart();
+          // Notify server → dovara.vn (email + DB save). Fire-and-forget.
+          if (paymentIntentId) {
+            fetch("/api/confirm-order", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ paymentIntentId }),
+            }).catch(() => {});
+          }
         }
         setStatus("succeeded");
       } else if (paymentIntent?.status === "processing") {
