@@ -42,15 +42,15 @@ export default function AddToCartSection({ product }: { product: Product }) {
   }
   function isSizeOOS(size: string) {
     const s = stockFor(size, selectedColor.name);
-    return s !== null && s === 0;
+    return s === null || s === 0;
   }
   function isColorOOS(colorName: string) {
     if (!selectedSize) return false;
     const s = stockFor(selectedSize, colorName);
-    return s !== null && s === 0;
+    return s === null || s === 0;
   }
   const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
-  const isSelectedOOS = selectedStockQty !== null && selectedStockQty === 0;
+  const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
 
   const handleAddToCart = () => {
     if (!selectedSize || isSelectedOOS) return;
@@ -187,23 +187,23 @@ export default function AddToCartSection({ product }: { product: Product }) {
       </div>
 
       {/* SKU stock status — shown once both color + size are chosen */}
-      {selectedSize && selectedStockQty !== null && (
+      {selectedSize && (
         <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border ${
-          selectedStockQty === 0
+          selectedStockQty === null || selectedStockQty === 0
             ? "bg-red-50 border-red-200 text-red-600"
             : selectedStockQty <= 5
             ? "bg-orange-50 border-orange-200 text-orange-600"
             : "bg-green-50 border-green-200 text-green-700"
         }`}>
           <span className="text-base leading-none">
-            {selectedStockQty === 0 ? "⛔" : selectedStockQty <= 5 ? "⚠️" : "✅"}
+            {selectedStockQty === null || selectedStockQty === 0 ? "⛔" : selectedStockQty <= 5 ? "⚠️" : "✅"}
           </span>
           <span>
-            {selectedStockQty === 0
+            {selectedStockQty === null || selectedStockQty === 0
               ? `${selectedColor.name} / ${selectedSize} is out of stock`
               : selectedStockQty <= 5
               ? `Only ${selectedStockQty} left in ${selectedColor.name} / ${selectedSize}`
-              : `${selectedColor.name} / ${selectedSize} — in stock`}
+              : `${selectedColor.name} / ${selectedSize} — available`}
           </span>
         </div>
       )}
