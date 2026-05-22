@@ -137,21 +137,6 @@ export default function AddToCartSection({ product }: { product: Product }) {
             </button>
           ))}
         </div>
-        {selectedSize && selectedStockQty !== null && (
-          <p className={`mt-1.5 text-xs font-medium ${
-            selectedStockQty === 0
-              ? "text-red-500"
-              : selectedStockQty <= 5
-              ? "text-orange-500"
-              : "text-green-600"
-          }`}>
-            {selectedStockQty === 0
-              ? "Out of stock for this selection"
-              : selectedStockQty <= 5
-              ? `Only ${selectedStockQty} left`
-              : "In stock"}
-          </p>
-        )}
         {showSizeGuide && (
           <div className="mt-3 rounded-xl border border-gray-200 overflow-hidden text-sm">
             <table className="w-full text-left">
@@ -201,8 +186,30 @@ export default function AddToCartSection({ product }: { product: Product }) {
         </div>
       </div>
 
+      {/* SKU stock status — shown once both color + size are chosen */}
+      {selectedSize && selectedStockQty !== null && (
+        <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border ${
+          selectedStockQty === 0
+            ? "bg-red-50 border-red-200 text-red-600"
+            : selectedStockQty <= 5
+            ? "bg-orange-50 border-orange-200 text-orange-600"
+            : "bg-green-50 border-green-200 text-green-700"
+        }`}>
+          <span className="text-base leading-none">
+            {selectedStockQty === 0 ? "⛔" : selectedStockQty <= 5 ? "⚠️" : "✅"}
+          </span>
+          <span>
+            {selectedStockQty === 0
+              ? `${selectedColor.name} / ${selectedSize} is out of stock`
+              : selectedStockQty <= 5
+              ? `Only ${selectedStockQty} left in ${selectedColor.name} / ${selectedSize}`
+              : `${selectedColor.name} / ${selectedSize} — in stock`}
+          </span>
+        </div>
+      )}
+
       {/* Action buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 pt-2">
+      <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={handleAddToCart}
           disabled={!selectedSize || added || isSelectedOOS}
