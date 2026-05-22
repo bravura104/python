@@ -83,6 +83,43 @@ export async function POST(req: NextRequest) {
     const shippingCents = Math.round(calcShipping(subtotalCents / 100, resolvedShipping) * 100);
     const totalCents = subtotalCents + shippingCents;
 
+    // ── Inventory check — block checkout if any item is out of stock ───────
+    const inventoryUrl = process.env.DOVARA_INVENTORY_URL;
+    if (inventoryUrl) {
+      const productIds = [...new Set(items.map((i) => i.productId))];
+      const stockByProduct: Record<string, Record<string, Record<string, number>>> = {};
+
+      await Promise.all(
+        productIds.map(async (pid) => {
+          try {
+            const res = await fetch(
+              `${inventoryUrl}?product_id=${encodeURIComponent(pid)}`,
+              { signal: AbortSignal.timeout(4000) }
+            );
+            if (!res.ok) return;
+            const data = await res.json() as { skus?: { size: string; color: string; stock: number }[] };
+            stockByProduct[pid] = {};
+            for (const sku of data.skus ?? []) {
+              if (!stockByProduct[pid][sku.size]) stockByProduct[pid][sku.size] = {};
+              stockByProduct[pid][sku.size][sku.color] = sku.stock;
+            }
+          } catch {
+            // Inventory API unavailable — don't block checkout
+          }
+        })
+      );
+
+      for (const item of items) {
+        const avail = stockByProduct[item.productId]?.[item.size]?.[item.color];
+        if (avail !== undefined && avail < item.quantity) {
+          return NextResponse.json(
+            { error: `"${item.size} / ${item.color}" is out of stock. Please update your cart.` },
+            { status: 422 }
+          );
+        }
+      }
+    }
+
     const paymentIntent = await (await getStripe()).paymentIntents.create({
       amount: totalCents,
       currency: "usd",

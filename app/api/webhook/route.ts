@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
   const orderItems = metaItems.map((mi) => {
     const product = (products as Product[]).find((p) => p.id === mi.id);
     return {
+      product_id: mi.id,
       name:       product?.name ?? mi.id,
       size:       mi.size,
       color:      mi.color,

@@ -58,7 +58,6 @@ export default async function HomePage({
 
             {/* Slogan */}
             <div className="d-flex align-items-center gap-2">
-              <span className="fw-bold" style={{ fontSize: ".95rem", color: "#312e81" }}>DingTee 909</span>
               <span className="d-none d-sm-inline" style={{ color: "#c4b5fd" }}>·</span>
               <span className="d-none d-sm-inline" style={{ color: "#6b7280", fontSize: ".8rem" }}>Premium blank tees, print ready</span>
             </div>

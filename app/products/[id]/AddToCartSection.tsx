@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import type { Product } from "@/lib/types";
 import { useCart } from "@/lib/cart-context";
@@ -21,9 +21,39 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
+  const [stockMap, setStockMap] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetch(`/api/inventory/${product.id}`)
+      .then((r) => r.json())
+      .then((data: { skus?: { size: string; color: string; stock: number }[] }) => {
+        const map: Record<string, number> = {};
+        for (const sku of data.skus ?? []) {
+          map[`${sku.size}_${sku.color}`] = sku.stock;
+        }
+        setStockMap(map);
+      })
+      .catch(() => {}); // silently fail — don't block purchase
+  }, [product.id]);
+
+  function stockFor(size: string, color: string): number | null {
+    const key = `${size}_${color}`;
+    return key in stockMap ? stockMap[key] : null;
+  }
+  function isSizeOOS(size: string) {
+    const s = stockFor(size, selectedColor.name);
+    return s !== null && s === 0;
+  }
+  function isColorOOS(colorName: string) {
+    if (!selectedSize) return false;
+    const s = stockFor(selectedSize, colorName);
+    return s !== null && s === 0;
+  }
+  const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
+  const isSelectedOOS = selectedStockQty !== null && selectedStockQty === 0;
 
   const handleAddToCart = () => {
-    if (!selectedSize) return;
+    if (!selectedSize || isSelectedOOS) return;
 
     addItem({
       productId: product.id,
@@ -52,15 +82,22 @@ export default function AddToCartSection({ product }: { product: Product }) {
           {product.colors.map((c) => (
             <button
               key={c.name}
-              onClick={() => setSelectedColor(c)}
-              title={c.name}
-              className={`w-9 h-9 rounded-full border-2 transition-all ${
+              onClick={() => { if (!isColorOOS(c.name)) setSelectedColor(c); }}
+              title={isColorOOS(c.name) ? `${c.name} — out of stock` : c.name}
+              disabled={isColorOOS(c.name)}
+              className={`relative w-9 h-9 rounded-full border-2 transition-all ${
                 selectedColor.name === c.name
                   ? "border-black scale-110 shadow-md"
+                  : isColorOOS(c.name)
+                  ? "border-gray-200 opacity-40 cursor-not-allowed"
                   : "border-gray-300 hover:border-gray-500"
               }`}
               style={{ backgroundColor: c.hex }}
-            />
+            >
+              {isColorOOS(c.name) && (
+                <span className="absolute inset-0 flex items-center justify-center text-white text-[10px] font-bold">✕</span>
+              )}
+            </button>
           ))}
         </div>
       </div>
@@ -86,10 +123,13 @@ export default function AddToCartSection({ product }: { product: Product }) {
           {product.sizes.map((size) => (
             <button
               key={size}
-              onClick={() => setSelectedSize(size)}
+              onClick={() => { if (!isSizeOOS(size)) setSelectedSize(size); }}
+              disabled={isSizeOOS(size)}
               className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
                 selectedSize === size
                   ? "bg-black text-white border-black"
+                  : isSizeOOS(size)
+                  ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
                   : "bg-white text-gray-700 border-gray-300 hover:border-black"
               }`}
             >
@@ -97,6 +137,21 @@ export default function AddToCartSection({ product }: { product: Product }) {
             </button>
           ))}
         </div>
+        {selectedSize && selectedStockQty !== null && (
+          <p className={`mt-1.5 text-xs font-medium ${
+            selectedStockQty === 0
+              ? "text-red-500"
+              : selectedStockQty <= 5
+              ? "text-orange-500"
+              : "text-green-600"
+          }`}>
+            {selectedStockQty === 0
+              ? "Out of stock for this selection"
+              : selectedStockQty <= 5
+              ? `Only ${selectedStockQty} left`
+              : "In stock"}
+          </p>
+        )}
         {showSizeGuide && (
           <div className="mt-3 rounded-xl border border-gray-200 overflow-hidden text-sm">
             <table className="w-full text-left">
@@ -150,20 +205,20 @@ export default function AddToCartSection({ product }: { product: Product }) {
       <div className="flex flex-col sm:flex-row gap-3 pt-2">
         <button
           onClick={handleAddToCart}
-          disabled={!selectedSize || added}
+          disabled={!selectedSize || added || isSelectedOOS}
           className={`flex-1 py-3.5 rounded-xl font-semibold text-sm transition-all ${
             added
               ? "bg-green-600 text-white"
-              : !selectedSize
+              : !selectedSize || isSelectedOOS
               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
               : "bg-black text-white hover:bg-gray-800 active:scale-95"
           }`}
         >
-          {added ? "✓ Added to Cart" : "Add to Cart"}
+          {added ? "✓ Added to Cart" : isSelectedOOS ? "Out of Stock" : "Add to Cart"}
         </button>
         <button
           onClick={() => {
-            if (!selectedSize) return;
+            if (!selectedSize || isSelectedOOS) return;
             addItem({
               productId: product.id,
               name: product.name,
@@ -175,7 +230,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
             });
             router.push("/cart");
           }}
-          disabled={!selectedSize}
+          disabled={!selectedSize || isSelectedOOS}
           className="flex-1 py-3.5 rounded-xl font-semibold text-sm border-2 border-black text-black hover:bg-black hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
         >
           Buy Now
