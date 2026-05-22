@@ -7,3 +7,31 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Marquee animation ──────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 24s linear infinite;
+  will-change: transform;
+  display: flex;
+  white-space: nowrap;
+}
+
+/* ── Product card hover ─────────────────────────────────────────────────── */
+.product-card-wrap {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.product-card-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .13) !important;
+  border-color: #94a3b8 !important;
+}
+
+/* ── CTA button hover ───────────────────────────────────────────────────── */
+.product-cta:hover {
+  filter: brightness(1.12);
+}
+
