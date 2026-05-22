@@ -117,6 +117,9 @@ export async function POST(req: NextRequest) {
         currency:          pi.currency,
         items:             orderItems,
         shipping_address:  shippingAddress,
+        utm_source:        pi.metadata?.utm_source   || undefined,
+        utm_medium:        pi.metadata?.utm_medium   || undefined,
+        utm_campaign:      pi.metadata?.utm_campaign || undefined,
       }),
     });
 

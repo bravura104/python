@@ -17,6 +17,7 @@ function OrderStatusContent() {
   const searchParams = useSearchParams();
   const { clearCart } = useCart();
   const [status, setStatus] = useState<Status>("loading");
+  const [utmSource, setUtmSource] = useState<string | null>(null);
   const clearedRef = useRef(false);
 
   useEffect(() => {
@@ -38,6 +39,14 @@ function OrderStatusContent() {
         if (!clearedRef.current) {
           clearedRef.current = true;
           clearCart();
+          // Read ad source for display
+          try {
+            const raw = localStorage.getItem("utm_data");
+            if (raw) {
+              const utm = JSON.parse(raw) as Record<string, string>;
+              if (utm.utm_source) setUtmSource(utm.utm_source);
+            }
+          } catch { /* ignore */ }
           // Notify server → dovara.vn (email + DB save). Fire-and-forget.
           if (paymentIntentId) {
             fetch("/api/confirm-order", {
@@ -92,6 +101,11 @@ function OrderStatusContent() {
           Thank you for your purchase. You&apos;ll receive a confirmation email
           shortly.
         </p>
+        {utmSource && (
+          <p className="text-xs text-gray-400 mb-6">
+            Referred by: <span className="font-semibold">{utmSource}</span>
+          </p>
+        )}
         <Link
           href="/"
           className="inline-block bg-black text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-800 transition-colors"

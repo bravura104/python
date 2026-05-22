@@ -175,6 +175,14 @@ export default function CheckoutPage() {
           quantity: i.quantity,
         })),
         shippingOption,
+        utmData: (() => {
+          try {
+            const raw = localStorage.getItem("utm_data");
+            return raw ? JSON.parse(raw) : undefined;
+          } catch {
+            return undefined;
+          }
+        })(),
       }),
     })
       .then((r) => r.json())

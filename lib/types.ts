@@ -12,6 +12,8 @@ export interface Product {
   sizes: string[];
   colors: ProductColor[];
   image?: string;
+  brand?: string;
+  category?: string;
 }
 
 export interface CartItem {

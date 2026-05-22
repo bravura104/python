@@ -28,8 +28,19 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json() as { items: CartItemPayload[]; shippingOption?: string };
-    const { items, shippingOption } = body;
+    const body = await req.json() as {
+      items: CartItemPayload[];
+      shippingOption?: string;
+      utmData?: Record<string, string>;
+    };
+    const { items, shippingOption, utmData } = body;
+
+    // Sanitize UTM fields – strip anything outside safe characters, cap lengths
+    const sanitize = (v: unknown, max: number) =>
+      typeof v === "string" ? v.replace(/[^a-zA-Z0-9_\-. ]/g, "").slice(0, max) : "";
+    const utmSource   = sanitize(utmData?.utm_source,   100);
+    const utmMedium   = sanitize(utmData?.utm_medium,   100);
+    const utmCampaign = sanitize(utmData?.utm_campaign, 200);
 
     if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
@@ -87,6 +98,9 @@ export async function POST(req: NextRequest) {
         ),
         shipping_option: resolvedShipping,
         shipping_fee: (shippingCents / 100).toFixed(2),
+        ...(utmSource   && { utm_source:   utmSource }),
+        ...(utmMedium   && { utm_medium:   utmMedium }),
+        ...(utmCampaign && { utm_campaign: utmCampaign }),
       },
     });
 

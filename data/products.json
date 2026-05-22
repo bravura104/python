@@ -1,51 +1,131 @@
 [
   {
-    "id": "classic-white-tee",
-    "name": "Classic White Tee",
-    "description": "A timeless 100% cotton white t-shirt. Soft, breathable, and perfect for any occasion. Pre-shrunk and easy to care for.",
-    "price": 24.99,
-    "badge": null,
-    "sizes": ["S", "M", "L", "XL", "2XL"],
-    "colors": [
-      { "name": "White", "hex": "#f9fafb" },
-      { "name": "Off-White", "hex": "#fef9c3" }
-    ]
-  },
-  {
-    "id": "vintage-black-tee",
-    "name": "Vintage Black Tee",
-    "description": "Premium heavyweight black tee with a vintage washed finish. Made from 100% ringspun cotton for an authentic retro look and feel.",
-    "price": 29.99,
+    "id": "proclub-heavyweight-tee",
+    "brand": "Pro Club",
+    "category": "Blank Tee",
+    "name": "Pro Club Heavyweight Tee",
+    "description": "6.5 oz. 100% heavyweight pre-shrunk cotton. Tagless. Boxy unisex fit — the standard blank for custom screen printing and everyday wear.",
+    "price": 10.99,
     "badge": "Best Seller",
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"],
+    "colors": [
+      { "name": "Black",        "hex": "#111827" },
+      { "name": "White",        "hex": "#f9fafb" },
+      { "name": "Charcoal",     "hex": "#4b5563" },
+      { "name": "Navy",         "hex": "#1e3a5f" },
+      { "name": "Red",          "hex": "#dc2626" },
+      { "name": "Maroon",       "hex": "#7f1d1d" },
+      { "name": "Royal Blue",   "hex": "#1d4ed8" },
+      { "name": "Forest Green", "hex": "#166534" }
+    ]
+  },
+  {
+    "id": "proclub-comfort-wash-tee",
+    "brand": "Pro Club",
+    "category": "Blank Tee",
+    "name": "Pro Club Comfort Wash Tee",
+    "description": "6 oz. ringspun cotton with a garment-washed finish. Relaxed fit and broken-in feel. Ideal for vintage-style and distressed prints.",
+    "price": 12.99,
+    "badge": null,
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL"],
+    "colors": [
+      { "name": "Washed Black",  "hex": "#2d2d2d" },
+      { "name": "Washed Navy",   "hex": "#2b3f5c" },
+      { "name": "Washed Forest", "hex": "#2d4a2d" },
+      { "name": "Washed Maroon", "hex": "#5c2626" },
+      { "name": "Washed Gray",   "hex": "#6b7280" }
+    ]
+  },
+  {
+    "id": "proclub-long-sleeve",
+    "brand": "Pro Club",
+    "category": "Long Sleeve",
+    "name": "Pro Club Long Sleeve Tee",
+    "description": "6.5 oz. heavyweight long sleeve in the same Pro Club build quality. Great for cooler weather or layered streetwear looks.",
+    "price": 14.99,
+    "badge": null,
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+    "colors": [
+      { "name": "Black",    "hex": "#111827" },
+      { "name": "White",    "hex": "#f9fafb" },
+      { "name": "Navy",     "hex": "#1e3a5f" },
+      { "name": "Charcoal", "hex": "#4b5563" },
+      { "name": "Red",      "hex": "#dc2626" }
+    ]
+  },
+  {
+    "id": "shaka-premium-tee",
+    "brand": "Shaka",
+    "category": "Blank Tee",
+    "name": "Shaka Premium Tee",
+    "description": "5.5 oz. soft ringspun cotton. Modern slim fit. Side-seamed with shoulder-to-shoulder tape for clean drape and lasting shape.",
+    "price": 9.99,
+    "badge": "New",
+    "sizes": ["XS", "S", "M", "L", "XL", "2XL"],
+    "colors": [
+      { "name": "White",       "hex": "#f9fafb" },
+      { "name": "Black",       "hex": "#111827" },
+      { "name": "Ocean Blue",  "hex": "#0369a1" },
+      { "name": "Coral",       "hex": "#f97316" },
+      { "name": "Olive",       "hex": "#65a30d" },
+      { "name": "Sand",        "hex": "#d4b896" },
+      { "name": "Lavender",    "hex": "#a78bfa" }
+    ]
+  },
+  {
+    "id": "shaka-tri-blend-tee",
+    "brand": "Shaka",
+    "category": "Tri-Blend",
+    "name": "Shaka Tri-Blend Tee",
+    "description": "50% polyester / 25% cotton / 25% rayon. Lightweight and buttery soft with a natural heathered texture. Great for dye-sublimation and fine-detail DTG prints.",
+    "price": 13.99,
+    "badge": null,
+    "sizes": ["XS", "S", "M", "L", "XL", "2XL"],
+    "colors": [
+      { "name": "Heather Black",  "hex": "#374151" },
+      { "name": "Heather Navy",   "hex": "#334155" },
+      { "name": "Heather Gray",   "hex": "#9ca3af" },
+      { "name": "Heather Red",    "hex": "#b91c1c" },
+      { "name": "Heather Purple", "hex": "#7c3aed" }
+    ]
+  },
+  {
+    "id": "aaa-1301-tee",
+    "brand": "AAA",
+    "category": "Blank Tee",
+    "name": "AAA 1301 Heavyweight Tee",
+    "description": "6.0 oz. 100% pre-shrunk heavyweight cotton. Seamless body for a smooth, clean print surface. A screen-printing staple in over 30 colors.",
+    "price": 8.99,
+    "badge": null,
+    "sizes": ["S", "M", "L", "XL", "2XL", "3XL"],
+    "colors": [
+      { "name": "Black",        "hex": "#111827" },
+      { "name": "White",        "hex": "#f9fafb" },
+      { "name": "Red",          "hex": "#dc2626" },
+      { "name": "Navy",         "hex": "#1e3a5f" },
+      { "name": "Royal Blue",   "hex": "#1d4ed8" },
+      { "name": "Gold",         "hex": "#f59e0b" },
+      { "name": "Orange",       "hex": "#ea580c" },
+      { "name": "Forest Green", "hex": "#166534" },
+      { "name": "Maroon",       "hex": "#7f1d1d" },
+      { "name": "Purple",       "hex": "#7e22ce" }
+    ]
+  },
+  {
+    "id": "aaa-1304-pocket-tee",
+    "brand": "AAA",
+    "category": "Blank Tee",
+    "name": "AAA 1304 Pocket Tee",
+    "description": "6.0 oz. with a classic left-chest pocket. All the quality of the 1301 with a utility detail. Ideal for embroidery and left-chest logo printing.",
+    "price": 10.99,
+    "badge": null,
     "sizes": ["S", "M", "L", "XL", "2XL"],
     "colors": [
-      { "name": "Black", "hex": "#111827" },
-      { "name": "Charcoal", "hex": "#4b5563" }
-    ]
-  },
-  {
-    "id": "sunset-graphic-tee",
-    "name": "Sunset Graphic Tee",
-    "description": "Bold sunset graphic screen-printed on a comfortable cotton-polyester blend. Great for casual outings and weekend adventures.",
-    "price": 34.99,
-    "badge": "New",
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": [
-      { "name": "Navy", "hex": "#1e3a5f" },
-      { "name": "Heather Gray", "hex": "#9ca3af" }
-    ]
-  },
-  {
-    "id": "mountain-logo-tee",
-    "name": "Mountain Logo Tee",
-    "description": "Minimalist mountain logo embroidered on a slim-fit ringspun cotton tee. Clean design that pairs with everything.",
-    "price": 32.99,
-    "badge": null,
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "colors": [
-      { "name": "Forest Green", "hex": "#166534" },
-      { "name": "Rust", "hex": "#b45309" },
-      { "name": "Cream", "hex": "#fef3c7" }
+      { "name": "Black",    "hex": "#111827" },
+      { "name": "White",    "hex": "#f9fafb" },
+      { "name": "Navy",     "hex": "#1e3a5f" },
+      { "name": "Charcoal", "hex": "#4b5563" },
+      { "name": "Red",      "hex": "#dc2626" }
     ]
   }
 ]
