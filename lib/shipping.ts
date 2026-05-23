@@ -13,6 +13,10 @@ export type ShippingOptionKey = keyof typeof SHIPPING_RATES;
 
 export const FREE_SHIPPING_THRESHOLD = 60;
 
+// California state sales tax rate (7.75% — statewide base 7.25% + average district)
+// Applied to product subtotal only; shipping charges are non-taxable in CA.
+export const CA_TAX_RATE = 0.0775;
+
 export function calcShipping(
   subtotal: number,
   option: ShippingOptionKey

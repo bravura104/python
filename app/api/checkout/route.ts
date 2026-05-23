@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
-import { calcShipping, type ShippingOptionKey, SHIPPING_RATES } from "@/lib/shipping";
+import { calcShipping, type ShippingOptionKey, SHIPPING_RATES, CA_TAX_RATE } from "@/lib/shipping";
 
 export const dynamic = "force-dynamic";
 
@@ -81,7 +81,8 @@ export async function POST(req: NextRequest) {
 
     const subtotalCents = amount;
     const shippingCents = Math.round(calcShipping(subtotalCents / 100, resolvedShipping) * 100);
-    const totalCents = subtotalCents + shippingCents;
+    const taxCents      = Math.round(subtotalCents * CA_TAX_RATE);
+    const totalCents    = subtotalCents + shippingCents + taxCents;
 
     // ── Inventory check — block checkout if any item is out of stock ───────
     const inventoryUrl = process.env.DOVARA_INVENTORY_URL;

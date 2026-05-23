@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
-import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES } from "@/lib/shipping";
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES, CA_TAX_RATE } from "@/lib/shipping";
 import ProductImage from "@/components/ProductImage";
 
 export default function CartPage() {
@@ -137,6 +137,10 @@ export default function CartPage() {
                 <span className="text-gray-500">From ${SHIPPING_RATES.standard.price.toFixed(2)}</span>
               )}
             </div>
+            <div className="flex justify-between">
+              <span>Est. CA tax (7.75%)</span>
+              <span>${(totalPrice * CA_TAX_RATE).toFixed(2)}</span>
+            </div>
             {totalPrice < FREE_SHIPPING_THRESHOLD && (
               <p className="text-xs text-green-700 bg-green-50 rounded-lg px-3 py-2">
                 Add ${(FREE_SHIPPING_THRESHOLD - totalPrice).toFixed(2)} more for free shipping!
@@ -144,7 +148,7 @@ export default function CartPage() {
             )}
             <div className="border-t border-gray-200 pt-3 flex justify-between text-base font-bold text-gray-900">
               <span>Total</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>${(totalPrice + totalPrice * CA_TAX_RATE).toFixed(2)}</span>
             </div>
           </div>
 

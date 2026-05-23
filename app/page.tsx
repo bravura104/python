@@ -1,7 +1,6 @@
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
-import NailSpaBooking from "@/components/NailSpaBooking";
 import Link from "next/link";
 
 // ── Brand meta – order controls tab order ───────────────────────────────────
@@ -148,7 +147,6 @@ export default async function HomePage({
       </div>
       </div>
 
-      <NailSpaBooking />
     </>
   );
 }

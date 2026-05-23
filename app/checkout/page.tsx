@@ -16,6 +16,7 @@ import {
   calcShipping,
   SHIPPING_RATES,
   FREE_SHIPPING_THRESHOLD,
+  CA_TAX_RATE,
   type ShippingOptionKey,
 } from "@/lib/shipping";
 import ProductImage from "@/components/ProductImage";
@@ -155,7 +156,8 @@ export default function CheckoutPage() {
   const [fetchError, setFetchError] = useState<string | null>(null);
 
   const shippingFee = calcShipping(totalPrice, shippingOption);
-  const grandTotal = totalPrice + shippingFee;
+  const taxAmount   = Math.round(totalPrice * CA_TAX_RATE * 100) / 100;
+  const grandTotal  = totalPrice + shippingFee + taxAmount;
 
   useEffect(() => {
     if (items.length === 0) return;
@@ -349,6 +351,10 @@ export default function CheckoutPage() {
                 ) : (
                   <span>${shippingFee.toFixed(2)}</span>
                 )}
+              </div>
+              <div className="flex justify-between">
+                <span>CA tax (7.75%)</span>
+                <span>${taxAmount.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
                 <span>Total</span>

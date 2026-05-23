@@ -18,6 +18,7 @@ function OrderStatusContent() {
   const { clearCart } = useCart();
   const [status, setStatus] = useState<Status>("loading");
   const [utmSource, setUtmSource] = useState<string | null>(null);
+  const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const clearedRef = useRef(false);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function OrderStatusContent() {
         if (!clearedRef.current) {
           clearedRef.current = true;
           clearCart();
+          setPaymentIntentId(paymentIntentId ?? null);
           // Read ad source for display
           try {
             const raw = localStorage.getItem("utm_data");
@@ -98,9 +100,18 @@ function OrderStatusContent() {
           Order Confirmed!
         </h1>
         <p className="text-gray-500 text-lg mb-8">
-          Thank you for your purchase. You&apos;ll receive a confirmation email
-          shortly.
+          Thank you for your purchase. A confirmation email is on its way to you.
         </p>
+        {paymentIntentId && (
+          <div className="mb-8">
+            <Link
+              href={`/order-status/${paymentIntentId}`}
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 px-6 py-3 rounded-xl font-semibold hover:border-black transition-colors text-sm shadow-sm"
+            >
+              🚚 Track Your Order
+            </Link>
+          </div>
+        )}
         {utmSource && (
           <p className="text-xs text-gray-400 mb-6">
             Referred by: <span className="font-semibold">{utmSource}</span>

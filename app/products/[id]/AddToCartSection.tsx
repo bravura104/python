@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { Product } from "@/lib/types";
 import { useCart } from "@/lib/cart-context";
@@ -22,6 +22,8 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [added, setAdded] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [stockMap, setStockMap] = useState<Record<string, number>>({});
+  const [flashOOS, setFlashOOS] = useState(false);
+  const reportedOOS = useRef(new Set<string>());
 
   useEffect(() => {
     fetch(`/api/inventory/${product.id}`)
@@ -35,6 +37,24 @@ export default function AddToCartSection({ product }: { product: Product }) {
       })
       .catch(() => {}); // silently fail — don't block purchase
   }, [product.id]);
+
+  // Report OOS demand — fires once per SKU combo per browser session
+  useEffect(() => {
+    if (!isSelectedOOS || !selectedSize) return;
+    const key = `${product.id}_${selectedSize}_${selectedColor.name}`;
+    if (reportedOOS.current.has(key)) return;
+    reportedOOS.current.add(key);
+    fetch("/api/inventory/demand", {
+      method:  "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        product_id:   product.id,
+        product_name: product.name,
+        size:         selectedSize,
+        color:        selectedColor.name,
+      }),
+    }).catch(() => {});
+  }, [isSelectedOOS, selectedSize, selectedColor.name, product.id, product.name]);
 
   function stockFor(size: string, color: string): number | null {
     const key = `${size}_${color}`;
@@ -52,8 +72,14 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
   const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
 
+  const triggerOOSFlash = () => {
+    setFlashOOS(true);
+    setTimeout(() => setFlashOOS(false), 700);
+  };
+
   const handleAddToCart = () => {
-    if (!selectedSize || isSelectedOOS) return;
+    if (!selectedSize) return;
+    if (isSelectedOOS) { triggerOOSFlash(); return; }
 
     addItem({
       productId: product.id,
@@ -82,14 +108,13 @@ export default function AddToCartSection({ product }: { product: Product }) {
           {product.colors.map((c) => (
             <button
               key={c.name}
-              onClick={() => { if (!isColorOOS(c.name)) setSelectedColor(c); }}
+              onClick={() => setSelectedColor(c)}
               title={isColorOOS(c.name) ? `${c.name} — out of stock` : c.name}
-              disabled={isColorOOS(c.name)}
               className={`relative w-9 h-9 rounded-full border-2 transition-all ${
                 selectedColor.name === c.name
                   ? "border-black scale-110 shadow-md"
                   : isColorOOS(c.name)
-                  ? "border-gray-200 opacity-40 cursor-not-allowed"
+                  ? "border-gray-200 opacity-40"
                   : "border-gray-300 hover:border-gray-500"
               }`}
               style={{ backgroundColor: c.hex }}
@@ -123,13 +148,12 @@ export default function AddToCartSection({ product }: { product: Product }) {
           {product.sizes.map((size) => (
             <button
               key={size}
-              onClick={() => { if (!isSizeOOS(size)) setSelectedSize(size); }}
-              disabled={isSizeOOS(size)}
+              onClick={() => setSelectedSize(size)}
               className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
                 selectedSize === size
                   ? "bg-black text-white border-black"
                   : isSizeOOS(size)
-                  ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
+                  ? "bg-gray-100 text-gray-400 border-gray-200 line-through"
                   : "bg-white text-gray-700 border-gray-300 hover:border-black"
               }`}
             >
@@ -188,9 +212,9 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
       {/* SKU stock status — shown once both color + size are chosen */}
       {selectedSize && (
-        <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border ${
+        <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all ${
           selectedStockQty === null || selectedStockQty === 0
-            ? "bg-red-50 border-red-200 text-red-600"
+            ? `bg-red-50 border-red-200 text-red-600${flashOOS ? " ring-2 ring-red-400 ring-offset-1 scale-[1.02]" : ""}`
             : selectedStockQty <= 5
             ? "bg-orange-50 border-orange-200 text-orange-600"
             : "bg-green-50 border-green-200 text-green-700"
@@ -212,20 +236,18 @@ export default function AddToCartSection({ product }: { product: Product }) {
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={handleAddToCart}
-          disabled={!selectedSize || added || isSelectedOOS}
           className={`flex-1 py-3.5 rounded-xl font-semibold text-sm transition-all ${
             added
               ? "bg-green-600 text-white"
-              : !selectedSize || isSelectedOOS
-              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
               : "bg-black text-white hover:bg-gray-800 active:scale-95"
           }`}
         >
-          {added ? "✓ Added to Cart" : isSelectedOOS ? "Out of Stock" : "Add to Cart"}
+          {added ? "✓ Added to Cart" : "Add to Cart"}
         </button>
         <button
           onClick={() => {
-            if (!selectedSize || isSelectedOOS) return;
+            if (!selectedSize) return;
+            if (isSelectedOOS) { triggerOOSFlash(); return; }
             addItem({
               productId: product.id,
               name: product.name,
@@ -237,8 +259,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
             });
             router.push("/cart");
           }}
-          disabled={!selectedSize || isSelectedOOS}
-          className="flex-1 py-3.5 rounded-xl font-semibold text-sm border-2 border-black text-black hover:bg-black hover:text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
+          className="flex-1 py-3.5 rounded-xl font-semibold text-sm border-2 border-black text-black hover:bg-black hover:text-white transition-all active:scale-95"
         >
           Buy Now
         </button>
