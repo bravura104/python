@@ -38,6 +38,24 @@ export default function AddToCartSection({ product }: { product: Product }) {
       .catch(() => {}); // silently fail — don't block purchase
   }, [product.id]);
 
+  function stockFor(size: string, color: string): number | null {
+    const key = `${size}_${color}`;
+    return key in stockMap ? stockMap[key] : null;
+  }
+  function isSizeOOS(size: string) {
+    const s = stockFor(size, selectedColor.name);
+    return s === null || s === 0;
+  }
+  function isColorOOS(colorName: string) {
+    if (!selectedSize) return false;
+    const s = stockFor(selectedSize, colorName);
+    return s === null || s === 0;
+  }
+
+  // Declare BEFORE the useEffect that references them (avoids TDZ)
+  const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
+  const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
+
   // Report OOS demand — fires once per SKU combo per browser session
   useEffect(() => {
     if (!isSelectedOOS || !selectedSize) return;
@@ -55,22 +73,6 @@ export default function AddToCartSection({ product }: { product: Product }) {
       }),
     }).catch(() => {});
   }, [isSelectedOOS, selectedSize, selectedColor.name, product.id, product.name]);
-
-  function stockFor(size: string, color: string): number | null {
-    const key = `${size}_${color}`;
-    return key in stockMap ? stockMap[key] : null;
-  }
-  function isSizeOOS(size: string) {
-    const s = stockFor(size, selectedColor.name);
-    return s === null || s === 0;
-  }
-  function isColorOOS(colorName: string) {
-    if (!selectedSize) return false;
-    const s = stockFor(selectedSize, colorName);
-    return s === null || s === 0;
-  }
-  const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
-  const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
 
   const triggerOOSFlash = () => {
     setFlashOOS(true);
@@ -149,15 +151,17 @@ export default function AddToCartSection({ product }: { product: Product }) {
             <button
               key={size}
               onClick={() => setSelectedSize(size)}
-              className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
+              title={isSizeOOS(size) ? `${size} — out of stock (tap to select anyway)` : size}
+              className={`relative px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
                 selectedSize === size
                   ? "bg-black text-white border-black"
-                  : isSizeOOS(size)
-                  ? "bg-gray-100 text-gray-400 border-gray-200 line-through"
-                  : "bg-white text-gray-700 border-gray-300 hover:border-black"
+                  : "bg-white text-gray-700 border-gray-300 hover:border-black active:scale-95"
               }`}
             >
               {size}
+              {isSizeOOS(size) && (
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-400 rounded-full border border-white" />
+              )}
             </button>
           ))}
         </div>
@@ -212,37 +216,50 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
       {/* SKU stock status — shown once both color + size are chosen */}
       {selectedSize && (
-        <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all ${
-          selectedStockQty === null || selectedStockQty === 0
-            ? `bg-red-50 border-red-200 text-red-600${flashOOS ? " ring-2 ring-red-400 ring-offset-1 scale-[1.02]" : ""}`
-            : selectedStockQty <= 5
-            ? "bg-orange-50 border-orange-200 text-orange-600"
+        <div className={`flex items-start gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all ${
+          isSelectedOOS
+            ? `bg-red-50 border-red-200 text-red-700${flashOOS ? " ring-2 ring-red-400 ring-offset-1 scale-[1.02]" : ""}`
+            : selectedStockQty !== null && selectedStockQty <= 5
+            ? "bg-orange-50 border-orange-200 text-orange-700"
             : "bg-green-50 border-green-200 text-green-700"
         }`}>
-          <span className="text-base leading-none">
-            {selectedStockQty === null || selectedStockQty === 0 ? "⛔" : selectedStockQty <= 5 ? "⚠️" : "✅"}
+          <span className="text-base leading-none mt-px">
+            {isSelectedOOS ? "🔴" : selectedStockQty !== null && selectedStockQty <= 5 ? "⚠️" : "✅"}
           </span>
-          <span>
-            {selectedStockQty === null || selectedStockQty === 0
-              ? `${selectedColor.name} / ${selectedSize} is out of stock`
-              : selectedStockQty <= 5
-              ? `Only ${selectedStockQty} left in ${selectedColor.name} / ${selectedSize}`
-              : `${selectedColor.name} / ${selectedSize} — available`}
-          </span>
+          <div>
+            <div>
+              {isSelectedOOS
+                ? `${selectedColor.name} / ${selectedSize} is out of stock`
+                : selectedStockQty !== null && selectedStockQty <= 5
+                ? `Only ${selectedStockQty} left in ${selectedColor.name} / ${selectedSize}`
+                : `${selectedColor.name} / ${selectedSize} — in stock`}
+            </div>
+            {isSelectedOOS && (
+              <div className="text-xs font-normal text-red-500 mt-0.5">
+                We&apos;ve noted your interest — you can still add to cart to join the waitlist.
+              </div>
+            )}
+          </div>
         </div>
       )}
 
-      {/* Action buttons */}
+      {/* Action buttons — never disabled; OOS shows flash + records demand */}
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={handleAddToCart}
           className={`flex-1 py-3.5 rounded-xl font-semibold text-sm transition-all ${
             added
               ? "bg-green-600 text-white"
+              : isSelectedOOS && selectedSize
+              ? "bg-gray-900 text-white hover:bg-black active:scale-95"
               : "bg-black text-white hover:bg-gray-800 active:scale-95"
           }`}
         >
-          {added ? "✓ Added to Cart" : "Add to Cart"}
+          {added
+            ? "✓ Added to Cart"
+            : isSelectedOOS && selectedSize
+            ? "Add to Waitlist"
+            : "Add to Cart"}
         </button>
         <button
           onClick={() => {
