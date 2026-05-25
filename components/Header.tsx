@@ -79,21 +79,34 @@ function HeaderInner() {
             )}
           </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNav"
-            aria-controls="mainNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
+            {/* Desktop/tablet collapse toggler */}
+            <button
+              className="navbar-toggler d-none d-md-inline-block"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNav"
+              aria-controls="mainNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+
+            {/* Mobile offcanvas toggler (prevents collapse flicker on mobile) */}
+            <button
+              className="navbar-toggler d-md-none"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileNavOffcanvas"
+              aria-controls="mobileNavOffcanvas"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
         </div>
 
         {/* Collapsible nav links */}
-        <div className="collapse navbar-collapse bg-white" id="mainNav">
+        <div className="collapse navbar-collapse bg-white d-none d-md-flex" id="mainNav">
           {/* Mobile search bar inside collapsed menu */}
           <form
             onSubmit={handleSearch}
@@ -123,6 +136,43 @@ function HeaderInner() {
               </Link>
             </li>
           </ul>
+        </div>
+
+        {/* Offcanvas mobile nav (shown only on small screens) */}
+        <div
+          className="offcanvas offcanvas-top"
+          tabIndex={-1}
+          id="mobileNavOffcanvas"
+          aria-labelledby="mobileNavOffcanvasLabel"
+        >
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title" id="mobileNavOffcanvasLabel">Menu</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div className="offcanvas-body">
+            <form
+              onSubmit={handleSearch}
+              className="d-flex align-items-center gap-1 mb-2"
+            >
+              <input
+                type="search"
+                className="form-control form-control-sm"
+                placeholder="Search products…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search products"
+              />
+              <button type="submit" className="btn btn-sm btn-dark">Search</button>
+            </form>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
