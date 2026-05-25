@@ -108,7 +108,7 @@ function HeaderInner() {
 
         {/* Offcanvas mobile nav (shown only on small screens) */}
         <div
-          className="offcanvas offcanvas-top"
+          className="offcanvas offcanvas-top d-md-none"
           tabIndex={-1}
           id="mobileNavOffcanvas"
           aria-labelledby="mobileNavOffcanvasLabel"
