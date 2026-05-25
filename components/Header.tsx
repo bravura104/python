@@ -34,7 +34,7 @@ function HeaderInner() {
         {/* Search bar – visible on md+ inline, collapses into nav on mobile */}
         <form
           onSubmit={handleSearch}
-          className="d-none d-md-flex align-items-center gap-1 flex-grow-1 mx-3"
+          className="d-none d-md-flex align-items-center gap-1 flex-grow-1 mx-3 me-4"
           style={{ maxWidth: "380px" }}
         >
           <input
@@ -63,7 +63,7 @@ function HeaderInner() {
         </div>
 
         {/* Cart icon + Hamburger toggler – always visible and aligned to the far right */}
-        <div className="d-flex align-items-center gap-2 ms-auto">
+        <div className="d-flex align-items-center gap-3 ms-auto">
           <Link
             href="/cart"
             className="nav-link fw-medium d-flex align-items-center gap-1 position-relative"
