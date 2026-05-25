@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
+import { verifyToken, TOKEN_NAME } from '@/lib/auth';
 
 export const dynamic = "force-dynamic";
 
@@ -103,6 +104,14 @@ export async function POST(req: NextRequest) {
   } : null;
 
   try {
+    // Attach optional authenticated user id when present (dt_token cookie)
+    const token = req.cookies.get(TOKEN_NAME)?.value;
+    let userId: number | undefined;
+    if (token) {
+      const payload = await verifyToken(token);
+      if (payload && payload.sub) userId = Number(payload.sub);
+    }
+
     const res = await fetch(dovaraUrl, {
       method:  "POST",
       headers: {
@@ -113,6 +122,7 @@ export async function POST(req: NextRequest) {
         payment_intent_id: pi.id,
         customer_name:     customerName,
         customer_email:    customerEmail,
+        user_id:           userId || undefined,
         total_amount:      pi.amount / 100,
         currency:          pi.currency,
         items:             orderItems,

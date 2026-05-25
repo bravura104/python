@@ -159,9 +159,6 @@ export default function AddToCartSection({ product }: { product: Product }) {
               }`}
             >
               {size}
-              {isSizeOOS(size) && (
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-400 rounded-full border border-white" />
-              )}
             </button>
           ))}
         </div>
@@ -255,11 +252,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
               : "bg-black text-white hover:bg-gray-800 active:scale-95"
           }`}
         >
-          {added
-            ? "✓ Added to Cart"
-            : isSelectedOOS && selectedSize
-            ? "Add to Waitlist"
-            : "Add to Cart"}
+          {added ? "✓ Added to Cart" : "Add to Cart"}
         </button>
         <button
           onClick={() => {

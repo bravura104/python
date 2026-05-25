@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
 import BootstrapInit from "@/components/BootstrapInit";
+import MobileFooter from "@/components/MobileFooter";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
           <BootstrapInit />
           <Header />
           <main className="flex-1">{children}</main>
+          <MobileFooter />
           <footer className="border-t border-gray-100 py-8 text-center text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} DingTee909. All rights reserved.</p>
             <p className="mt-2">
