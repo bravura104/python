@@ -92,34 +92,7 @@ function HeaderInner() {
             </button>
         </div>
 
-        {/* Collapsible nav links (mobile only) */}
-        <div className="collapse navbar-collapse d-md-none" id="mainNav">
-          {/* Mobile search bar inside collapsed menu */}
-          <form
-            onSubmit={handleSearch}
-            className="d-flex align-items-center gap-1 mt-2 mb-1"
-          >
-            <input
-              type="search"
-              className="form-control form-control-sm"
-              placeholder="Search products…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search products"
-            />
-            <button type="submit" className="btn btn-sm btn-dark">
-              Search
-            </button>
-          </form>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
-            </li>
-          </ul>
-        </div>
+        {/* Mobile nav is handled by the offcanvas below; remove collapsed duplicate */}
 
         {/* Desktop-only links */}
         <div className="d-none d-md-flex ms-auto align-items-center gap-2">
