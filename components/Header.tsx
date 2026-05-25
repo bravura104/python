@@ -79,19 +79,6 @@ function HeaderInner() {
             )}
           </Link>
 
-            {/* Desktop/tablet collapse toggler */}
-            <button
-              className="navbar-toggler d-none d-md-inline-block"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#mainNav"
-              aria-controls="mainNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-
             {/* Mobile offcanvas toggler (prevents collapse flicker on mobile) */}
             <button
               className="navbar-toggler d-md-none"
@@ -106,7 +93,7 @@ function HeaderInner() {
         </div>
 
         {/* Collapsible nav links */}
-        <div className="collapse navbar-collapse bg-white d-none d-md-flex" id="mainNav">
+        <div className="collapse navbar-collapse bg-white d-md-flex" id="mainNav">
           {/* Mobile search bar inside collapsed menu */}
           <form
             onSubmit={handleSearch}
