@@ -35,3 +35,10 @@ body {
   filter: brightness(1.12);
 }
 
+/* Force-hide navbar toggler on desktop in case responsive utilities are overridden */
+@media (min-width: 768px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
