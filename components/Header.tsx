@@ -50,8 +50,20 @@ function HeaderInner() {
           </button>
         </form>
 
-        {/* Cart icon + Hamburger toggler – always visible on the right */}
-        <div className="d-flex align-items-center gap-2">
+        {/* Desktop-only links */}
+        <div className="d-none d-md-flex ms-3 align-items-center gap-2">
+          <ul className="navbar-nav ms-auto align-items-md-center gap-md-2 d-flex">
+            <li className="nav-item">
+              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Cart icon + Hamburger toggler – always visible and aligned to the far right */}
+        <div className="d-flex align-items-center gap-2 ms-auto">
           <Link
             href="/cart"
             className="nav-link fw-medium d-flex align-items-center gap-1 position-relative"
@@ -79,17 +91,17 @@ function HeaderInner() {
             )}
           </Link>
 
-            {/* Mobile offcanvas toggler (prevents collapse flicker on mobile) */}
-            <button
-              className="navbar-toggler d-md-none"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#mobileNavOffcanvas"
-              aria-controls="mobileNavOffcanvas"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
+          {/* Mobile offcanvas toggler (prevents collapse flicker on mobile) */}
+          <button
+            className="navbar-toggler d-md-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileNavOffcanvas"
+            aria-controls="mobileNavOffcanvas"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
         </div>
 
         {/* Mobile nav is handled by the offcanvas below; remove collapsed duplicate */}
