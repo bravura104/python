@@ -22,18 +22,28 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [added, setAdded] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [stockMap, setStockMap] = useState<Record<string, number>>({});
+  const [priceMap, setPriceMap] = useState<Record<string, { price_cents: number; from?: string; to?: string }>>({});
   const [flashOOS, setFlashOOS] = useState(false);
   const reportedOOS = useRef(new Set<string>());
 
   useEffect(() => {
     fetch(`/api/inventory/${product.id}`)
       .then((r) => r.json())
-      .then((data: { skus?: { size: string; color: string; stock: number }[] }) => {
+      .then((data: { skus?: { size: string; color: string; stock: number; price_cents?: number; price_effective_from?: string; price_effective_to?: string }[] }) => {
         const map: Record<string, number> = {};
+        const pmap: Record<string, { price_cents: number; from?: string; to?: string }> = {};
         for (const sku of data.skus ?? []) {
           map[`${sku.size}_${sku.color}`] = sku.stock;
+          if (sku.price_cents !== undefined && sku.price_cents !== null) {
+            pmap[`${sku.size}_${sku.color}`] = {
+              price_cents: Number(sku.price_cents),
+              from: sku.price_effective_from || undefined,
+              to: sku.price_effective_to || undefined,
+            };
+          }
         }
         setStockMap(map);
+        setPriceMap(pmap);
       })
       .catch(() => {}); // silently fail — don't block purchase
   }, [product.id]);
@@ -55,6 +65,12 @@ export default function AddToCartSection({ product }: { product: Product }) {
   // Declare BEFORE the useEffect that references them (avoids TDZ)
   const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
   const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
+
+  function priceFor(size: string, color: string): number | null {
+    const key = `${size}_${color}`;
+    if (priceMap[key]) return priceMap[key].price_cents / 100;
+    return null;
+  }
 
   // Report OOS demand — fires once per SKU combo per browser session
   useEffect(() => {
@@ -242,6 +258,14 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
       {/* Action buttons — never disabled; OOS shows flash + records demand */}
       <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex items-center gap-4">
+          <div className="text-lg font-semibold">
+            {selectedSize
+              ? (priceFor(selectedSize, selectedColor.name) ?? product.price).toLocaleString(undefined, { style: 'currency', currency: 'USD' })
+              : product.price.toLocaleString(undefined, { style: 'currency', currency: 'USD' })}
+          </div>
+        </div>
+
         <button
           onClick={handleAddToCart}
           className={`flex-1 py-3.5 rounded-xl font-semibold text-sm transition-all ${
@@ -261,7 +285,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
             addItem({
               productId: product.id,
               name: product.name,
-              price: product.price,
+              price: priceFor(selectedSize, selectedColor.name) ?? product.price,
               size: selectedSize,
               color: selectedColor.name,
               colorHex: selectedColor.hex,
