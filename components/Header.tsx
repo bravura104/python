@@ -52,7 +52,7 @@ function HeaderInner() {
 
         {/* Desktop-only links */}
         <div className="d-none d-md-flex ms-3 align-items-center gap-2">
-          <ul className="navbar-nav ms-auto align-items-md-center gap-md-2 d-flex">
+          <ul className="navbar-nav align-items-md-center gap-md-2 d-flex">
             <li className="nav-item">
               <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
             </li>
@@ -106,17 +106,7 @@ function HeaderInner() {
 
         {/* Mobile nav is handled by the offcanvas below; remove collapsed duplicate */}
 
-        {/* Desktop-only links */}
-        <div className="d-none d-md-flex ms-auto align-items-center gap-2">
-          <ul className="navbar-nav ms-auto align-items-md-center gap-md-2 d-flex">
-            <li className="nav-item">
-              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
-            </li>
-          </ul>
-        </div>
+        
 
         {/* Offcanvas mobile nav (shown only on small screens) */}
         <div
