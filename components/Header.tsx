@@ -92,12 +92,12 @@ function HeaderInner() {
             </button>
         </div>
 
-        {/* Collapsible nav links */}
-        <div className="collapse navbar-collapse bg-white d-md-flex" id="mainNav">
+        {/* Collapsible nav links (mobile only) */}
+        <div className="collapse navbar-collapse d-md-none" id="mainNav">
           {/* Mobile search bar inside collapsed menu */}
           <form
             onSubmit={handleSearch}
-            className="d-flex d-md-none align-items-center gap-1 mt-2 mb-1"
+            className="d-flex align-items-center gap-1 mt-2 mb-1"
           >
             <input
               type="search"
@@ -111,16 +111,24 @@ function HeaderInner() {
               Search
             </button>
           </form>
-          <ul className="navbar-nav ms-auto align-items-md-center gap-md-2">
+          <ul className="navbar-nav">
             <li className="nav-item">
-              <Link href="/" className="nav-link fw-medium text-dark">
-                Shop
-              </Link>
+              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
             </li>
             <li className="nav-item">
-              <Link href="/return-policy" className="nav-link fw-medium text-dark">
-                Returns
-              </Link>
+              <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Desktop-only links */}
+        <div className="d-none d-md-flex ms-auto align-items-center gap-2">
+          <ul className="navbar-nav ms-auto align-items-md-center gap-md-2 d-flex">
+            <li className="nav-item">
+              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>
             </li>
           </ul>
         </div>
