@@ -44,20 +44,17 @@ export default function AddToCartSection({ product }: { product: Product }) {
   }
   function isSizeOOS(size: string) {
     const s = stockFor(size, selectedColor.name);
-    // Treat unknown stock (null) as available — only explicit 0 is OOS
-    return s === 0;
+    return s === null || s === 0;
   }
   function isColorOOS(colorName: string) {
     if (!selectedSize) return false;
     const s = stockFor(selectedSize, colorName);
-    // Treat unknown stock (null) as available — only explicit 0 is OOS
-    return s === 0;
+    return s === null || s === 0;
   }
 
   // Declare BEFORE the useEffect that references them (avoids TDZ)
   const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
-  // Unknown stock (null) should not block purchases — only 0 is considered out of stock
-  const isSelectedOOS = selectedStockQty === 0;
+  const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
 
   // Report OOS demand — fires once per SKU combo per browser session
   useEffect(() => {
