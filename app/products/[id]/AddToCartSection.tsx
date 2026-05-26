@@ -78,14 +78,18 @@ export default function AddToCartSection({ product }: { product: Product }) {
     return null;
   }
 
-  // Displayed price for the current selection (per-SKU if available, fallback to product.price)
-  const displayedPrice: number | null = selectedSize ? priceFor(selectedSize, selectedColor.name) ?? product.price : product.price;
+  // Displayed price for the current selection — only use Dovara per-SKU price.
+  // If Dovara does not provide a price for the selected SKU, treat price as unavailable.
+  const displayedPrice: number | null = selectedSize ? priceFor(selectedSize, selectedColor.name) ?? null : null;
 
   // Keep the server-rendered main price element in sync when a per-SKU price is available.
   useEffect(() => {
     const el = document.getElementById('product-price');
     if (!el) return;
-    if (displayedPrice === null) return;
+    if (displayedPrice === null) {
+      el.textContent = 'Price unavailable';
+      return;
+    }
     el.textContent = `$${displayedPrice.toFixed(2)}`;
   }, [displayedPrice]);
 
@@ -115,11 +119,21 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const handleAddToCart = () => {
     if (!selectedSize) return;
     if (isSelectedOOS) { triggerOOSFlash(); return; }
+    if (displayedPrice === null) {
+      // Visual feedback: flash price area
+      const el = document.getElementById('product-price');
+      if (el) {
+        el.classList.add('text-red-600');
+        setTimeout(() => el.classList.remove('text-red-600'), 900);
+      }
+      alert('Price unavailable for the selected size/color. Please contact the shop.');
+      return;
+    }
 
     addItem({
       productId: product.id,
       name: product.name,
-      price: displayedPrice ?? product.price,
+      price: displayedPrice,
       size: selectedSize,
       color: selectedColor.name,
       colorHex: selectedColor.hex,
