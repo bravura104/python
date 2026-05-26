@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: Props) {
             )}
           </div>
           <p className="text-2xl font-bold text-gray-900 mb-4">
-            ${product.price.toFixed(2)}
+            <span id="product-price">${product.price.toFixed(2)}</span>
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
             {product.description}

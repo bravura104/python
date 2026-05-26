@@ -25,4 +25,5 @@ export interface CartItem {
   colorHex: string;
   quantity: number;
   image?: string;
+  barcode?: string;
 }

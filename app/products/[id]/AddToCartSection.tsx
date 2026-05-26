@@ -25,13 +25,15 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [priceMap, setPriceMap] = useState<Record<string, { price_cents: number; from?: string; to?: string }>>({});
   const [flashOOS, setFlashOOS] = useState(false);
   const reportedOOS = useRef(new Set<string>());
+  const [skuBarcodeMap, setSkuBarcodeMap] = useState<Record<string, string>>({});
 
   useEffect(() => {
     fetch(`/api/inventory/${product.id}`)
       .then((r) => r.json())
-      .then((data: { skus?: { size: string; color: string; stock: number; price_cents?: number; price_effective_from?: string; price_effective_to?: string }[] }) => {
+      .then((data: { skus?: { size: string; color: string; stock: number; price_cents?: number; price_effective_from?: string; price_effective_to?: string; barcode?: string }[] }) => {
         const map: Record<string, number> = {};
         const pmap: Record<string, { price_cents: number; from?: string; to?: string }> = {};
+        const barcodeMap: Record<string, string> = {};
         for (const sku of data.skus ?? []) {
           map[`${sku.size}_${sku.color}`] = sku.stock;
           if (sku.price_cents !== undefined && sku.price_cents !== null) {
@@ -41,9 +43,13 @@ export default function AddToCartSection({ product }: { product: Product }) {
               to: sku.price_effective_to || undefined,
             };
           }
+          if (sku.barcode) {
+            barcodeMap[`${sku.size}_${sku.color}`] = sku.barcode;
+          }
         }
         setStockMap(map);
         setPriceMap(pmap);
+        setSkuBarcodeMap(barcodeMap);
       })
       .catch(() => {}); // silently fail — don't block purchase
   }, [product.id]);
@@ -71,6 +77,17 @@ export default function AddToCartSection({ product }: { product: Product }) {
     if (priceMap[key]) return priceMap[key].price_cents / 100;
     return null;
   }
+
+  // Displayed price for the current selection (per-SKU if available, fallback to product.price)
+  const displayedPrice: number | null = selectedSize ? priceFor(selectedSize, selectedColor.name) ?? product.price : product.price;
+
+  // Keep the server-rendered main price element in sync when a per-SKU price is available.
+  useEffect(() => {
+    const el = document.getElementById('product-price');
+    if (!el) return;
+    if (displayedPrice === null) return;
+    el.textContent = `$${displayedPrice.toFixed(2)}`;
+  }, [displayedPrice]);
 
   // Report OOS demand — fires once per SKU combo per browser session
   useEffect(() => {
@@ -102,12 +119,13 @@ export default function AddToCartSection({ product }: { product: Product }) {
     addItem({
       productId: product.id,
       name: product.name,
-      price: product.price,
+      price: displayedPrice ?? product.price,
       size: selectedSize,
       color: selectedColor.name,
       colorHex: selectedColor.hex,
       quantity,
       image: product.image,
+      barcode: skuBarcodeMap[`${selectedSize}_${selectedColor.name}`] ?? undefined,
     });
 
     setAdded(true);
@@ -143,6 +161,11 @@ export default function AddToCartSection({ product }: { product: Product }) {
             </button>
           ))}
         </div>
+        {selectedSize && skuBarcodeMap[`${selectedSize}_${selectedColor.name}`] && (
+          <div className="mt-2 text-sm text-gray-500">
+            SKU: <span className="font-mono text-xs">{skuBarcodeMap[`${selectedSize}_${selectedColor.name}`]}</span>
+          </div>
+        )}
       </div>
 
       {/* Size selector */}
@@ -253,6 +276,10 @@ export default function AddToCartSection({ product }: { product: Product }) {
               </div>
             )}
           </div>
+          {/* Show SKUP (barcode) when available */}
+          {skuBarcodeMap[`${selectedSize}_${selectedColor.name}`] && (
+            <div className="text-xs text-gray-500 mt-1">SKU: {skuBarcodeMap[`${selectedSize}_${selectedColor.name}`]}</div>
+          )}
         </div>
       )}
 
