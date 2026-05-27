@@ -18,6 +18,7 @@ interface CartItemPayload {
   size: string;
   color: string;
   quantity: number;
+  barcode?: string;
 }
 
 export async function POST(req: NextRequest) {

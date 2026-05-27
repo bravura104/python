@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import products from "@/data/products.json";
+import { getProducts, getProduct } from "@/lib/products";
 import type { Product } from "@/lib/types";
 import AddToCartSection from "./AddToCartSection";
 import ProductImage from "@/components/ProductImage";
@@ -7,13 +7,14 @@ import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES } from "@/lib/shipping";
 
 type Props = { params: Promise<{ id: string }> };
 
-export function generateStaticParams() {
-  return (products as Product[]).map((p) => ({ id: p.id }));
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map((p) => ({ id: p.id }));
 }
 
 export default async function ProductPage({ params }: Props) {
   const { id } = await params;
-  const product = (products as Product[]).find((p) => p.id === id);
+  const product = await getProduct(id);
 
   if (!product) notFound();
 
@@ -42,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
             )}
           </div>
           <p className="text-2xl font-bold text-gray-900 mb-4">
-            <span id="product-price">${product.price.toFixed(2)}</span>
+            <span id="product-price">Price unavailable</span>
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
             {product.description}

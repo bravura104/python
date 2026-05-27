@@ -1,4 +1,4 @@
-import products from "@/data/products.json";
+import { getProducts } from "@/lib/products";
 import type { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default async function HomePage({
   const query       = q?.toLowerCase().trim() ?? "";
   const activeBrand = brand?.trim() ?? "";
 
-  const allProducts = products as Product[];
+  const allProducts = await getProducts();
 
   // Brand counts for tabs
   const brandCounts = Object.fromEntries(

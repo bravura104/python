@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
   // ── Resolve item details from metadata ──────────────────────────────────
-  type MetaItem = { id: string; size: string; color: string; qty: number };
+  type MetaItem = { id: string; size: string; color: string; qty: number; barcode?: string };
   let metaItems: MetaItem[] = [];
   try {
     metaItems = JSON.parse(paymentIntent.metadata?.items ?? "[]");
@@ -40,8 +40,14 @@ export async function POST(req: NextRequest) {
 
   const orderItems = metaItems.map((mi) => {
     const product = (products as Product[]).find((p) => p.id === mi.id);
+    // barcode from metadata is the goldenmart item barcode ("ITM_" + barcode = item code)
+    const barcode = mi.barcode
+      ?? product?.variants?.[`${mi.size}_${mi.color}`]
+      ?? product?.variants?.[mi.size]
+      ?? null;
     return {
       product_id: mi.id,
+      sku:        barcode,
       name:       product?.name ?? mi.id,
       size:       mi.size,
       color:      mi.color,

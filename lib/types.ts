@@ -14,6 +14,12 @@ export interface Product {
   image?: string;
   brand?: string;
   category?: string;
+  /** Original SKU from the POS system (goldenmart item code) */
+  sku?: string;
+  /** Stock quantity from the POS system */
+  stockQty?: number;
+  /** Per-variant barcode map keyed by "Size_Color" (e.g. "M_White") — value is the POS barcode */
+  variants?: Record<string, string>;
 }
 
 export interface CartItem {

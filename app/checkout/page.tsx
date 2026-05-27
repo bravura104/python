@@ -175,6 +175,7 @@ export default function CheckoutPage() {
           size: i.size,
           color: i.color,
           quantity: i.quantity,
+          barcode: i.barcode ?? undefined,
         })),
         shippingOption,
         utmData: (() => {

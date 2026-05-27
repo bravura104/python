@@ -17,7 +17,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const { addItem } = useCart();
   const router = useRouter();
   const [selectedSize, setSelectedSize] = useState<string>("");
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedColor, setSelectedColor] = useState(product.colors?.[0] ?? { name: "Default", hex: "#6b7280" });
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
