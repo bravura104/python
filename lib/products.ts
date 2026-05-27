@@ -13,8 +13,8 @@ import type { Product } from "@/lib/types";
 const PRODUCTS_API_URL =
   process.env.PRODUCTS_API_URL ?? "https://dovara.biz/api/v1/products.php";
 
-/** Raw shape returned by the Dovara products endpoint */
-interface RawProduct {
+/** Old per-variant shape (from export-products.ps1 era) */
+interface RawProductLegacy {
   sku: string;
   barcode: string | null;
   name: string;
@@ -27,28 +27,38 @@ interface RawProduct {
   active: number;
 }
 
-/** Derive a URL-safe id from the product */
-function makeId(raw: RawProduct): string {
-  const base = raw.barcode ?? raw.sku;
-  return base
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+/** New grouped shape (from generate-products-json.ps1) — mirrors the Product interface */
+interface RawProductGrouped {
+  id: string;
+  name: string;
+  price: number;
+  sizes: string[];
+  colors: Array<{ name: string; hex: string }>;
+  variants?: Record<string, string>;
+  brand?: string;
+  category?: string;
+  description?: string;
+  badge?: string | null;
+  image?: string;
+  sku?: string;
+  stock_qty?: number;
 }
 
 /** Best-effort brand extraction from product name/sku */
-function deriveBrand(raw: RawProduct): string | undefined {
-  const name = raw.name.toLowerCase();
-  const sku  = raw.sku.toLowerCase();
-  if (name.includes("pro club") || sku.startsWith("itm_pc") || name.startsWith("pc ")) return "Pro Club";
-  if (name.includes("shaka"))                                                           return "Shaka";
-  if (name.startsWith("aaa") || name.startsWith("3a") || sku.includes("3a"))           return "AAA";
+function deriveBrand(name: string, sku?: string): string | undefined {
+  const n = name.toLowerCase();
+  const s = (sku ?? "").toLowerCase();
+  if (n.includes("pro club") || s.startsWith("itm_pc") || n.startsWith("pc ")) return "Pro Club";
+  if (n.includes("shaka"))                                                       return "Shaka";
+  if (n.startsWith("aaa") || n.startsWith("3a") || s.includes("3a"))            return "AAA";
   return undefined;
 }
 
-function mapProduct(raw: RawProduct): Product {
+function mapLegacy(raw: RawProductLegacy): Product {
+  const base = raw.barcode ?? raw.sku;
+  const id = base.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   return {
-    id:          makeId(raw),
+    id,
     sku:         raw.sku,
     name:        raw.name,
     description: "",
@@ -57,8 +67,26 @@ function mapProduct(raw: RawProduct): Product {
     sizes:       [],
     colors:      [],
     image:       raw.image_url ?? undefined,
-    brand:       deriveBrand(raw),
+    brand:       deriveBrand(raw.name, raw.sku),
     category:    raw.category ?? undefined,
+    stockQty:    raw.stock_qty,
+  };
+}
+
+function mapGrouped(raw: RawProductGrouped): Product {
+  return {
+    id:          raw.id,
+    sku:         raw.sku,
+    name:        raw.name,
+    description: raw.description ?? "",
+    price:       raw.price,
+    badge:       raw.badge ?? null,
+    sizes:       raw.sizes,
+    colors:      raw.colors,
+    variants:    raw.variants,
+    image:       raw.image,
+    brand:       raw.brand ?? deriveBrand(raw.name, raw.sku),
+    category:    raw.category,
     stockQty:    raw.stock_qty,
   };
 }
@@ -73,8 +101,20 @@ export async function getProducts(): Promise<Product[]> {
     return [];
   }
 
-  const data: { products: RawProduct[] } = await res.json();
-  return (data.products ?? []).map(mapProduct);
+  // Handle both formats:
+  //  - New: plain array of grouped products (generate-products-json.ps1)
+  //  - Legacy: { products: [...] } wrapper of per-variant products
+  const raw = await res.json();
+  const items: unknown[] = Array.isArray(raw) ? raw : (raw.products ?? []);
+
+  return items.map((item) => {
+    const r = item as Record<string, unknown>;
+    // New grouped format has a `sizes` array field
+    if (Array.isArray(r.sizes)) {
+      return mapGrouped(r as unknown as RawProductGrouped);
+    }
+    return mapLegacy(r as unknown as RawProductLegacy);
+  });
 }
 
 export async function getProduct(id: string): Promise<Product | undefined> {
