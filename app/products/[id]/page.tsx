@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
             )}
           </div>
           <p className="text-2xl font-bold text-gray-900 mb-4">
-            <span id="product-price">Price unavailable</span>
+            <span id="product-price">{Number.isFinite(product.price) && product.price > 0 ? `$${product.price.toFixed(2)}` : "Price unavailable"}</span>
           </p>
           <p className="text-gray-600 leading-relaxed mb-6">
             {product.description}

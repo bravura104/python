@@ -27,6 +27,9 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const reportedOOS = useRef(new Set<string>());
   const [skuBarcodeMap, setSkuBarcodeMap] = useState<Record<string, string>>({});
 
+  const skuKey = (size: string, color: string) =>
+    `${size.trim().toLowerCase()}_${color.trim().toLowerCase()}`;
+
   useEffect(() => {
     fetch(`/api/inventory/${product.id}`)
       .then((r) => r.json())
@@ -35,16 +38,20 @@ export default function AddToCartSection({ product }: { product: Product }) {
         const pmap: Record<string, { price_cents: number; from?: string; to?: string }> = {};
         const barcodeMap: Record<string, string> = {};
         for (const sku of data.skus ?? []) {
-          map[`${sku.size}_${sku.color}`] = sku.stock;
+          const key = skuKey(sku.size, sku.color);
+          map[key] = sku.stock;
           if (sku.price_cents !== undefined && sku.price_cents !== null) {
-            pmap[`${sku.size}_${sku.color}`] = {
-              price_cents: Number(sku.price_cents),
-              from: sku.price_effective_from || undefined,
-              to: sku.price_effective_to || undefined,
-            };
+            const cents = Number(sku.price_cents);
+            if (Number.isFinite(cents)) {
+              pmap[key] = {
+                price_cents: cents,
+                from: sku.price_effective_from || undefined,
+                to: sku.price_effective_to || undefined,
+              };
+            }
           }
           if (sku.barcode) {
-            barcodeMap[`${sku.size}_${sku.color}`] = sku.barcode;
+            barcodeMap[key] = sku.barcode;
           }
         }
         setStockMap(map);
@@ -55,7 +62,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   }, [product.id]);
 
   function stockFor(size: string, color: string): number | null {
-    const key = `${size}_${color}`;
+    const key = skuKey(size, color);
     return key in stockMap ? stockMap[key] : null;
   }
   function isSizeOOS(size: string) {
@@ -73,14 +80,16 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
 
   function priceFor(size: string, color: string): number | null {
-    const key = `${size}_${color}`;
+    const key = skuKey(size, color);
     if (priceMap[key]) return priceMap[key].price_cents / 100;
     return null;
   }
 
-  // Displayed price for the current selection — only use Dovara per-SKU price.
-  // If Dovara does not provide a price for the selected SKU, treat price as unavailable.
-  const displayedPrice: number | null = selectedSize ? priceFor(selectedSize, selectedColor.name) ?? null : null;
+  // Prefer per-SKU price from Dovara; fall back to product base price when SKU price is absent.
+  const basePrice = Number.isFinite(product.price) && product.price > 0 ? product.price : null;
+  const displayedPrice: number | null = selectedSize
+    ? priceFor(selectedSize, selectedColor.name) ?? basePrice
+    : basePrice;
 
   // Keep the server-rendered main price element in sync when a per-SKU price is available.
   useEffect(() => {
@@ -139,7 +148,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
       colorHex: selectedColor.hex,
       quantity,
       image: product.image,
-      barcode: skuBarcodeMap[`${selectedSize}_${selectedColor.name}`] ?? undefined,
+      barcode: skuBarcodeMap[skuKey(selectedSize, selectedColor.name)] ?? undefined,
     });
 
     setAdded(true);
@@ -175,9 +184,9 @@ export default function AddToCartSection({ product }: { product: Product }) {
             </button>
           ))}
         </div>
-        {selectedSize && skuBarcodeMap[`${selectedSize}_${selectedColor.name}`] && (
+        {selectedSize && skuBarcodeMap[skuKey(selectedSize, selectedColor.name)] && (
           <div className="mt-2 text-sm text-gray-500">
-            SKU: <span className="font-mono text-xs">{skuBarcodeMap[`${selectedSize}_${selectedColor.name}`]}</span>
+            SKU: <span className="font-mono text-xs">{skuBarcodeMap[skuKey(selectedSize, selectedColor.name)]}</span>
           </div>
         )}
       </div>
