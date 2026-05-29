@@ -41,7 +41,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   }, []);
 
   const skuKey = (size: string, color: string) =>
-    `${size.trim().toLowerCase()}_${color.trim().toLowerCase()}`;
+    `${size.trim()}_${color.trim()}`;
 
   useEffect(() => {
     fetch(`/api/inventory/${product.id}`)
