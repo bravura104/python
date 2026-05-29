@@ -87,7 +87,16 @@ export default function ProductCard({ product }: { product: Product }) {
 
           <div className="mt-3 d-flex align-items-center justify-content-between">
             <span className="fw-bold text-gray-900" style={{ fontSize: "1.15rem" }}>
-              ${product.price.toFixed(2)}
+              {product.prices
+                ? (() => {
+                    const vals = Object.values(product.prices);
+                    const min = Math.min(...vals);
+                    const max = Math.max(...vals);
+                    return min < max
+                      ? `From $${min.toFixed(2)}`
+                      : `$${min.toFixed(2)}`;
+                  })()
+                : `$${product.price.toFixed(2)}`}
             </span>
 
             {/* Color swatches */}

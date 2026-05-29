@@ -35,6 +35,8 @@ interface RawProductGrouped {
   sizes: string[];
   colors: Array<{ name: string; hex: string }>;
   variants?: Record<string, string>;
+  prices?: Record<string, number>;
+  images?: Record<string, string>;
   brand?: string;
   category?: string;
   description?: string;
@@ -84,6 +86,8 @@ function mapGrouped(raw: RawProductGrouped): Product {
     sizes:       raw.sizes,
     colors:      raw.colors,
     variants:    raw.variants,
+    prices:      raw.prices,
+    images:      raw.images,
     image:       raw.image,
     brand:       raw.brand ?? deriveBrand(raw.name, raw.sku),
     category:    raw.category,

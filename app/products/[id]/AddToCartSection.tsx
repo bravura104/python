@@ -27,6 +27,19 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const reportedOOS = useRef(new Set<string>());
   const [skuBarcodeMap, setSkuBarcodeMap] = useState<Record<string, string>>({});
 
+  // Dispatch initial color event so VariantImage syncs its background on mount
+  useEffect(() => {
+    const c = product.colors?.[0];
+    if (c) {
+      document.dispatchEvent(
+        new CustomEvent("productColorChange", {
+          detail: { colorName: c.name, colorHex: c.hex },
+        })
+      );
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const skuKey = (size: string, color: string) =>
     `${size.trim().toLowerCase()}_${color.trim().toLowerCase()}`;
 
@@ -81,7 +94,10 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
   function priceFor(size: string, color: string): number | null {
     const key = skuKey(size, color);
+    // 1. Live inventory API price (most up-to-date)
     if (priceMap[key]) return priceMap[key].price_cents / 100;
+    // 2. Baked-in per-variant price from products.json
+    if (product.prices?.[`${size}_${color}`] !== undefined) return product.prices[`${size}_${color}`];
     return null;
   }
 
@@ -167,7 +183,14 @@ export default function AddToCartSection({ product }: { product: Product }) {
           {product.colors.map((c) => (
             <button
               key={c.name}
-              onClick={() => setSelectedColor(c)}
+              onClick={() => {
+                setSelectedColor(c);
+                document.dispatchEvent(
+                  new CustomEvent("productColorChange", {
+                    detail: { colorName: c.name, colorHex: c.hex },
+                  })
+                );
+              }}
               title={isColorOOS(c.name) ? `${c.name} — out of stock` : c.name}
               className={`relative w-9 h-9 rounded-full border-2 transition-all ${
                 selectedColor.name === c.name

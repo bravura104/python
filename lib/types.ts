@@ -20,6 +20,10 @@ export interface Product {
   stockQty?: number;
   /** Per-variant barcode map keyed by "Size_Color" (e.g. "M_White") — value is the POS barcode */
   variants?: Record<string, string>;
+  /** Per-variant price map keyed by "Size_Color" — present only when prices differ across variants */
+  prices?: Record<string, number>;
+  /** Per-color image URL map keyed by color name — present when variants have distinct images */
+  images?: Record<string, string>;
 }
 
 export interface CartItem {
