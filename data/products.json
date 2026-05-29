@@ -2,7 +2,9 @@
     {
         "id":  "proclub-tee",
         "name":  "Proclub Tee",
+        "description":  "",
         "price":  32,
+        "badge":  null,
         "sizes":  [
                       "XS",
                       "S",

@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Invalid item data" }, { status: 400 });
       }
 
-      const product = (products as Product[]).find(
+      const product = (products as unknown as Product[]).find(
         (p) => p.id === item.productId
       );
       if (!product) {

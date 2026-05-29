@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
   }
 
   const orderItems = metaItems.map((mi) => {
-    const product = (products as Product[]).find((p) => p.id === mi.id);
+    const product = (products as unknown as Product[]).find((p) => p.id === mi.id);
     // barcode from metadata is the goldenmart item barcode ("ITM_" + barcode = item code)
     const barcode = mi.barcode
       ?? product?.variants?.[`${mi.size}_${mi.color}`]
