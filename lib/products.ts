@@ -48,7 +48,7 @@ interface RawProductGrouped {
 function deriveBrand(name: string, sku?: string): string | undefined {
   const n = name.toLowerCase();
   const s = (sku ?? "").toLowerCase();
-  if (n.includes("pro club") || s.startsWith("itm_pc") || n.startsWith("pc ")) return "Pro Club";
+  if (n.includes("pro club") || n.includes("proclub") || s.startsWith("itm_pc") || n.startsWith("pc ")) return "Pro Club";
   if (n.includes("shaka"))                                                       return "Shaka";
   if (n.startsWith("aaa") || n.startsWith("3a") || s.includes("3a"))            return "AAA";
   return undefined;
