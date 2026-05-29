@@ -1,0 +1,146 @@
+[
+    {
+        "id":  "proclub-tee",
+        "name":  "ProClub Tee",
+        "description":  "",
+        "price":  32,
+        "badge":  null,
+        "sizes":  [
+                      "XS",
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                      "2XL",
+                      "3XL",
+                      "4XL"
+                  ],
+        "colors":  [
+                       {
+                           "name":  "Black",
+                           "hex":  "#111827"
+                       },
+                       {
+                           "name":  "Blue",
+                           "hex":  "#1D4ED8"
+                       },
+                       {
+                           "name":  "Brown",
+                           "hex":  "#92400E"
+                       },
+                       {
+                           "name":  "Gray",
+                           "hex":  "#6B7280"
+                       },
+                       {
+                           "name":  "Green",
+                           "hex":  "#15803D"
+                       },
+                       {
+                           "name":  "Navy",
+                           "hex":  "#1E3A5F"
+                       },
+                       {
+                           "name":  "Orange",
+                           "hex":  "#EA580C"
+                       },
+                       {
+                           "name":  "Pink",
+                           "hex":  "#EC4899"
+                       },
+                       {
+                           "name":  "Purple",
+                           "hex":  "#7C3AED"
+                       },
+                       {
+                           "name":  "Red",
+                           "hex":  "#B91C1C"
+                       },
+                       {
+                           "name":  "White",
+                           "hex":  "#FFFFFF"
+                       },
+                       {
+                           "name":  "Yellow",
+                           "hex":  "#9CA3AF"
+                       }
+                   ],
+        "variants":  {
+                         "XS_Black":  "PC1",
+                         "XS_Brown":  "PC1-Brown-XS",
+                         "M_Pink":  "PC1-Pink-M",
+                         "L_Brown":  "PC1-Brown-L",
+                         "3XL_Orange":  "PC1-Orange-3XL",
+                         "M_Navy":  "PC1-Navy-M",
+                         "XS_Gray":  "PC1-Gray-XS",
+                         "M_Blue":  "PC1-Blue-M",
+                         "2XL_Blue":  "PC1-Blue-2XL",
+                         "3XL_Navy":  "PC1-Navy-3XL",
+                         "XS_Purple":  "PC1-Purple-XS",
+                         "XS_Blue":  "PC1-Blue-XS",
+                         "M_Purple":  "PC1-Purple-M",
+                         "S_Navy":  "PC1-Navy-S",
+                         "XS_Yellow":  "PC1-Yellow-XS",
+                         "2XL_Brown":  "PC1-Brown-2XL",
+                         "XS_White":  "PC1-White-XS",
+                         "S_Blue":  "PC1-Blue-S",
+                         "M_Green":  "PC1-Green-M",
+                         "XL_Blue":  "PC1-Blue-XL",
+                         "2XL_Orange":  "PC1-Orange-2XL",
+                         "4XL_Black":  "PC1-Black-4XL",
+                         "XS_Green":  "PC1-Green-XS",
+                         "4XL_Purple":  "PC1-Purple-4XL",
+                         "S_Pink":  "PC1-Pink-S",
+                         "2XL_Green":  "PC1-Green-2XL",
+                         "2XL_Purple":  "PC1-Purple-2XL",
+                         "L_Green":  "PC1-Green-L",
+                         "L_Black":  "PC1-Black-L",
+                         "4XL_Red":  "PC1-Red-4XL",
+                         "XL_Red":  "PC1-Red-XL",
+                         "XL_White":  "PC1-White-XL",
+                         "XL_Pink":  "PC1-Pink-XL",
+                         "L_Red":  "PC1-Red-L",
+                         "4XL_Orange":  "PC1-Orange-4XL",
+                         "S_Purple":  "PC1-Purple-S",
+                         "XL_Black":  "PC1-Black-XL",
+                         "M_Orange":  "PC1-Orange-M",
+                         "2XL_Black":  "PC1-Black-2XL",
+                         "2XL_Gray":  "PC1-Gray-2XL",
+                         "4XL_Yellow":  "PC1-Yellow-4XL",
+                         "XL_Navy":  "PC1-Navy-XL",
+                         "M_Red":  "PC1-Red-M",
+                         "L_Purple":  "PC1-Purple-L",
+                         "M_Black":  "PC1-Black-M",
+                         "S_Orange":  "PC1-Orange-S",
+                         "2XL_Red":  "PC1-Red-2XL",
+                         "S_Gray":  "PC1-Gray-S",
+                         "L_Blue":  "PC1-Blue-L",
+                         "2XL_Yellow":  "PC1-Yellow-2XL",
+                         "2XL_Pink":  "PC1-Pink-2XL",
+                         "L_White":  "PC1-White-L",
+                         "4XL_Gray":  "PC1-Gray-4XL",
+                         "S_Yellow":  "PC1-Yellow-S",
+                         "M_Brown":  "PC1-Brown-M",
+                         "L_Orange":  "PC1-Orange-L",
+                         "4XL_Navy":  "PC1-Navy-4XL",
+                         "S_Green":  "PC1-Green-S",
+                         "3XL_Blue":  "PC1-Blue-3XL",
+                         "XS_Pink":  "PC1-Pink-XS",
+                         "L_Gray":  "PC1-Gray-L",
+                         "4XL_Brown":  "PC1-Brown-4XL",
+                         "S_Red":  "PC1-Red-S",
+                         "3XL_Pink":  "PC1-Pink-3XL",
+                         "M_White":  "PC1-White-M",
+                         "3XL_Gray":  "PC1-Gray-3XL",
+                         "L_Navy":  "PC1-Navy-L",
+                         "S_Black":  "PC1-Black-S",
+                         "S_White":  "PC1-White-S",
+                         "2XL_White":  "PC1-White-2XL",
+                         "M_Yellow":  "PC1-Yellow-M",
+                         "XL_Yellow":  "PC1-Yellow-XL",
+                         "4XL_White":  "PC1-White-4XL",
+                         "XL_Orange":  "PC1-Orange-XL",
+                         "L_Pink":  "PC1-Pink-L",
+                         "XS_Navy":  "PC1-Navy-XS",
+                         "XL_Brown":  "PC1-Brown-XL",
+                       ... (truncated)

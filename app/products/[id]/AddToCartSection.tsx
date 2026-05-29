@@ -23,6 +23,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [stockMap, setStockMap] = useState<Record<string, number>>({});
   const [priceMap, setPriceMap] = useState<Record<string, { price_cents: number; from?: string; to?: string }>>({});
+  const [bakedPrices, setBakedPrices] = useState<Record<string, number> | null>(product.prices ?? null);
   const [flashOOS, setFlashOOS] = useState(false);
   const reportedOOS = useRef(new Set<string>());
   const [skuBarcodeMap, setSkuBarcodeMap] = useState<Record<string, string>>({});
@@ -72,6 +73,16 @@ export default function AddToCartSection({ product }: { product: Product }) {
         setSkuBarcodeMap(barcodeMap);
       })
       .catch(() => {}); // silently fail — don't block purchase
+    // If product.prices is not embedded in the page, try loading the generated products JSON from /products.json
+    if (!product.prices) {
+      fetch('/products.json')
+        .then(r => r.json())
+        .then((arr: any[]) => {
+          const found = Array.isArray(arr) ? arr.find(p => p.id === product.id || p.id === product.id.toLowerCase()) : null;
+          if (found && found.prices) setBakedPrices(found.prices);
+        })
+        .catch(() => {});
+    }
   }, [product.id]);
 
   function stockFor(size: string, color: string): number | null {
@@ -98,6 +109,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
     if (priceMap[key]) return priceMap[key].price_cents / 100;
     // 2. Baked-in per-variant price from products.json
     if (product.prices?.[`${size}_${color}`] !== undefined) return product.prices[`${size}_${color}`];
+    if (bakedPrices && bakedPrices[`${size}_${color}`] !== undefined) return bakedPrices[`${size}_${color}`];
     return null;
   }
 
