@@ -9,9 +9,36 @@
  */
 
 import type { Product } from "@/lib/types";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 const PRODUCTS_API_URL =
   process.env.PRODUCTS_API_URL ?? "https://dovara.biz/api/v1/products.php";
+
+function mapRawItems(raw: unknown): Product[] {
+  const wrapper = raw as { products?: unknown[]; value?: unknown[] };
+  const items: unknown[] = Array.isArray(raw)
+    ? raw
+    : (wrapper.products ?? wrapper.value ?? []);
+
+  return items.map((item) => {
+    const r = item as Record<string, unknown>;
+    if (Array.isArray(r.sizes)) {
+      return mapGrouped(r as unknown as RawProductGrouped);
+    }
+    return mapLegacy(r as unknown as RawProductLegacy);
+  });
+}
+
+async function getProductsFromLocalFile(): Promise<Product[] | null> {
+  try {
+    const p = path.join(process.cwd(), "data", "products.json");
+    const txt = await readFile(p, "utf8");
+    return mapRawItems(JSON.parse(txt));
+  } catch {
+    return null;
+  }
+}
 
 /** Old per-variant shape (from export-products.ps1 era) */
 interface RawProductLegacy {
@@ -96,6 +123,12 @@ function mapGrouped(raw: RawProductGrouped): Product {
 }
 
 export async function getProducts(): Promise<Product[]> {
+  // Prefer repository-local generated data so storefront is deterministic after deploy.
+  const local = await getProductsFromLocalFile();
+  if (local && local.length > 0) {
+    return local;
+  }
+
   const res = await fetch(PRODUCTS_API_URL, {
     next: { revalidate: 300 },  // ISR: revalidate every 5 minutes
   });
@@ -105,20 +138,7 @@ export async function getProducts(): Promise<Product[]> {
     return [];
   }
 
-  // Handle both formats:
-  //  - New: plain array of grouped products (generate-products-json.ps1)
-  //  - Legacy: { products: [...] } wrapper of per-variant products
-  const raw = await res.json();
-  const items: unknown[] = Array.isArray(raw) ? raw : (raw.products ?? []);
-
-  return items.map((item) => {
-    const r = item as Record<string, unknown>;
-    // New grouped format has a `sizes` array field
-    if (Array.isArray(r.sizes)) {
-      return mapGrouped(r as unknown as RawProductGrouped);
-    }
-    return mapLegacy(r as unknown as RawProductLegacy);
-  });
+  return mapRawItems(await res.json());
 }
 
 export async function getProduct(id: string): Promise<Product | undefined> {

@@ -91,17 +91,18 @@ export default function AddToCartSection({ product }: { product: Product }) {
   }
   function isSizeOOS(size: string) {
     const s = stockFor(size, selectedColor.name);
-    return s === null || s === 0;
+    // Unknown stock (null) is treated as available; only explicit zero is OOS.
+    return s === 0;
   }
   function isColorOOS(colorName: string) {
     if (!selectedSize) return false;
     const s = stockFor(selectedSize, colorName);
-    return s === null || s === 0;
+    return s === 0;
   }
 
   // Declare BEFORE the useEffect that references them (avoids TDZ)
   const selectedStockQty = selectedSize ? stockFor(selectedSize, selectedColor.name) : null;
-  const isSelectedOOS = selectedStockQty === null || selectedStockQty === 0;
+  const isSelectedOOS = selectedStockQty === 0;
 
   function priceFor(size: string, color: string): number | null {
     const key = skuKey(size, color);
@@ -175,7 +176,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
       color: selectedColor.name,
       colorHex: selectedColor.hex,
       quantity,
-      image: product.image,
+      image: product.images?.[selectedColor.name] ?? product.image,
       barcode: skuBarcodeMap[skuKey(selectedSize, selectedColor.name)] ?? undefined,
     });
 
