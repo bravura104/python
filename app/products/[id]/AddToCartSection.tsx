@@ -24,6 +24,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
   const [stockMap, setStockMap] = useState<Record<string, number>>({});
   const [priceMap, setPriceMap] = useState<Record<string, { price_cents: number; from?: string; to?: string }>>({});
   const [bakedPrices, setBakedPrices] = useState<Record<string, number> | null>(product.prices ?? null);
+  const [bakedStocks, setBakedStocks] = useState<Record<string, number> | null>(product.stocks ?? null);
   const [flashOOS, setFlashOOS] = useState(false);
   const reportedOOS = useRef(new Set<string>());
   const [skuBarcodeMap, setSkuBarcodeMap] = useState<Record<string, string>>({});
@@ -73,13 +74,16 @@ export default function AddToCartSection({ product }: { product: Product }) {
         setSkuBarcodeMap(barcodeMap);
       })
       .catch(() => {}); // silently fail — don't block purchase
-    // If product.prices is not embedded in the page, try loading the generated products JSON from /products.json
-    if (!product.prices) {
+    // If product.prices / product.stocks are not embedded in page props, fetch from /products.json
+    if (!product.prices || !product.stocks) {
       fetch('/products.json')
         .then(r => r.json())
         .then((arr: any[]) => {
-          const found = Array.isArray(arr) ? arr.find(p => p.id === product.id || p.id === product.id.toLowerCase()) : null;
-          if (found && found.prices) setBakedPrices(found.prices);
+          const found = Array.isArray(arr) ? arr.find((p: any) => p.id === product.id || p.id === product.id.toLowerCase()) : null;
+          if (found) {
+            if (!product.prices && found.prices) setBakedPrices(found.prices);
+            if (!product.stocks && found.stocks) setBakedStocks(found.stocks);
+          }
         })
         .catch(() => {});
     }
@@ -87,7 +91,11 @@ export default function AddToCartSection({ product }: { product: Product }) {
 
   function stockFor(size: string, color: string): number | null {
     const key = skuKey(size, color);
-    return key in stockMap ? stockMap[key] : null;
+    // 1. Live API data (most up-to-date)
+    if (key in stockMap) return stockMap[key];
+    // 2. Baked stock from products.json (fallback when API is unavailable)
+    if (bakedStocks && key in bakedStocks) return bakedStocks[key];
+    return null;
   }
   function isSizeOOS(size: string) {
     const s = stockFor(size, selectedColor.name);

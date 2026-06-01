@@ -133,6 +133,7 @@ function mapGrouped(raw: RawProductGrouped): Product {
     colors:      raw.colors,
     variants:    raw.variants,
     prices:      raw.prices,
+    stocks:      raw.stocks,
     images:      raw.images,
     image:       raw.image,
     brand:       raw.brand ?? deriveBrand(raw.name, raw.sku),

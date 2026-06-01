@@ -22,6 +22,8 @@ export interface Product {
   variants?: Record<string, string>;
   /** Per-variant price map keyed by "Size_Color" — present only when prices differ across variants */
   prices?: Record<string, number>;
+  /** Per-variant stock quantity map keyed by "Size_Color" — baked from POS at export time */
+  stocks?: Record<string, number>;
   /** Per-color image URL map keyed by color name — present when variants have distinct images */
   images?: Record<string, string>;
 }
