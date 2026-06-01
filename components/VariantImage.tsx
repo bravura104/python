@@ -82,7 +82,7 @@ export default function VariantImage({
       height: H * 2,
       left: LENS_SIZE / 2 - xFrac * 2 * W,
       top:  LENS_SIZE / 2 - yFrac * 2 * H,
-      objectFit: "cover",
+      objectFit: "contain",
       userSelect: "none",
     };
   }
