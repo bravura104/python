@@ -40,6 +40,16 @@ async function getProductsFromLocalFile(): Promise<Product[] | null> {
   }
 }
 
+async function getProductsFromPublicFile(): Promise<Product[] | null> {
+  try {
+    const p = path.join(process.cwd(), "public", "products.json");
+    const txt = await readFile(p, "utf8");
+    return mapRawItems(JSON.parse(txt));
+  } catch {
+    return null;
+  }
+}
+
 /** Old per-variant shape (from export-products.ps1 era) */
 interface RawProductLegacy {
   sku: string;
@@ -128,6 +138,11 @@ export async function getProducts(): Promise<Product[]> {
   if (local && local.length > 0) {
     return local;
   }
+
+  // Fallback to the public static asset if present (ensures Vercel deployments
+  // that include `public/products.json` will use the baked catalog).
+  const pub = await getProductsFromPublicFile();
+  if (pub && pub.length > 0) return pub;
 
   const res = await fetch(PRODUCTS_API_URL, {
     next: { revalidate: 300 },  // ISR: revalidate every 5 minutes
