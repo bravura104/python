@@ -82,6 +82,7 @@ interface RawProductGrouped {
   colors: Array<{ name: string; hex: string }>;
   variants?: Record<string, string>;
   prices?: Record<string, number>;
+  stocks?: Record<string, number>;
   images?: Record<string, string>;
   brand?: string;
   category?: string;
