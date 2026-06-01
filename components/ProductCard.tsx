@@ -26,7 +26,7 @@ export default function ProductCard({ product }: { product: Product }) {
         {/* Product visual */}
         <div className="position-relative overflow-hidden">
           <ProductImage
-            src={product.image}
+            src={product.image ?? Object.values(product.images ?? {})[0]}
             alt={product.name}
             bgColor={bgColor}
             className="h-52"
