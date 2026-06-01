@@ -27,8 +27,8 @@ export default async function ProductPage({ params }: Props) {
           defaultBgColor={product.colors[0]?.hex ?? "#e5e7eb"}
           images={product.images}
           alt={product.name}
-          className="rounded-3xl h-[480px] shadow-inner"
-          emojiSize="text-[160px]"
+          className="rounded-3xl h-[360px]"
+          emojiSize="text-[120px]"
         />
 
         {/* Product info + add to cart */}
