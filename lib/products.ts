@@ -9,8 +9,9 @@
  */
 
 import type { Product } from "@/lib/types";
-import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { readFile } from "node:fs/promises";
+import staticProducts from "@/data/products.json";
 
 const PRODUCTS_API_URL =
   process.env.PRODUCTS_API_URL ?? "https://dovara.biz/api/v1/products.php";
@@ -28,6 +29,14 @@ function mapRawItems(raw: unknown): Product[] {
     }
     return mapLegacy(r as unknown as RawProductLegacy);
   });
+}
+
+function getProductsFromStaticImport(): Product[] | null {
+  try {
+    return mapRawItems(staticProducts);
+  } catch {
+    return null;
+  }
 }
 
 async function getProductsFromLocalFile(): Promise<Product[] | null> {
@@ -133,7 +142,11 @@ function mapGrouped(raw: RawProductGrouped): Product {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  // Prefer repository-local generated data so storefront is deterministic after deploy.
+  // 1. Static import — always bundled into the Vercel serverless function.
+  const bundled = getProductsFromStaticImport();
+  if (bundled && bundled.length > 0) return bundled;
+
+  // 2. Prefer repository-local generated data so storefront is deterministic after deploy.
   const local = await getProductsFromLocalFile();
   if (local && local.length > 0) {
     return local;
