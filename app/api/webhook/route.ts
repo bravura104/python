@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import fs from 'fs';
+import path from 'path';
 import type Stripe from "stripe";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
@@ -90,26 +92,48 @@ export async function POST(req: NextRequest) {
       country:     shipping.address?.country ?? "",
     } : null;
 
+    const notifyPayload = {
+      payment_intent_id: paymentIntent.id,
+      customer_name:     customerName,
+      customer_email:    customerEmail,
+      total_amount:      paymentIntent.amount / 100,
+      currency:          paymentIntent.currency,
+      items:             orderItems,
+      shipping_address:  shippingAddress,
+    };
+
+    // Log outgoing notification (server-side file)
+    try {
+      const logDir = path.resolve(process.cwd(), 'logs');
+      if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true });
+      const logFile = path.join(logDir, 'dovara_notify.log');
+      const entry = { ts: new Date().toISOString(), event: 'notify', url: dovaraUrl, payload: notifyPayload };
+      fs.appendFileSync(logFile, JSON.stringify(entry) + '\n');
+    } catch (e) {
+      console.error('Failed to write dovara notify log:', e);
+    }
+
     const res = await fetch(dovaraUrl, {
       method:  "POST",
       headers: {
         "Content-Type":  "application/json",
         "Authorization": `Bearer ${dovaraSecret}`,
       },
-      body: JSON.stringify({
-        payment_intent_id: paymentIntent.id,
-        customer_name:     customerName,
-        customer_email:    customerEmail,
-        total_amount:      paymentIntent.amount / 100,
-        currency:          paymentIntent.currency,
-        items:             orderItems,
-        shipping_address:  shippingAddress,
-      }),
+      body: JSON.stringify(notifyPayload),
     });
 
+    const resText = await res.text().catch(() => '');
+    try {
+      const logDir = path.resolve(process.cwd(), 'logs');
+      const logFile = path.join(logDir, 'dovara_notify.log');
+      const entry = { ts: new Date().toISOString(), event: 'notify_result', status: res.status, body: resText };
+      fs.appendFileSync(logFile, JSON.stringify(entry) + '\n');
+    } catch (e) {
+      console.error('Failed to write dovara notify result log:', e);
+    }
+
     if (!res.ok) {
-      const text = await res.text();
-      console.error(`Dovara order notify failed (${res.status}):`, text);
+      console.error(`Dovara order notify failed (${res.status}):`, resText);
     }
   } catch (err) {
     console.error("Failed to notify dovara.vn:", err);
