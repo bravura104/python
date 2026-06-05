@@ -49,7 +49,7 @@ export default async function HomePage({
         style={{
           top: 56,
           zIndex: 9,
-          background: "linear-gradient(135deg, #f5f0ff 0%, #eef3ff 50%, #f0f7ff 100%)",
+          background: "transparent",
         }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
