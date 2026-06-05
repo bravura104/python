@@ -5,6 +5,7 @@ import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
 import BootstrapInit from "@/components/BootstrapInit";
 import MobileFooter from "@/components/MobileFooter";
+import TopSlogan from "@/components/TopSlogan";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,10 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} h-full`}>
-      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased font-sans dingtee-bg">
+      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased font-sans">
         <CartProvider>
           <BootstrapInit />
           <Header />
+          {/* Top slogan with dingtee background */}
+          <TopSlogan />
           <main className="flex-1">{children}</main>
           <MobileFooter />
           <footer className="border-t border-gray-100 py-8 text-center text-sm text-gray-400">

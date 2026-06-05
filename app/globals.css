@@ -16,6 +16,19 @@ body.dingtee-bg {
   background-repeat: no-repeat;
 }
 
+/* Background for the small slogan bar */
+.dingtee-hero {
+  background-image: url('/images/greenfield_dingtee909_1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.0); /* ensure transparency */
+}
+
+.dingtee-hero .d-flex { /* ensure text remains readable */
+  background: rgba(255,255,255,0.0);
+}
+
 /* ── Marquee animation ──────────────────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
