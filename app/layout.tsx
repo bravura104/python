@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} h-full`}>
-      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased font-sans">
+      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased font-sans dingtee-bg">
         <CartProvider>
           <BootstrapInit />
           <Header />

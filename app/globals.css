@@ -8,6 +8,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Ding-tee custom background */
+body.dingtee-bg {
+  background-image: url('/images/greenfield_dingtee909_1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* ── Marquee animation ──────────────────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
