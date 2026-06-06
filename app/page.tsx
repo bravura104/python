@@ -56,7 +56,7 @@ export default async function HomePage({
           <div className="d-flex align-items-center justify-content-between gap-3 py-2" style={{ flexWrap: "wrap" }}>
 
             {/* Slogan */}
-            <div className="d-flex align-items-center gap-2">
+            <div className="d-flex align-items-center gap-2" style={{ visibility: "hidden" }}>
               <span className="d-none d-sm-inline" style={{ color: "#c4b5fd" }}>·</span>
               <span className="d-none d-sm-inline" style={{ color: "#6b7280", fontSize: ".8rem" }}>Premium blank tees, print ready</span>
             </div>
