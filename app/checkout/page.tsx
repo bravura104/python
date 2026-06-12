@@ -20,6 +20,8 @@ import {
   type ShippingOptionKey,
 } from "@/lib/shipping";
 import ProductImage from "@/components/ProductImage";
+import RelatedItemsSection from "@/components/RelatedItemsSection";
+import type { Product } from "@/lib/types";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -154,6 +156,7 @@ export default function CheckoutPage() {
   const [shippingOption, setShippingOption] = useState<ShippingOptionKey>("standard");
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
   const shippingFee = calcShipping(totalPrice, shippingOption);
   const taxAmount   = Math.round(totalPrice * CA_TAX_RATE * 100) / 100;
@@ -204,6 +207,25 @@ export default function CheckoutPage() {
 
     return () => { cancelled = true; };
   }, [items, shippingOption]); // re-run when cart or shipping method changes
+
+  useEffect(() => {
+    const productIds = Array.from(new Set(items.map((item) => item.productId)));
+    if (productIds.length === 0) {
+      setRelatedProducts([]);
+      return;
+    }
+
+    fetch("/api/related-items", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productIds }),
+    })
+      .then((r) => r.json())
+      .then((data: { items?: Product[] }) => {
+        setRelatedProducts(Array.isArray(data.items) ? data.items : []);
+      })
+      .catch(() => setRelatedProducts([]));
+  }, [items]);
 
   if (items.length === 0) {
     return (
@@ -365,6 +387,8 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      <RelatedItemsSection items={relatedProducts} />
     </div>
   );
 }

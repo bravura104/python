@@ -4,10 +4,33 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES, CA_TAX_RATE } from "@/lib/shipping";
 import ProductImage from "@/components/ProductImage";
+import RelatedItemsSection from "@/components/RelatedItemsSection";
+import type { Product } from "@/lib/types";
+import { useEffect, useState } from "react";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } =
     useCart();
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const productIds = Array.from(new Set(items.map((item) => item.productId)));
+    if (productIds.length === 0) {
+      setRelatedProducts([]);
+      return;
+    }
+
+    fetch("/api/related-items", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ productIds }),
+    })
+      .then((r) => r.json())
+      .then((data: { items?: Product[] }) => {
+        setRelatedProducts(Array.isArray(data.items) ? data.items : []);
+      })
+      .catch(() => setRelatedProducts([]));
+  }, [items]);
 
   if (items.length === 0) {
     return (
@@ -166,6 +189,8 @@ export default function CartPage() {
           </Link>
         </div>
       </div>
+
+      <RelatedItemsSection items={relatedProducts} />
     </div>
   );
 }

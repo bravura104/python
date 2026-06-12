@@ -41,4 +41,48 @@ export async function verifyUserPassword(email: string, passwordPlain: string): 
   return ok ? user : null;
 }
 
+export type DingteeRelationshipItem = {
+  item_id: number;
+  item_code: string;
+  item_name: string;
+  item_slug: string;
+  item_image?: string | null;
+  item_price?: number | null;
+  rel_type: string;
+};
+
+function normalizeItemSlug(value: string): string {
+  return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+export async function getRelationshipItemsBySlug(slug: string): Promise<DingteeRelationshipItem[]> {
+  const normalizedSlug = normalizeItemSlug(slug);
+  const [rows] = await pool.query(
+    `SELECT
+       i.id AS item_id,
+       i.item_code,
+       i.item_name,
+       COALESCE(NULLIF(TRIM(i.item_slug), ''), NULLIF(TRIM(i.slug), ''), NULLIF(TRIM(i.url_slug), ''), NULLIF(TRIM(i.item_code), '')) AS item_slug,
+       i.item_image,
+       i.item_price,
+       ir.rel_type
+     FROM itemrelationship ir
+     INNER JOIN items i ON i.id = ir.related_item_id
+     WHERE ir.rel_type = 'MKT_RELATED'
+       AND (
+         LOWER(TRIM(ir.item_slug)) = ?
+         OR LOWER(TRIM(ir.item_code)) = ?
+         OR LOWER(TRIM(ir.item_name)) = ?
+       )
+     ORDER BY ir.id DESC`,
+    [normalizedSlug, normalizedSlug, normalizedSlug]
+  );
+
+  const rs: any = rows as any;
+  return rs.map((row: any) => ({
+    ...row,
+    item_slug: normalizeItemSlug(String(row.item_slug ?? row.item_code ?? '')),
+  })) as DingteeRelationshipItem[];
+}
+
 export default pool;

@@ -4,6 +4,8 @@ import type { Product } from "@/lib/types";
 import AddToCartSection from "./AddToCartSection";
 import VariantImage from "@/components/VariantImage";
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_RATES } from "@/lib/shipping";
+import RelatedItemsSection from "@/components/RelatedItemsSection";
+import { getRelationshipItemsBySlug } from "@/lib/db";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -15,8 +17,23 @@ export async function generateStaticParams() {
 export default async function ProductPage({ params }: Props) {
   const { id } = await params;
   const product = await getProduct(id);
+  const relatedItems = await getRelationshipItemsBySlug(id);
 
   if (!product) notFound();
+
+  const relatedProducts: Product[] = relatedItems
+    .map((item) => ({
+      id: item.item_slug || item.item_code,
+      sku: item.item_code,
+      name: item.item_name,
+      description: "",
+      price: Number(item.item_price ?? 0),
+      badge: null,
+      sizes: [],
+      colors: [],
+      image: item.item_image ?? undefined,
+    }))
+    .filter((item) => item.id !== product.id);
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -75,6 +92,8 @@ export default async function ProductPage({ params }: Props) {
           <AddToCartSection product={product} />
         </div>
       </div>
+
+      <RelatedItemsSection items={relatedProducts} />
     </div>
   );
 }
