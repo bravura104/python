@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Return & Refund Policy – DingTee909",
-  description: "DingTee909's return and refund policy for custom print orders.",
+  title: "Return & Refund Policy – HangPho36.vn",
+  description: "HangPho36.vn's return and refund policy for marketplace orders.",
 };
 
 export default function ReturnPolicyPage() {
@@ -66,10 +66,10 @@ export default function ReturnPolicyPage() {
             <li>
               Email us at{" "}
               <a
-                href="mailto:support@teestore.com"
+                href="mailto:support@hangpho36.vn"
                 className="text-black underline"
               >
-                support@teestore.com
+                support@hangpho36.vn
               </a>{" "}
               with your order number and a photo of the issue.
             </li>
@@ -99,10 +99,10 @@ export default function ReturnPolicyPage() {
           <p>
             Questions? Reach us at{" "}
             <a
-              href="mailto:support@teestore.com"
+              href="mailto:support@hangpho36.vn"
               className="text-black underline"
             >
-              support@teestore.com
+              support@hangpho36.vn
             </a>{" "}
             or visit our{" "}
             <Link href="/" className="text-black underline">

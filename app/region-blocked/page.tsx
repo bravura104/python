@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Not Available in Your Region — DingTee909",
+  title: "Not Available in Your Region — Mart36",
 };
 
 export default function RegionBlockedPage() {
@@ -13,7 +13,7 @@ export default function RegionBlockedPage() {
         Not Available in Your Region
       </h1>
       <p className="text-gray-500 mb-8">
-        Sorry — DingTee909 currently ships within the&nbsp;
+        Sorry — Mart36 currently ships within the&nbsp;
         <strong>United States</strong> and <strong>Canada</strong> only.
         Checkout is not available from your location.
       </p>

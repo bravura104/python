@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
-import { calcShipping, type ShippingOptionKey, SHIPPING_RATES, CA_TAX_RATE } from "@/lib/shipping";
+import { calcShipping, calcDisbursementAmount, type ShippingOptionKey, SHIPPING_RATES } from "@/lib/shipping";
 
 export const dynamic = "force-dynamic";
 
 // Allowed browser origins — only our own domain may call this endpoint
 const ALLOWED_ORIGINS = new Set(
   process.env.NODE_ENV === "production"
-    ? ["https://dingtee909.com", "https://www.dingtee909.com", "https://ding-tee.dovara.biz"]
+    ? ["https://mart35-test.vn", "https://www.mart35-test.vn", "https://mart36.vn", "https://www.mart36.vn"]
     : ["http://localhost:3000"]
 );
 
@@ -82,8 +82,9 @@ export async function POST(req: NextRequest) {
 
     const subtotalCents = amount;
     const shippingCents = Math.round(calcShipping(subtotalCents / 100, resolvedShipping) * 100);
-    const taxCents      = Math.round(subtotalCents * CA_TAX_RATE);
-    const totalCents    = subtotalCents + shippingCents + taxCents;
+    const feeBreakdown  = calcDisbursementAmount(subtotalCents / 100);
+    const discountCents = Math.round(feeBreakdown.discount * 100);
+    const totalCents    = subtotalCents + shippingCents;
 
     // ── Inventory check — block checkout if any item is out of stock ───────
     const inventoryUrl = process.env.DOVARA_INVENTORY_URL;
@@ -137,6 +138,8 @@ export async function POST(req: NextRequest) {
         ),
         shipping_option: resolvedShipping,
         shipping_fee: (shippingCents / 100).toFixed(2),
+        discount_amount: (discountCents / 100).toFixed(2),
+        disbursement_amount: feeBreakdown.disbursementAmount.toFixed(2),
         ...(utmSource   && { utm_source:   utmSource }),
         ...(utmMedium   && { utm_medium:   utmMedium }),
         ...(utmCampaign && { utm_campaign: utmCampaign }),

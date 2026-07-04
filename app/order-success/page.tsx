@@ -2,14 +2,9 @@
 "use client";
 
 import { Suspense, useEffect, useRef, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
 
 type Status = "loading" | "succeeded" | "processing" | "failed";
 
@@ -19,50 +14,38 @@ function OrderStatusContent() {
   const [status, setStatus] = useState<Status>("loading");
   const [utmSource, setUtmSource] = useState<string | null>(null);
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
+  const provider = searchParams.get("provider");
+  const orderCode = searchParams.get("orderCode");
   const clearedRef = useRef(false);
 
   useEffect(() => {
-    const clientSecret   = searchParams.get("payment_intent_client_secret");
-    const paymentIntentId = searchParams.get("payment_intent");
+    const provider = searchParams.get("provider");
+    const orderCode = searchParams.get("orderCode");
 
     async function checkStatus() {
-      if (!clientSecret) {
-        setStatus("failed");
-        return;
-      }
-      const stripe = await stripePromise;
-      if (!stripe) {
-        setStatus("failed");
-        return;
-      }
-      const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
-      if (paymentIntent?.status === "succeeded") {
+      if (provider === "payos" || provider === "momo") {
         if (!clearedRef.current) {
           clearedRef.current = true;
           clearCart();
-          setPaymentIntentId(paymentIntentId ?? null);
-          // Read ad source for display
-          try {
-            const raw = localStorage.getItem("utm_data");
-            if (raw) {
-              const utm = JSON.parse(raw) as Record<string, string>;
-              if (utm.utm_source) setUtmSource(utm.utm_source);
-            }
-          } catch { /* ignore */ }
-          // Notify server → dovara.vn (email + DB save). Fire-and-forget.
-          if (paymentIntentId) {
-            fetch("/api/confirm-order", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ paymentIntentId }),
-            }).catch(() => {});
-          }
+          setPaymentIntentId(orderCode);
         }
+
         setStatus("succeeded");
-      } else if (paymentIntent?.status === "processing") {
-        setStatus("processing");
-      } else {
-        setStatus("failed");
+        return;
+      }
+
+      setStatus("failed");
+    }
+
+    if (provider === "payos" || provider === "momo") {
+      try {
+        const raw = localStorage.getItem("utm_data");
+        if (raw) {
+          const utm = JSON.parse(raw) as Record<string, string>;
+          if (utm.utm_source) setUtmSource(utm.utm_source);
+        }
+      } catch {
+        // ignore
       }
     }
 

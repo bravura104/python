@@ -1,14 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-  PaymentElement,
-  AddressElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,163 +8,41 @@ import {
   calcShipping,
   SHIPPING_RATES,
   FREE_SHIPPING_THRESHOLD,
-  CA_TAX_RATE,
+  calcDisbursementAmount,
   type ShippingOptionKey,
 } from "@/lib/shipping";
 import ProductImage from "@/components/ProductImage";
 import RelatedItemsSection from "@/components/RelatedItemsSection";
 import type { Product } from "@/lib/types";
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
-
-function CheckoutForm({ totalPrice }: { totalPrice: number }) {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!stripe || !elements) return;
-
-    setLoading(true);
-    setError(null);
-
-    // Validate address + payment fields before charging
-    const { error: submitError } = await elements.submit();
-    if (submitError) {
-      setError(submitError.message ?? "Please check your details and try again.");
-      setLoading(false);
-      return;
-    }
-
-    const { error: stripeError } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: `${window.location.origin}/order-success`,
-      },
-    });
-
-    // Only runs if confirmPayment fails immediately (e.g., card declined)
-    if (stripeError) {
-      setError(stripeError.message ?? "Payment failed. Please try again.");
-      setLoading(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Shipping address */}
-      <div>
-        <h3 className="text-base font-semibold text-gray-900 mb-3">Shipping Address</h3>
-        <AddressElement
-          options={{
-            mode: "shipping",
-            allowedCountries: ["CA", "US"],
-          }}
-        />
-      </div>
-
-      {/* Payment */}
-      <div className="border-t border-gray-100 pt-5">
-        <h3 className="text-base font-semibold text-gray-900 mb-3">Payment Details</h3>
-        <PaymentElement />
-      </div>
-
-      {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
-          {error}
-        </div>
-      )}
-
-      <button
-        type="submit"
-        disabled={!stripe || loading}
-        className="w-full bg-black text-white py-4 rounded-xl font-semibold text-base hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-      >
-        {loading ? (
-          <>
-            <svg
-              className="animate-spin h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8H4z"
-              />
-            </svg>
-            Processing…
-          </>
-        ) : (
-          `Pay $${totalPrice.toFixed(2)}`
-        )}
-      </button>
-
-      {/* Payment trust badges */}
-      <div className="flex items-center justify-center gap-3 pt-1">
-        <span className="text-xs text-gray-400">Secured by</span>
-        {/* Visa */}
-        <span className="inline-flex items-center px-2.5 py-1 rounded border border-gray-200 bg-white">
-          <svg width="38" height="14" viewBox="0 0 38 14" aria-label="Visa">
-            <text x="0" y="12" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="13" fill="#1a1f71" fontStyle="italic">VISA</text>
-          </svg>
-        </span>
-        {/* Mastercard */}
-        <span className="inline-flex items-center gap-0.5 px-2 py-1 rounded border border-gray-200 bg-white" aria-label="Mastercard">
-          <svg width="30" height="20" viewBox="0 0 30 20">
-            <circle cx="10" cy="10" r="9" fill="#EB001B" />
-            <circle cx="20" cy="10" r="9" fill="#F79E1B" />
-            <path d="M15 3.8a9 9 0 0 1 0 12.4A9 9 0 0 1 15 3.8z" fill="#FF5F00" />
-          </svg>
-        </span>
-        {/* PayPal */}
-        <span className="inline-flex items-center px-2.5 py-1 rounded border border-gray-200 bg-white">
-          <svg width="52" height="14" viewBox="0 0 52 14" aria-label="PayPal">
-            <text x="0" y="11" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="11" fill="#003087">Pay</text>
-            <text x="22" y="11" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="11" fill="#009cde">Pal</text>
-          </svg>
-        </span>
-        <span className="text-xs text-gray-400">· 256-bit SSL</span>
-      </div>
-    </form>
-  );
-}
+type PaymentMethod = "payos" | "momo";
 
 export default function CheckoutPage() {
   const { items, totalPrice } = useCart();
   const router = useRouter();
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("payos");
   const [shippingOption, setShippingOption] = useState<ShippingOptionKey>("standard");
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
   const shippingFee = calcShipping(totalPrice, shippingOption);
-  const taxAmount   = Math.round(totalPrice * CA_TAX_RATE * 100) / 100;
-  const grandTotal  = totalPrice + shippingFee + taxAmount;
+  const feeBreakdown = calcDisbursementAmount(totalPrice);
+  const disbursementAmount = feeBreakdown.disbursementAmount;
+  const grandTotal  = totalPrice + shippingFee;
 
   useEffect(() => {
     if (items.length === 0) return;
 
     let cancelled = false;
-    setClientSecret(null);
+    setPaymentUrl(null);
     setFetchError(null);
 
-    fetch("/api/checkout", {
+    fetch("/api/checkout/provider", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        paymentMethod,
         items: items.map((i) => ({
           productId: i.productId,
           size: i.size,
@@ -197,7 +67,7 @@ export default function CheckoutPage() {
         if (data.error) {
           setFetchError(data.error);
         } else {
-          setClientSecret(data.clientSecret as string);
+          setPaymentUrl(data.paymentUrl as string | null);
         }
       })
       .catch(() => {
@@ -206,7 +76,7 @@ export default function CheckoutPage() {
       });
 
     return () => { cancelled = true; };
-  }, [items, shippingOption]); // re-run when cart or shipping method changes
+  }, [items, shippingOption, paymentMethod]); // re-run when cart, shipping, or provider changes
 
   useEffect(() => {
     const productIds = Array.from(new Set(items.map((item) => item.productId)));
@@ -266,34 +136,50 @@ export default function CheckoutPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-6">
               Shipping &amp; Payment
             </h2>
-            {!clientSecret ? (
-              <div className="flex items-center justify-center py-10 text-gray-400 gap-3">
-                <svg
-                  className="animate-spin h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v8H4z"
-                  />
-                </svg>
-                Loading payment form…
+            <div className="mb-6">
+              <h3 className="text-base font-semibold text-gray-900 mb-3">Payment Method</h3>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {(["payos", "PayOS"], ["momo", "MoMo"]).map(([value, label]) => (
+                  <label
+                    key={value}
+                    className={`cursor-pointer rounded-2xl border p-4 text-sm transition-colors ${paymentMethod === value ? "border-black bg-gray-50" : "border-gray-200 hover:border-gray-400"}`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value={value}
+                      checked={paymentMethod === value}
+                      onChange={() => setPaymentMethod(value as PaymentMethod)}
+                      className="sr-only"
+                    />
+                    <span className="font-semibold text-gray-900">{label}</span>
+                  </label>
+                ))}
               </div>
-            ) : (
-              <Elements stripe={stripePromise} options={{ clientSecret }}>
-                <CheckoutForm totalPrice={grandTotal} />
-              </Elements>
-            )}
+            </div>
+              <div className="space-y-4">
+                <p className="text-sm text-gray-600">
+                  {paymentMethod === "payos"
+                    ? "PayOS checkout is ready."
+                    : "MoMo checkout is ready."}
+                </p>
+                {paymentUrl ? (
+                  <a
+                    href={paymentUrl}
+                    className="inline-flex w-full items-center justify-center rounded-xl bg-black px-6 py-4 font-semibold text-white transition-colors hover:bg-gray-800"
+                  >
+                    Continue to {paymentMethod === "payos" ? "PayOS" : "MoMo"}
+                  </a>
+                ) : (
+                  <div className="flex items-center justify-center py-10 text-gray-400 gap-3">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    </svg>
+                    Loading payment link…
+                  </div>
+                )}
+              </div>
           </div>
         </div>
 
@@ -376,8 +262,12 @@ export default function CheckoutPage() {
                 )}
               </div>
               <div className="flex justify-between">
-                <span>CA tax (7.75%)</span>
-                <span>${taxAmount.toFixed(2)}</span>
+                <span>Discount / fees</span>
+                <span>${feeBreakdown.discount.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
+                <span>Disbursement amount</span>
+                <span>${disbursementAmount.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-base font-bold text-gray-900 pt-2 border-t border-gray-200">
                 <span>Total</span>

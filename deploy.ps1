@@ -1,4 +1,9 @@
-# Deploy to Vercel (production) via Git + Vercel CLI
+# Deploy to Vercel via Git + Vercel CLI
+param(
+    [ValidateSet("prod", "qa")]
+    [string]$Target = "prod"
+)
+
 Set-Location $PSScriptRoot
 
 # --- 1. Git: stage all changes ---
@@ -26,12 +31,23 @@ if ($LASTEXITCODE -ne 0) {
     exit $LASTEXITCODE
 }
 
-# --- 4. Vercel: deploy to production ---
-Write-Host ">> Deploying to Vercel (production)..." -ForegroundColor Cyan
-vercel --prod --yes
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "OK: Deployment to Vercel production successful!" -ForegroundColor Green
+# --- 4. Vercel: deploy by target ---
+if ($Target -eq "qa") {
+    Write-Host ">> Deploying to Vercel (preview / QA)..." -ForegroundColor Cyan
+    vercel --yes
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "OK: Deployment to Vercel QA successful!" -ForegroundColor Green
+    } else {
+        Write-Host "ERROR: Vercel QA deployment failed." -ForegroundColor Red
+        exit $LASTEXITCODE
+    }
 } else {
-    Write-Host "ERROR: Vercel deployment failed." -ForegroundColor Red
-    exit $LASTEXITCODE
+    Write-Host ">> Deploying to Vercel (production)..." -ForegroundColor Cyan
+    vercel --prod --yes
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "OK: Deployment to Vercel production successful!" -ForegroundColor Green
+    } else {
+        Write-Host "ERROR: Vercel deployment failed." -ForegroundColor Red
+        exit $LASTEXITCODE
+    }
 }

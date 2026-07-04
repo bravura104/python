@@ -3,12 +3,14 @@ import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
 import { verifyToken, TOKEN_NAME } from '@/lib/auth';
+import { formatOrderConfirmedEmail, sendEmail } from "@/lib/mailer";
+import { calcDisbursementAmount } from "@/lib/shipping";
 
 export const dynamic = "force-dynamic";
 
 const ALLOWED_ORIGINS = new Set(
   process.env.NODE_ENV === "production"
-    ? ["https://dingtee909.com", "https://www.dingtee909.com", "https://ding-tee.dovara.biz"]
+    ? ["https://mart35-test.vn", "https://www.mart35-test.vn", "https://mart36.vn", "https://www.mart36.vn"]
     : ["http://localhost:3000"]
 );
 
@@ -103,6 +105,9 @@ export async function POST(req: NextRequest) {
     country:     shipping.address?.country      ?? "",
   } : null;
 
+  const subtotalAmount = pi.amount / 100;
+  const disbursementBreakdown = calcDisbursementAmount(subtotalAmount);
+
   try {
     // Attach optional authenticated user id when present (dt_token cookie)
     const token = req.cookies.get(TOKEN_NAME)?.value;
@@ -123,7 +128,10 @@ export async function POST(req: NextRequest) {
         customer_name:     customerName,
         customer_email:    customerEmail,
         user_id:           userId || undefined,
-        total_amount:      pi.amount / 100,
+        total_amount:      subtotalAmount,
+        discount_amount:   disbursementBreakdown.discount,
+        disbursement_amount: disbursementBreakdown.disbursementAmount,
+        fee_breakdown:     disbursementBreakdown,
         currency:          pi.currency,
         items:             orderItems,
         shipping_address:  shippingAddress,
@@ -136,6 +144,17 @@ export async function POST(req: NextRequest) {
     if (!res.ok) {
       const text = await res.text();
       console.error(`confirm-order: dovara notify failed (${res.status}):`, text);
+    } else if (customerEmail) {
+      try {
+        await sendEmail(formatOrderConfirmedEmail({
+          orderCode: pi.id,
+          customerName,
+          customerEmail,
+          totalAmount: subtotalAmount,
+        }));
+      } catch (err) {
+        console.error("confirm-order: failed to send confirmation email:", err);
+      }
     }
   } catch (err) {
     console.error("confirm-order: failed to notify dovara.vn:", err);

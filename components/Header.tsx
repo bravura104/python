@@ -27,8 +27,8 @@ function HeaderInner() {
       <div className="container-xl">
         {/* Brand */}
         <Link href="/" className="navbar-brand fw-bold d-flex align-items-center gap-2">
-          <span style={{ fontSize: "1.5rem" }}>👕</span>
-          <span>DingTee909</span>
+          <span style={{ fontSize: "1.5rem" }}>🛒</span>
+          <span>HangPho36.vn</span>
         </Link>
 
         {/* Search bar – visible on md+ inline, collapses into nav on mobile */}
@@ -54,7 +54,7 @@ function HeaderInner() {
         <div className="d-none d-md-flex ms-3 align-items-center gap-2">
           <ul className="navbar-nav align-items-md-center gap-md-2 d-flex">
             <li className="nav-item">
-              <Link href="/" className="nav-link fw-medium text-dark">Shop</Link>
+              <Link href="/" className="nav-link fw-medium text-dark">Marketplace</Link>
             </li>
             <li className="nav-item">
               <Link href="/return-policy" className="nav-link fw-medium text-dark">Returns</Link>

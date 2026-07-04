@@ -3,11 +3,11 @@ import type { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
-// ── Brand meta – order controls tab order ───────────────────────────────────
-const BRANDS: { name: string; color: string; emoji: string }[] = [
-  { name: "Pro Club", color: "#1a1a2e", emoji: "💪" },
-  { name: "Shaka",    color: "#0369a1", emoji: "🤙" },
-  { name: "AAA",      color: "#dc2626", emoji: "⭐" },
+// ── Marketplace categories – order controls tab order ──────────────────────
+const CATEGORIES: { name: string; color: string; emoji: string }[] = [
+  { name: "Fashion", color: "#1f2937", emoji: "👕" },
+  { name: "Electronics", color: "#0369a1", emoji: "📱" },
+  { name: "Home", color: "#15803d", emoji: "🏠" },
 ];
 
 export default async function HomePage({
@@ -22,20 +22,20 @@ export default async function HomePage({
   const allProducts = await getProducts();
 
   // Brand counts for tabs
-  const brandCounts = Object.fromEntries(
-    BRANDS.map((b) => [b.name, allProducts.filter((p) => p.brand === b.name).length])
+  const categoryCounts = Object.fromEntries(
+    CATEGORIES.map((category) => [category.name, allProducts.filter((product) => product.category === category.name || product.brand === category.name).length])
   );
 
   const filtered = allProducts.filter((p) => {
     if (query && !p.name.toLowerCase().includes(query) && !p.description?.toLowerCase().includes(query)) return false;
-    if (activeBrand && p.brand !== activeBrand) return false;
+    if (activeBrand && p.category !== activeBrand && p.brand !== activeBrand) return false;
     return true;
   });
 
   // Build filter link (preserves q when present)
-  function brandLink(b: string) {
+  function categoryLink(category: string) {
     const params = new URLSearchParams();
-    if (b) params.set("brand", b);
+    if (category) params.set("brand", category);
     if (query) params.set("q", query);
     const qs = params.toString();
     return qs ? `/?${qs}` : "/";
@@ -56,14 +56,14 @@ export default async function HomePage({
           <div className="d-flex align-items-center justify-content-between gap-3 py-2" style={{ flexWrap: "wrap" }}>
 
             {/* Slogan */}
-            <div className="d-flex align-items-center gap-2" style={{ visibility: "hidden" }}>
-              <span className="d-none d-sm-inline" style={{ color: "#c4b5fd" }}>·</span>
-              <span className="d-none d-sm-inline" style={{ color: "#6b7280", fontSize: ".8rem" }}>Premium blank tees, print ready</span>
+            <div className="d-flex align-items-center gap-2">
+              <span className="d-none d-sm-inline" style={{ color: "#0f766e" }}>·</span>
+              <span className="d-none d-sm-inline" style={{ color: "#6b7280", fontSize: ".8rem" }}>A modern marketplace for everyday essentials</span>
             </div>
 
-            {/* Brand filter pills */}
+            {/* Category filter pills */}
             <div className="d-flex align-items-center gap-1 overflow-auto" style={{ scrollbarWidth: "none" }}>
-              <Link href={brandLink("")} className="text-decoration-none flex-shrink-0">
+              <Link href={categoryLink("")} className="text-decoration-none flex-shrink-0">
                 <span
                   className="d-inline-block px-3 py-1 rounded-pill fw-medium"
                   style={{
@@ -78,20 +78,20 @@ export default async function HomePage({
                 </span>
               </Link>
 
-              {BRANDS.map((b) => (
-                <Link key={b.name} href={brandLink(b.name)} className="text-decoration-none flex-shrink-0">
+              {CATEGORIES.map((category) => (
+                <Link key={category.name} href={categoryLink(category.name)} className="text-decoration-none flex-shrink-0">
                   <span
                     className="d-inline-flex align-items-center gap-1 px-3 py-1 rounded-pill fw-medium"
                     style={{
-                      background: activeBrand === b.name ? b.color : "rgba(49,46,129,0.08)",
-                      color:      activeBrand === b.name ? "#fff"  : "#4b5563",
+                      background: activeBrand === category.name ? category.color : "rgba(49,46,129,0.08)",
+                      color:      activeBrand === category.name ? "#fff"  : "#4b5563",
                       fontSize: ".82rem",
                       whiteSpace: "nowrap",
                       transition: "all .15s",
                     }}
                   >
-                    {b.emoji} {b.name}
-                    <span style={{ opacity: .65, fontSize: ".72rem" }}>({brandCounts[b.name] ?? 0})</span>
+                    {category.emoji} {category.name}
+                    <span style={{ opacity: .65, fontSize: ".72rem" }}>({categoryCounts[category.name] ?? 0})</span>
                   </span>
                 </Link>
               ))}
@@ -108,8 +108,8 @@ export default async function HomePage({
           <div>
             <h2 className="fw-bold mb-1" style={{ fontSize: "1.25rem" }}>
               {activeBrand
-                ? `${BRANDS.find((b) => b.name === activeBrand)?.emoji ?? ""} ${activeBrand} Collection`
-                : "👕 All Products"
+                ? `${CATEGORIES.find((category) => category.name === activeBrand)?.emoji ?? ""} ${activeBrand}`
+                : "🛍️ All Products"
               }
             </h2>
             <p className="mb-0" style={{ color: "#64748b", fontSize: ".82rem" }}>

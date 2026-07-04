@@ -5,6 +5,8 @@ import type Stripe from "stripe";
 import getStripe from "@/lib/stripe";
 import products from "@/data/products.json";
 import type { Product } from "@/lib/types";
+import { formatOrderConfirmedEmail, sendEmail } from "@/lib/mailer";
+import { calcDisbursementAmount } from "@/lib/shipping";
 
 export const dynamic = "force-dynamic";
 
@@ -92,11 +94,17 @@ export async function POST(req: NextRequest) {
       country:     shipping.address?.country ?? "",
     } : null;
 
+    const subtotalAmount = paymentIntent.amount / 100;
+    const disbursementBreakdown = calcDisbursementAmount(subtotalAmount);
+
     const notifyPayload = {
       payment_intent_id: paymentIntent.id,
       customer_name:     customerName,
       customer_email:    customerEmail,
-      total_amount:      paymentIntent.amount / 100,
+      total_amount:      subtotalAmount,
+      discount_amount:   disbursementBreakdown.discount,
+      disbursement_amount: disbursementBreakdown.disbursementAmount,
+      fee_breakdown:     disbursementBreakdown,
       currency:          paymentIntent.currency,
       items:             orderItems,
       shipping_address:  shippingAddress,
@@ -134,6 +142,17 @@ export async function POST(req: NextRequest) {
 
     if (!res.ok) {
       console.error(`Dovara order notify failed (${res.status}):`, resText);
+    } else if (customerEmail) {
+      try {
+        await sendEmail(formatOrderConfirmedEmail({
+          orderCode: paymentIntent.id,
+          customerName,
+          customerEmail,
+          totalAmount: subtotalAmount,
+        }));
+      } catch (err) {
+        console.error("Failed to send order confirmation email:", err);
+      }
     }
   } catch (err) {
     console.error("Failed to notify dovara.vn:", err);
