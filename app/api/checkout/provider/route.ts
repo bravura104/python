@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
     }
 
-    const validShippingOptions = ["standard", "express", "sameday"] as ShippingOptionKey[];
+    const validShippingOptions = ["standard", "sameday_ontario"] as ShippingOptionKey[];
     const shippingOption = validShippingOptions.includes(body.shippingOption as ShippingOptionKey)
       ? (body.shippingOption as ShippingOptionKey)
       : "standard";
