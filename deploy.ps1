@@ -1,4 +1,3 @@
-# Deploy to Vercel via Git + Vercel CLI
 param(
     [ValidateSet("prod", "qa")]
     [string]$Target = "prod"
