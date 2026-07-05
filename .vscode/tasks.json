@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Deploy to QA mart36.dingtee909.com",
+            "label": "Deploy Mart36 QA (separate folder)",
             "type": "shell",
             "command": "powershell.exe",
             "args": [
@@ -22,7 +22,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Deploy to ding-tee.dovara.biz",
+            "label": "Deploy Ding-Tee Storefront",
             "type": "shell",
             "command": "powershell.exe",
             "args": [
@@ -41,7 +41,7 @@
             "problemMatcher": []
         },
         {
-            "label": "[Watch] Auto-Deploy ding-tee.dovara.biz",
+            "label": "[Watch] Auto-Deploy Ding-Tee Storefront",
             "type": "shell",
             "command": "powershell.exe",
             "args": [
